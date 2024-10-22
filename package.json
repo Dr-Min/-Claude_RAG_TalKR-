@@ -1,0 +1,15 @@
+{
+  "name": "kb-test-826",
+  "version": "1.0.0",
+  "main": "websocket_test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

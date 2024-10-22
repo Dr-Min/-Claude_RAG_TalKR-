@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalKR</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Tal<span class="green">KR</span></h2>
+        <div id="menu-icon">☰</div>
+      </div>
+      <div id="chat-container" class="chat-container">
+        <!-- Chat messages will be added here -->
+      </div>
+      <div class="input-container">
+        <button id="auto-mic-toggle">Auto Mic: OFF</button>
+        <button id="voice-btn">
+          <div class="mic-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9
+              5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45
+              1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53
+              2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div class="voice-waves"></div>
+        </button>
+        <div class="text-input-container">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Type your message..."
+          />
+          <button id="send-btn">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <a href="#" id="close-sidebar">×</a>
+      <div class="user-info">
+        <span id="user-id"></span>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+      </div>
+      <a href="#" id="show-history">History</a>
+      <!-- <a href="#" id="show-reports">Reports</a> -->
+      <!-- <a href="#" id="show-vocabulary">Vocabulary</a> -->
+      <a href="#" id="show-todays-news">Today's News</a>
+    </div>
+
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+        <h2 id="modal-title">Login</h2>
+        <div id="login-form">
+          <input type="text" id="login-username" placeholder="Username" />
+          <input type="password" id="login-password" placeholder="Password" />
+          <button id="login-btn">Login</button>
+          <p>
+            Don't have an account?
+            <span> </span>
+            <a href="#" id="show-signup"> Sign up</a>
+          </p>
+          <p><a href="#" id="show-forgot-password">Forgot password?</a></p>
+        </div>
+        <div id="signup-form" style="display: none">
+          <input type="text" id="signup-username" placeholder="Username" />
+          <input type="email" id="signup-email" placeholder="Email" />
+          <input type="password" id="signup-password" placeholder="Password" />
+          <button id="signup-btn">Sign Up</button>
+          <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+        <div id="forgot-password-form" style="display: none">
+          <input type="email" id="reset-email" placeholder="Enter your email" />
+          <button id="reset-password-btn">Send a Reset Password Email</button>
+          <div
+            id="loading-animation"
+            class="loading-animation"
+            style="display: none"
+          >
+            <div class="boxLoading"></div>
+          </div>
+          <p><a href="#" id="back-to-login">Back to Login</a></p>
+        </div>
+        <p id="auth-message"></p>
+      </div>
+    </div>
+
+    <div id="history-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Chat History</h2>
+        <div id="history-container" class="chat-container"></div>
+        <div id="loading-history" style="display: none">Loading...</div>
+      </div>
+    </div>
+    <div id="reports-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Reports</h2>
+        <div id="reports-container"></div>
+      </div>
+    </div>
+
+    <div id="vocabulary-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Vocabulary</h2>
+        <div id="vocabulary-container"></div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

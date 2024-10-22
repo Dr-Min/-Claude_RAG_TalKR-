@@ -1,0 +1,136 @@
+/* Admin 페이지 대화 스타일 */
+.admin-message-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-message-item {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.admin-user-message .admin-message-header {
+  color: #4caf50;
+}
+
+.admin-ai-message .admin-message-header {
+  color: #2196f3;
+}
+
+.admin-message-content {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.admin-user-message .admin-message-content {
+  background-color: #e8f5e9;
+  align-self: flex-end;
+}
+
+.admin-ai-message .admin-message-content {
+  background-color: #e3f2fd;
+  align-self: flex-start;
+}
+
+.admin-message-time {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.admin-date-separator {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0;
+  position: relative;
+  font-size: 14px;
+  color: #888;
+}
+
+.admin-date-separator::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #e0e0e0;
+  z-index: -1;
+}
+
+.admin-date-separator span {
+  background-color: #fff;
+  padding: 0 10px;
+  position: relative;
+}
+.admin-date-separator {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0;
+  position: relative;
+  font-size: 14px;
+  color: #888;
+}
+
+.admin-date-separator::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #e0e0e0;
+  z-index: -1;
+}
+
+.admin-date-separator span {
+  background-color: #fff;
+  padding: 0 10px;
+  position: relative;
+}
+#date-selector {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.date-button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date-button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+#date-range {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#show-all-dates {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#show-all-dates:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,69 @@
+{% extends 'admin/master.html' %} {% block head_css %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/admin.css') }}"
+/>
+{% endblock %} {% block body %}
+<h2>Conversations for {{ user.username }}</h2>
+<div id="date-selector">
+  {% for date in grouped_conversations.keys() %}
+  <button class="date-button" data-date="{{ date.strftime('%Y-%m-%d') }}">
+    {{ date.strftime('%Y-%m-%d') }}
+  </button>
+  {% endfor %}
+  <button class="date-button active" data-date="all">All Dates</button>
+</div>
+<div id="conversations-container">
+  {% for date, messages in grouped_conversations.items() %}
+  <div class="date-group" data-date="{{ date.strftime('%Y-%m-%d') }}">
+    <div class="admin-date-separator">
+      <span>{{ date.strftime('%Y-%m-%d') }}</span>
+    </div>
+    <ul class="admin-message-list">
+      {% for message in messages %}
+      <li
+        class="admin-message-item {% if message.is_user %}admin-user-message{% else %}admin-ai-message{% endif %}"
+      >
+        <div class="admin-message-header">
+          <strong>{% if message.is_user %}User{% else %}AI{% endif %}</strong>
+          <span class="admin-message-time"
+            >{{ message.timestamp.strftime('%H:%M') }}</span
+          >
+        </div>
+        <div class="admin-message-content">{{ message.content }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+<a href="{{ url_for('user_conversations.index') }}">Back to Users List</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dateButtons = document.querySelectorAll(".date-button");
+    const dateGroups = document.querySelectorAll(".date-group");
+
+    dateButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const selectedDate = this.getAttribute("data-date");
+
+        dateButtons.forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        if (selectedDate === "all") {
+          dateGroups.forEach((group) => (group.style.display = "block"));
+        } else {
+          dateGroups.forEach((group) => {
+            if (group.getAttribute("data-date") === selectedDate) {
+              group.style.display = "block";
+            } else {
+              group.style.display = "none";
+            }
+          });
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}
