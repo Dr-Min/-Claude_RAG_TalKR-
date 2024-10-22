@@ -140,13 +140,18 @@ const ChatApp = (function () {
 
     const loadingDiv = addLoadingAnimation();
     setLoading(true);
-    setAITalking(true);
+    setAITalking(false);
     stopListening();
 
     sendMessageToServer(message)
       .then((data) => {
         if (data.success) {
-          addMessage(data.message, false, data.audio);
+          const messageElement = addMessage(data.message, false);
+          messageElement.dataset.messageId = data.message_id;
+
+          generateVoice(data.message, data.message_id).catch((error) => {
+            console.error("음성 생성 오류:", error);
+          });
         } else {
           throw new Error("서버에서 오류 응답을 받았습니다.");
         }
@@ -158,7 +163,6 @@ const ChatApp = (function () {
       .finally(() => {
         removeLoadingAnimation(loadingDiv);
         setLoading(false);
-        setAITalking(false);
         setProcessing(false);
         if (pendingMessage) {
           showPendingMessageConfirmation();
@@ -201,6 +205,7 @@ const ChatApp = (function () {
   }
 
   // 메시지 추가
+  // 메시지 추가
   function addMessage(message, isUser, audioData) {
     const messageDiv = document.createElement("div");
     messageDiv.className = `message ${isUser ? "user-message" : "bot-message"}`;
@@ -225,14 +230,48 @@ const ChatApp = (function () {
     if (!isUser && audioData) {
       playAudio(audioData);
     }
+
+    return messageDiv; // 메시지 엘리먼트 반환 추가
+  }
+  async function generateVoice(message, messageId) {
+    try {
+      const response = await fetch("/generate_voice", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: message,
+          message_id: messageId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success && data.audio) {
+        if (data.processing_time) {
+          console.log(`음성 생성 시간: ${data.processing_time.toFixed(3)}초`);
+        }
+        playAudio(data.audio);
+      } else {
+        console.error("음성 생성 실패");
+      }
+    } catch (error) {
+      console.error("음성 생성 요청 오류:", error);
+    }
   }
 
-  // 오디오 재생
   function playAudio(audioData) {
     setAITalking(true);
     if (isListening) {
       stopListening();
     }
+
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+
     currentAudio = new Audio("data:audio/mp3;base64," + audioData);
     currentAudio.play().catch((error) => {
       console.error("오디오 재생 오류:", error);
@@ -241,6 +280,7 @@ const ChatApp = (function () {
         startListening();
       }
     });
+
     currentAudio.onended = () => {
       currentAudio = null;
       setAITalking(false);

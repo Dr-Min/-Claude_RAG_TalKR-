@@ -424,41 +424,55 @@ def chat():
         db.session.commit()
         시간_데이터['12_응답_저장'] = time.time() - 시작_시간
 
-        # 13단계: 음성 생성
-        시작_시간 = time.time()
-        try:
-            speech_response = client.audio.speech.create(
-                model="tts-1-hd",
-                voice="nova",
-                input=ai_message_content,
-                speed=0.9
-            )
-            audio_base64 = base64.b64encode(speech_response.content).decode('utf-8')
-        except Exception as e:
-            print(f"음성 생성 오류: {str(e)}")
-            audio_base64 = None
-        시간_데이터['13_음성_생성'] = time.time() - 시작_시간
-
         # 총 소요 시간 계산
         시간_데이터['총_소요_시간'] = time.time() - 전체_시작_시간
 
-        # 시간 측정 결과 출력
-        print("\n=== 처리 시간 분석 ===")
-        for 단계, 소요시간 in 시간_데이터.items():
-            print(f"{단계}: {소요시간:.3f}초")
-        print("===================\n")
-
         return jsonify({
             'message': ai_message_content,
-            'audio': audio_base64,
+            'message_id': ai_message.id,
             'success': True,
-            'timing': 시간_데이터  # 클라이언트에도 시간 측정 결과 전달
+            'timing': 시간_데이터
         })
+
     except Exception as e:
         db.session.rollback()
         print(f"채팅 처리 중 오류 발생: {str(e)}")
         return jsonify({
             'message': '죄송합니다. 오류가 발생했습니다.', 
+            'success': False,
+            'error': str(e)
+        }), 500
+
+# 새로운 음성 생성 라우트 추가
+@app.route('/generate_voice', methods=['POST'])
+@login_required
+def generate_voice():
+    시작_시간 = time.time()
+    try:
+        message_content = request.json['message']
+        message_id = request.json['message_id']
+        
+        speech_response = client.audio.speech.create(
+            model="tts-1-hd",
+            voice="nova",
+            input=message_content,
+            speed=0.9
+        )
+        
+        audio_base64 = base64.b64encode(speech_response.content).decode('utf-8')
+        
+        처리_시간 = time.time() - 시작_시간
+        
+        return jsonify({
+            'audio': audio_base64,
+            'message_id': message_id,
+            'processing_time': 처리_시간,
+            'success': True
+        })
+        
+    except Exception as e:
+        print(f"음성 생성 중 오류 발생: {str(e)}")
+        return jsonify({
             'success': False,
             'error': str(e)
         }), 500
@@ -662,6 +676,7 @@ if __name__ == '__main__':
         db.create_all()
     port = int(os.environ.get("PORT", 5009))
     app.run(host='0.0.0.0', port=port, debug=True)
+
 
 
 
