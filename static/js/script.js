@@ -140,7 +140,7 @@ const ChatApp = (function () {
 
     const loadingDiv = addLoadingAnimation();
     setLoading(true);
-    setAITalking(false);
+    setAITalking(false); // 여기를 false로 변경
     stopListening();
 
     sendMessageToServer(message)
@@ -149,6 +149,7 @@ const ChatApp = (function () {
           const messageElement = addMessage(data.message, false);
           messageElement.dataset.messageId = data.message_id;
 
+          // 별도로 음성 생성 요청
           generateVoice(data.message, data.message_id).catch((error) => {
             console.error("음성 생성 오류:", error);
           });
@@ -176,6 +177,7 @@ const ChatApp = (function () {
   }
 
   // 서버에 메시지 전송
+  // 서버에 메시지 전송
   function sendMessageToServer(message) {
     return fetch("/chat", {
       method: "POST",
@@ -189,16 +191,28 @@ const ChatApp = (function () {
       })
       .then((data) => {
         if (data.timing) {
-          console.log("=== 처리 시간 분석 ===");
-          const sortedTiming = Object.entries(data.timing).sort((a, b) => {
-            const aNum = parseInt(a[0].split("_")[0]);
-            const bNum = parseInt(b[0].split("_")[0]);
-            return aNum - bNum;
-          });
-          for (const [단계, 소요시간] of sortedTiming) {
-            console.log(`${단계}: ${소요시간.toFixed(3)}초`);
+          console.log("\n=== 처리 시간 분석 ===");
+          // 단계별 시간 출력
+          Object.entries(data.timing)
+            .sort((a, b) => {
+              const aNum = parseInt(a[0].split("_")[0]) || Infinity;
+              const bNum = parseInt(b[0].split("_")[0]) || Infinity;
+              return aNum - bNum;
+            })
+            .forEach(([단계, 소요시간]) => {
+              console.log(`${단계}: ${소요시간.toFixed(3)}초`);
+            });
+
+          // 선택된 예제 출력
+          if (data.selected_examples) {
+            console.log("\n=== 선택된 Few-shot 예제 ===");
+            data.selected_examples.forEach((example, idx) => {
+              console.log(`예제 ${idx + 1}:`);
+              console.log(`Input: ${example.input}`);
+              console.log(`Output: ${example.output}\n`);
+            });
           }
-          console.log("===================");
+          console.log("===================\n");
         }
         return data;
       });

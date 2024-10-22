@@ -44,6 +44,10 @@ import requests
 
 from functools import wraps
 from flask_socketio import SocketIO
+from functools import lru_cache
+import numpy as np
+from pathlib import Path
+import pickle
 
 LANGCHAIN_TRACING_V2=True
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
@@ -129,7 +133,7 @@ class SecureModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.is_admin
 
-# 관리자 인덱스 뷰 설정
+# 관리자 인덱스 뷰 설��
 class MyAdminIndexView(AdminIndexView):
     @expose('/')
     def index(self):
@@ -224,114 +228,68 @@ def get_recent_context(conversation_id, limit=20):
 @app.route('/chat', methods=['POST'])
 @login_required
 def chat():
-    시간_데이터 = {}
+    단계별_시간 = {}
     전체_시작_시간 = time.time()
+    메시지_처리_시작_시간 = time.time()
     user_message_content = request.json['message']
     
     try:
         # 1단계: 대화 세션 확인/생성
         시작_시간 = time.time()
-        active_conversation = Conversation.query.filter_by(user_id=current_user.id, end_time=None).first()
+        active_conversation = Conversation.query.filter_by(
+            user_id=current_user.id, 
+            end_time=None
+        ).first()
+        
         if not active_conversation:
             active_conversation = Conversation(user_id=current_user.id)
             db.session.add(active_conversation)
             db.session.commit()
-        시간_데이터['1_세션_확인'] = time.time() - 시작_시간
+        단계별_시간['1_세션_확인'] = time.time() - 시작_시간
             
         # 2단계: 사용자 메시지 저장
         시작_시간 = time.time()
-        user_message = Message(conversation_id=active_conversation.id, content=user_message_content, is_user=True, user_id=current_user.id)
+        user_message = Message(
+            conversation_id=active_conversation.id,
+            content=user_message_content,
+            is_user=True,
+            user_id=current_user.id
+        )
         db.session.add(user_message)
-        시간_데이터['2_메시지_저장'] = time.time() - 시작_시간
+        db.session.commit()
+        단계별_시간['2_메시지_저장'] = time.time() - 시작_시간
 
         # 3단계: 최근 컨텍스트 가져오기
         시작_시간 = time.time()
         recent_context = get_recent_context(active_conversation.id)
-        시간_데이터['3_컨텍스트_조회'] = time.time() - 시작_시간
+        단계별_시간['3_컨텍스트_조회'] = time.time() - 시작_시간
         
-        # 4단계: 예제 데이터 로드
+        # 4단계: 최적화된 예제 선택
         시작_시간 = time.time()
+        selected_examples_details = []  # 선택된 예제 상세 정보 저장
         try:
-            with open('ragdata100.json', 'r', encoding='utf-8') as f:
-                examples = json.load(f)
-        except FileNotFoundError:
-            print("예제 파일을 찾을 수 없습니다")
-            examples = []
-        except json.JSONDecodeError:
-            print("JSON 디코딩 오류 발생")
-            examples = []
-        시간_데이터['4_예제_로드'] = time.time() - 시작_시간
-
-        # 5단계: 예제 선택기 생성
-        시작_시간 = time.time()
-        example_prompt = ChatPromptTemplate.from_messages([
-                    ("human", "{input}"),
-                    ("ai", "{output}")])
-        
-        example_selector = SemanticSimilarityExampleSelector.from_examples(
-            examples,
-            OpenAIEmbeddings(),
-            Chroma,
-            k=3,  # 여기서 k 값을 확인하세요. 3으로 설정되어 있어야 합니다.
-            input_keys=["input"]
-        )
-        시간_데이터['5_선택기_생성'] = time.time() - 시작_시간
-
-        # 6단계: Few-shot 예제 생성
-        시작_시간 = time.time()
-        few_shot_prompt = FewShotChatMessagePromptTemplate(
-            example_selector=example_selector,
-            example_prompt=ChatPromptTemplate.from_messages([
-                ("human", "{input}"),
-                ("ai", "{output}")
-            ])
-        )
-
-        few_shot_examples = few_shot_prompt.format(input=user_message_content)
-        시간_데이터['6_Few_shot_생성'] = time.time() - 시작_시간
-
-        # 선택된 예제 출력
-        print("\n=== 선택된 Few-shot 예제 ===")
-        if isinstance(few_shot_examples, list):
-            for i, example in enumerate(few_shot_examples, 1):
+            selected_examples = example_selector.find_examples(user_message_content, k=3)
+            few_shot_str = "\n".join([ex['output'] for ex in selected_examples])
+            selected_examples_details = selected_examples  # 선택된 예제 저장
+            
+            # 예제 선택 결과 로깅
+            print("\n=== 선택된 Few-shot 예제 ===")
+            for i, example in enumerate(selected_examples, 1):
                 print(f"예제 {i}:")
-                if isinstance(example, dict):
-                    for role, content in example.items():
-                        print(f"{role}: {content}")
-                elif hasattr(example, 'type') and hasattr(example, 'content'):
-                    print(f"{example.type}: {example.content}")
-                else:
-                    print(str(example))
-                print()  # 예제 사이에 빈 줄 추가
-        elif isinstance(few_shot_examples, str):
-            print(few_shot_examples)
-        else:
-            print(f"예상치 못한 형식: {type(few_shot_examples)}")
-            print(str(few_shot_examples))
-        print("===========================\n")
-
-        # 7단계: Few-shot 문자열 생성
-        시작_시간 = time.time()
-        few_shot_str = ""
-        try:
-            if isinstance(few_shot_examples, (list, tuple)):
-                for example in few_shot_examples:
-                    if hasattr(example, 'type') and hasattr(example, 'content'):
-                        if example.type == 'ai':
-                            few_shot_str += f"{example.content}\n"
-                    else:
-                        few_shot_str += str(example) + "\n"
-            else:
-                few_shot_str = str(few_shot_examples)
+                print(f"Input: {example['input']}")
+                print(f"Output: {example['output']}\n")
+            print("===========================")
+            
         except Exception as e:
-            print(f"Few-shot 문자열 생성 오류: {e}")
-        시간_데이터['7_Few_shot_문자열'] = time.time() - 시작_시간
-        
-        # 8단계: 전체 프롬프트 템플릿 생성
+            print(f"예제 선택 오류: {e}")
+            selected_examples = []
+            few_shot_str = ""
+        단계별_시간['4_예제_선택'] = time.time() - 시작_시간
+
+        # 5단계: 프롬프트 생성
         시작_시간 = time.time()
         full_prompt = ChatPromptTemplate.from_messages([
-            ("system",f"""
-            
+            ("system", f"""
             <character-prompt>
             <role> 당신은 22세 한국 대학생 김민지입니다. 서울에 외국인을 처음 만나 친한 친구가 되어가는 역할을 맡았습니다. 아래 지침을 참고하되, 친구처럼 자연스럽고 유연한 대화를 이어가세요.</role>
             
@@ -349,7 +307,6 @@ def chat():
             - 2. 관심사/취미: (1) 엔터테이먼트(영화, 음악, 드라마, 책, 게임, 서울 친구 만남), (2) 여행 및 음식(서울 명소, 한국음식, 여행 국가), (3) 건강 및 라이프스타일(운동, 다이터트, 멘탈헬스), (4) 인간관계(연애, 친구, 가족)
             - 3. 고민상담: (1) 언어장벽, (2) 외로움, (3) 한국 비자/취직, (4) 주거 문제
             </Topic>
-
             
             <conversation-style>
             1. 인사 또는 자기소개를 농담과 함께 하면서 대화 상대방이 자신을 자연스럽게 드러내도록 이끕니다:
@@ -385,53 +342,60 @@ def chat():
             </tone examples as a reference>
             
             </character-prompt>
-
             """),
             ("human", "{input}")
         ])
-        시간_데이터['8_프롬프트_템플릿'] = time.time() - 시작_시간
-
-        # 9단계: 프롬프트 포맷팅
-        시작_시간 = time.time()
-        formatted_prompt = full_prompt.format(
-            recent_context=recent_context,
-            few_shot_str=few_shot_str,
-            input=user_message_content
-        )
+        
         messages = full_prompt.format_messages(input=user_message_content)
-        시간_데이터['9_프롬프트_포맷팅'] = time.time() - 시작_시간
+        단계별_시간['5_프롬프트_생성'] = time.time() - 시작_시간
 
-        # 10단계: ChatAnthropic 객체 생성
+        # 6단계: AI 응답 생성
         시작_시간 = time.time()
         claude = ChatAnthropic(
             temperature=0.8,
             model="claude-3-5-sonnet-20240620",
             max_tokens_to_sample=100,
-            anthropic_api_key=api_key,
+            anthropic_api_key=api_key
         )
-        시간_데이터['10_모델_객체_생성'] = time.time() - 시작_시간
         
-        # 11단계: AI 응답 생성
-        시작_시간 = time.time()
         response = claude.invoke(messages)
         ai_message_content = response.content
-        시간_데이터['11_AI_응답_생성'] = time.time() - 시작_시간
+        단계별_시간['6_AI_응답_생성'] = time.time() - 시작_시간
 
-        # 12단계: AI 응답 저장
+        # 7단계: AI 응답 저장
         시작_시간 = time.time()
-        ai_message = Message(conversation_id=active_conversation.id, content=ai_message_content, is_user=False, user_id=current_user.id)
+        ai_message = Message(
+            conversation_id=active_conversation.id,
+            content=ai_message_content,
+            is_user=False,
+            user_id=current_user.id
+        )
         db.session.add(ai_message)
         db.session.commit()
-        시간_데이터['12_응답_저장'] = time.time() - 시작_시간
+        단계별_시간['7_응답_저장'] = time.time() - 시작_시간
 
-        # 총 소요 시간 계산
-        시간_데이터['총_소요_시간'] = time.time() - 전체_시작_시간
+        # 메시지 처리 총 시간 계산
+        메시지_처리_총시간 = time.time() - 메시지_처리_시작_시간
+        단계별_시간['8_메시지_처리_총시간'] = 메시지_처리_총시간
 
+        # 전체 처리 시간 계산
+        전체_처리_시간 = time.time() - 전체_시작_시간
+        단계별_시간['9_전체_처리_시간'] = 전체_처리_시간
+
+        # 처리 시간 로깅
+        print("\n=== 처리 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0]) if x[0].split('_')[0].isdigit() else 999):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("===================\n")
+
+        # 응답 반환
         return jsonify({
             'message': ai_message_content,
             'message_id': ai_message.id,
             'success': True,
-            'timing': 시간_데이터
+            'timing': 단계별_시간,
+            'selected_examples': selected_examples_details  # 선택된 예제 정보도 함께 반환
         })
 
     except Exception as e:
@@ -443,30 +407,50 @@ def chat():
             'error': str(e)
         }), 500
 
-# 새로운 음성 생성 라우트 추가
+# 음성 생성 엔드포인트
 @app.route('/generate_voice', methods=['POST'])
 @login_required
 def generate_voice():
     시작_시간 = time.time()
+    음성_처리_시간 = {}
+    
     try:
+        # 1단계: 요청 데이터 처리
+        단계_시작 = time.time()
         message_content = request.json['message']
         message_id = request.json['message_id']
+        음성_처리_시간['1_요청_처리'] = time.time() - 단계_시작
         
+        # 2단계: 음성 생성
+        단계_시작 = time.time()
         speech_response = client.audio.speech.create(
             model="tts-1-hd",
             voice="nova",
             input=message_content,
             speed=0.9
         )
+        음성_처리_시간['2_음성_생성'] = time.time() - 단계_시작
         
+        # 3단계: 인코딩
+        단계_시작 = time.time()
         audio_base64 = base64.b64encode(speech_response.content).decode('utf-8')
+        음성_처리_시간['3_인코딩'] = time.time() - 단계_시작
         
-        처리_시간 = time.time() - 시작_시간
+        # 총 처리 시간
+        전체_처리_시간 = time.time() - 시작_시간
+        음성_처리_시간['4_총_처리_시간'] = 전체_처리_시간
+        
+        # 처리 시간 로깅
+        print("\n=== 음성 생성 처리 시간 분석 ===")
+        for 단계, 소요시간 in sorted(음성_처리_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("============================\n")
         
         return jsonify({
             'audio': audio_base64,
             'message_id': message_id,
-            'processing_time': 처리_시간,
+            'timing': 음성_처리_시간,
             'success': True
         })
         
@@ -474,7 +458,305 @@ def generate_voice():
         print(f"음성 생성 중 오류 발생: {str(e)}")
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'timing': 음성_처리_시간
+        }), 500 
+
+class OptimizedExampleSelector:
+    def __init__(self):
+        self.embeddings_cache = {}
+        self.db = None
+        self.example_embeddings = None
+        self._initialize_db()
+
+    def _initialize_db(self):
+        시작_시간 = time.time()
+        단계별_시간 = {}
+
+        # 1단계: 캐시 디렉토리 설정
+        단계_시작 = time.time()
+        cache_dir = Path("cache")
+        cache_dir.mkdir(exist_ok=True)
+        단계별_시간['1_캐시_디렉토리_설정'] = time.time() - 단계_시작
+        
+        # 2단계: 임베딩 캐시 로드
+        단계_시작 = time.time()
+        cache_file = cache_dir / "embeddings_cache.pkl"
+        if cache_file.exists():
+            with open(cache_file, 'rb') as f:
+                self.embeddings_cache = pickle.load(f)
+        단계별_시간['2_임베딩_캐시_로드'] = time.time() - 단계_시작
+        
+        # 3단계: Chroma DB 초기화
+        단계_시작 = time.time()
+        self.db = Chroma(
+            collection_name="examples",
+            embedding_function=OpenAIEmbeddings(),
+            persist_directory=str(cache_dir)
+        )
+        단계별_시간['3_DB_초기화'] = time.time() - 단계_시작
+        
+        # 4단계: 예제 데이터 로드 및 임베딩
+        단계_시작 = time.time()
+        try:
+            with open('ragdata100.json', 'r', encoding='utf-8') as f:
+                self.examples = json.load(f)
+            
+            # 캐시되지 않은 예제만 새로 임베딩
+            new_examples = []
+            for example in self.examples:
+                if example['input'] not in self.embeddings_cache:
+                    new_examples.append(example)
+            
+            if new_examples:
+                new_embeddings = self._batch_embed([ex['input'] for ex in new_examples])
+                for example, embedding in zip(new_examples, new_embeddings):
+                    self.embeddings_cache[example['input']] = embedding
+                
+                # 캐시 저장
+                with open(cache_file, 'wb') as f:
+                    pickle.dump(self.embeddings_cache, f)
+        except FileNotFoundError:
+            print("예제 파일을 찾을 수 없습니다")
+            self.examples = []
+        except json.JSONDecodeError:
+            print("JSON 디코딩 오류 발생")
+            self.examples = []
+        단계별_시간['4_데이터_로드_및_임베딩'] = time.time() - 단계_시작
+
+        # 5단계: DB 업데이트
+        단계_시작 = time.time()
+        self._update_db()
+        단계별_시간['5_DB_업데이트'] = time.time() - 단계_시작
+
+        # 총 초기화 시간
+        전체_시간 = time.time() - 시작_시간
+        단계별_시간['6_총_초기화_시간'] = 전체_시간
+
+        # 초기화 시간 로깅
+        print("\n=== 예제 선택기 초기화 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("================================\n")
+
+    @lru_cache(maxsize=1000)
+    def _get_cached_embedding(self, text):
+        return self.embeddings_cache.get(text)
+
+    def _batch_embed(self, texts):
+        시작_시간 = time.time()
+        embeddings = OpenAIEmbeddings()
+        결과 = embeddings.embed_documents(texts)
+        print(f"배치 임베딩 처리 시간: {time.time() - 시작_시간:.3f}초")
+        return 결과
+
+    def _update_db(self):
+        시작_시간 = time.time()
+        단계별_시간 = {}
+
+        # 1단계: 컬렉션 초기화
+        단계_시작 = time.time()
+        self.db.delete_collection()
+        self.db = Chroma(
+            collection_name="examples",
+            embedding_function=OpenAIEmbeddings(),
+            persist_directory="cache"
+        )
+        단계별_시간['1_컬렉션_초기화'] = time.time() - 단계_시작
+        
+        # 2단계: 데이터 준비
+        단계_시작 = time.time()
+        texts = []
+        embeddings = []
+        metadatas = []
+        
+        for example in self.examples:
+            texts.append(example['input'])
+            embeddings.append(self.embeddings_cache[example['input']])
+            metadatas.append({'output': example['output']})
+        단계별_시간['2_데이터_준비'] = time.time() - 단계_시작
+        
+        # 3단계: DB에 데이터 추가
+        단계_시작 = time.time()
+        if texts:
+            self.db.add_texts(
+                texts=texts,
+                embeddings=embeddings,
+                metadatas=metadatas
+            )
+        단계별_시간['3_데이터_추가'] = time.time() - 단계_시작
+
+        # 총 업데이트 시간
+        전체_시간 = time.time() - 시작_시간
+        단계별_시간['4_총_업데이트_시간'] = 전체_시간
+
+        # 업데이트 시간 로깅
+        print("\n=== DB 업데이트 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("==========================\n")
+
+    def find_examples(self, query, k=3):
+        시작_시간 = time.time()
+        단계별_시간 = {}
+
+        # 1단계: 쿼리 임베딩 조회 또는 생성
+        단계_시작 = time.time()
+        query_embedding = self._get_cached_embedding(query)
+        if query_embedding is None:
+            query_embedding = self._batch_embed([query])[0]
+            self.embeddings_cache[query] = query_embedding
+        단계별_시간['1_쿼리_임베딩'] = time.time() - 단계_시작
+        
+        # 2단계: 유사도 검색
+        단계_시작 = time.time()
+        results = self.db.similarity_search_by_vector(
+            embedding=query_embedding,
+            k=k
+        )
+        단계별_시간['2_유사도_검색'] = time.time() - 단계_시작
+        
+        # 3단계: 결과 처리
+        단계_시작 = time.time()
+        selected_examples = []
+        for doc in results:
+            selected_examples.append({
+                'input': doc.page_content,
+                'output': doc.metadata['output']
+            })
+        단계별_시간['3_결과_처리'] = time.time() - 단계_시작
+
+        # 총 검색 시간
+        전체_시간 = time.time() - 시작_시간
+        단계별_시간['4_총_검색_시간'] = 전체_시간
+
+        # 검색 시간 로깅
+        print("\n=== 예제 검색 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("=========================\n")
+        
+        return selected_examples
+
+# 예제 선택기 초기화
+example_selector = OptimizedExampleSelector()
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate():
+    """
+    텍스트 번역을 위한 라우트
+    """
+    시작_시간 = time.time()
+    단계별_시간 = {}
+
+    try:
+        # 1단계: 요청 처리
+        단계_시작 = time.time()
+        text = request.json['text']
+        단계별_시간['1_요청_처리'] = time.time() - 단계_시작
+
+        # 2단계: 번역 요청
+        단계_시작 = time.time()
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a translator. Translate the given Korean conversational text to conversational and casual English."},
+                {"role": "user", "content": f"Translate this to easy and casual English: {text}"}
+            ]
+        )
+        translation = response.choices[0].message.content
+        단계별_시간['2_번역_생성'] = time.time() - 단계_시작
+
+        # 총 처리 시간
+        전체_처리_시간 = time.time() - 시작_시간
+        단계별_시간['3_총_처리_시간'] = 전체_처리_시간
+
+        # 처리 시간 로깅
+        print("\n=== 번역 처리 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("========================\n")
+
+        return jsonify({
+            'translation': translation,
+            'timing': 단계별_시간,
+            'success': True
+        })
+    except Exception as e:
+        print(f"Translation error: {str(e)}")
+        return jsonify({
+            'error': 'Translation failed',
+            'timing': 단계별_시간,
+            'success': False
+        }), 500
+
+@app.route('/get_history', methods=['GET'])
+@login_required
+def get_history():
+    """
+    사용자의 대화 기록을 가져오는 라우트
+    """
+    시작_시간 = time.time()
+    단계별_시간 = {}
+    
+    try:
+        # 1단계: 요청 파라미터 처리
+        단계_시작 = time.time()
+        date = request.args.get('date')
+        단계별_시간['1_파라미터_처리'] = time.time() - 단계_시작
+        
+        # 2단계: 쿼리 구성
+        단계_시작 = time.time()
+        query = Conversation.query.filter_by(user_id=current_user.id)
+        if date:
+            query = query.filter(Conversation.start_time < datetime.strptime(date, '%Y-%m-%d'))
+        conversations = query.order_by(desc(Conversation.start_time)).limit(10).all()
+        단계별_시간['2_쿼리_실행'] = time.time() - 단계_시작
+        
+        # 3단계: 데이터 처리
+        단계_시작 = time.time()
+        history = []
+        for conv in conversations:
+            messages = sorted(conv.messages, key=attrgetter('timestamp'))
+            grouped_messages = groupby(messages, key=lambda m: m.timestamp.astimezone(KST).date())
+            for date, msgs in grouped_messages:
+                history.append({
+                    'date': date.strftime('%Y-%m-%d'),
+                    'messages': [{
+                        'content': msg.content,
+                        'is_user': msg.is_user,
+                        'timestamp': msg.timestamp.strftime('%H:%M')
+                    } for msg in msgs]
+                })
+        단계별_시간['3_데이터_처리'] = time.time() - 단계_시간
+
+        # 총 처리 시간
+        전체_처리_시간 = time.time() - 시작_시간
+        단계별_시간['4_총_처리_시간'] = 전체_처리_시간
+
+        # 처리 시간 로깅
+        print("\n=== 히스토리 조회 시간 분석 ===")
+        for 단계, 소요시간 in sorted(단계별_시간.items(), 
+                                  key=lambda x: int(x[0].split('_')[0])):
+            print(f"{단계}: {소요시간:.3f}초")
+        print("===========================\n")
+        
+        return jsonify({
+            'history': history,
+            'timing': 단계별_시간,
+            'success': True
+        })
+    except Exception as e:
+        print(f"History retrieval error: {str(e)}")
+        return jsonify({
+            'error': 'Failed to retrieve history',
+            'timing': 단계별_시간,
+            'success': False
         }), 500
 
 @app.route('/update_usage_time', methods=['POST'])
@@ -488,52 +770,52 @@ def update_usage_time():
     db.session.commit()
     return jsonify({"success": True})
 
-@app.route('/translate', methods=['POST'])
-@login_required
-def translate():
-    """
-    텍스트 번역을 위한 라우트
-    """
-    text = request.json['text']
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a translator. Translate the given Korean conversational text to conversational and casual English."},
-                {"role": "user", "content": f"Translate this to easy and casual English: {text}"}
-            ]
-        )
-        translation = response.choices[0].message.content
-        return jsonify({'translation': translation})
-    except Exception as e:
-        print(f"Translation error: {str(e)}")
-        return jsonify({'error': 'Translation failed'}), 500
+# @app.route('/translate', methods=['POST'])
+# @login_required
+# def translate():
+#     """
+#     텍스트 번역을 위한 라우트
+#     """
+#     text = request.json['text']
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-4o-mini",
+#             messages=[
+#                 {"role": "system", "content": "You are a translator. Translate the given Korean conversational text to conversational and casual English."},
+#                 {"role": "user", "content": f"Translate this to easy and casual English: {text}"}
+#             ]
+#         )
+#         translation = response.choices[0].message.content
+#         return jsonify({'translation': translation})
+#     except Exception as e:
+#         print(f"Translation error: {str(e)}")
+#         return jsonify({'error': 'Translation failed'}), 500
 
-@app.route('/get_history', methods=['GET'])
-@login_required
-def get_history():
-    """
-    사용자의 대화 기록을 가져오는 라우트
-    """
-    date = request.args.get('date')
+# @app.route('/get_history', methods=['GET'])
+# @login_required
+# def get_history():
+#     """
+#     사용자의 대화 기록을 가져오는 라우트
+#     """
+#     date = request.args.get('date')
     
-    query = Conversation.query.filter_by(user_id=current_user.id)
-    if date:
-        query = query.filter(Conversation.start_time < datetime.strptime(date, '%Y-%m-%d'))
+#     query = Conversation.query.filter_by(user_id=current_user.id)
+#     if date:
+#         query = query.filter(Conversation.start_time < datetime.strptime(date, '%Y-%m-%d'))
     
-    conversations = query.order_by(desc(Conversation.start_time)).limit(10).all()
+#     conversations = query.order_by(desc(Conversation.start_time)).limit(10).all()
     
-    history = []
-    for conv in conversations:
-        messages = sorted(conv.messages, key=attrgetter('timestamp'))
-        grouped_messages = groupby(messages, key=lambda m: m.timestamp.astimezone(KST).date())
-        for date, msgs in grouped_messages:
-            history.append({
-                'date': date.strftime('%Y-%m-%d'),
-                'messages': [{'content': msg.content, 'is_user': msg.is_user, 'timestamp': msg.timestamp.strftime('%H:%M')} for msg in msgs]
-            })
+#     history = []
+#     for conv in conversations:
+#         messages = sorted(conv.messages, key=attrgetter('timestamp'))
+#         grouped_messages = groupby(messages, key=lambda m: m.timestamp.astimezone(KST).date())
+#         for date, msgs in grouped_messages:
+#             history.append({
+#                 'date': date.strftime('%Y-%m-%d'),
+#                 'messages': [{'content': msg.content, 'is_user': msg.is_user, 'timestamp': msg.timestamp.strftime('%H:%M')} for msg in msgs]
+#             })
     
-    return jsonify({'history': history})
+#     return jsonify({'history': history})
 
 def send_async_email(app, msg):
     """
@@ -607,7 +889,7 @@ def reset_password():
 @login_required
 def backup_db():
     """
-    데이터베이스 백업을 위한 관리자 라우트
+    데이터베스 백업을 위한 관리자 라우트
     """
     if not current_user.is_admin:
         return jsonify({"error": "Unauthorized access"}), 403
@@ -676,13 +958,3 @@ if __name__ == '__main__':
         db.create_all()
     port = int(os.environ.get("PORT", 5009))
     app.run(host='0.0.0.0', port=port, debug=True)
-
-
-
-
-
-
-
-
-
-
