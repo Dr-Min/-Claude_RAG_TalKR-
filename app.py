@@ -18,7 +18,7 @@ import click
 import os
 import base64
 import secrets
-from ai_gen import get_ai_response, example_selector
+from ai_gen import OptimizedExampleSelector, get_ai_response
 import time  # 시간 측정용
 
 # 환경 변수 로드
@@ -41,6 +41,7 @@ login_manager.login_view = 'login'
 # OpenAI 클라이언트 초기화
 client = OpenAI()
 migrate = Migrate(app, db)
+example_selector = OptimizedExampleSelector()
 
 # Flask-Mail 설정
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -167,7 +168,10 @@ def chat():
 
         # 4단계: AI 응답 생성
         시작_시간 = time.time()
-        ai_message_content, selected_examples = get_ai_response(recent_context, user_message_content, example_selector)
+        ai_response = get_ai_response(recent_context, user_message_content, example_selector)
+        ai_message_content = ai_response['message']
+        selected_examples = ai_response['selected_examples']
+        cache_status = ai_response['cache_status']
         단계별_시간['4_AI_응답_생성'] = time.time() - 시작_시간
 
         # 5단계: AI 응답 저장
@@ -189,7 +193,7 @@ def chat():
         단계별_시간['7_전체_처리_시간'] = 전체_처리_시간
 
         print("\n=== 처리 시간 분석 ===")
-        for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])):
+        for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])): 
             print(f"{단계}: {소요시간:.3f}초")
         print("===================\n")
 
@@ -198,7 +202,8 @@ def chat():
             'message_id': ai_message.id,
             'success': True,
             'timing': 단계별_시간,
-            'selected_examples': selected_examples
+            'selected_examples': selected_examples,
+            'cache_status': cache_status  # 캐시 상태 추가
         })
 
     except Exception as e:

@@ -203,6 +203,24 @@ const ChatApp = (function () {
               console.log(`${단계}: ${소요시간.toFixed(3)}초`);
             });
 
+          // 캐시 상태 출력 추가
+          if (data.cache_status) {
+            console.log("\n=== 캐시 상태 ===");
+            console.log(`입력 텍스트: ${data.cache_status.input_text}`);
+            console.log(
+              `정규화된 텍스트: ${data.cache_status.normalized_text}`
+            );
+            if (data.cache_status.cache_hit) {
+              console.log(`상태: 캐시 히트 (기존 임베딩 사용)`);
+              console.log(`원본 텍스트: ${data.cache_status.original_text}`);
+            } else {
+              console.log(`상태: 캐시 미스 (새로운 임베딩 생성)`);
+              console.log(
+                `임베딩 생성 시간: ${data.cache_status.embedding_time}초`
+              );
+            }
+          }
+
           // 선택된 예제 출력
           if (data.selected_examples) {
             console.log("\n=== 선택된 Few-shot 예제 ===");
@@ -542,7 +560,7 @@ const ChatApp = (function () {
     }
   }
 
-  // 로그인 함수
+  // ��그인 함수
   function login() {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
