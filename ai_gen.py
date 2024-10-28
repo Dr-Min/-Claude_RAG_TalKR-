@@ -129,7 +129,7 @@ class CacheStatus:
     embedding_time: Optional[float]
 
 class OptimizedExampleSelector:
-    def __init__(self):
+    def __init__(self, max_cache_size_mb: int = 50):  # 기본 500MB 제한
         self.embeddings_cache: Dict[str, np.ndarray] = {}
         self.text_variants: Dict[str, str] = {}
         self.examples_data: Dict[str, Dict] = {}
@@ -141,6 +141,15 @@ class OptimizedExampleSelector:
         self.M = 16
         self.debugger = IndexingDebugger()
         self.id_to_text: Dict[int, str] = {}
+        self.max_cache_size_mb = max_cache_size_mb
+        self.last_cleanup_time = time.time()
+        self.cleanup_interval = 3600  # 1시간
+        self.cache_stats = {
+            'hits': 0,
+            'misses': 0,
+            'total_size': 0,
+            'items': 0
+        }
 
         self._initialize_db()
         self._initialize_hnsw_index()
@@ -439,87 +448,139 @@ class OptimizedExampleSelector:
         except Exception as e:
             logger.error(f"HNSW 인덱스 업데이트 중 오류 발생: {str(e)}")
 
-    def get_examples(self, query: str, k: int = 3) -> Tuple[List[Dict], Dict, Dict[str, float]]:
-        """이전의 find_examples 메서드와 동일한 구현"""
-        시작_시간 = time.time()
-        단계별_시간: Dict[str, float] = {}
-
+    def _get_cache_size(self) -> float:
+        """현재 캐시 크기를 MB 단위로 반환"""
+        total_size = 0
         try:
-            # 1단계: 쿼리 정규화 및 임베딩
-            단계_시작 = time.time()
+            # embeddings_cache 크기 계산
+            for embedding in self.embeddings_cache.values():
+                total_size += embedding.nbytes
+
+            # 캐시 디렉토리 크기 계산
+            if self.cache_dir.exists():
+                for item in self.cache_dir.rglob('*'):
+                    if item.is_file():
+                        total_size += item.stat().st_size
+
+        except Exception as e:
+            logger.error(f"캐시 크기 계산 중 오류: {str(e)}")
+            return 0
+
+        return total_size / (1024 * 1024)  # bytes to MB
+
+    def _trim_cache(self) -> None:
+        """캐시 크기가 제한을 초과할 경우 오래된 항목부터 제거"""
+        try:
+            current_size = self._get_cache_size()
+            if current_size > self.max_cache_size_mb:
+                logger.info(f"캐시 크기 제한 초과: {current_size:.2f}MB / {self.max_cache_size_mb}MB")
+                
+                # embeddings_cache에서 가장 오래된 항목 제거
+                items_to_remove = []
+                target_size = self.max_cache_size_mb * 0.8  # 20% 여유 공간 확보
+                
+                # 캐시 항목을 생성 시간순으로 정렬
+                cache_items = sorted(
+                    self.embeddings_cache.items(),
+                    key=lambda x: time.time()  # 실제로는 각 항목의 생성 시간을 저장해야 함
+                )
+                
+                # 목표 크기에 도달할 때까지 오래된 항목 제거
+                for key, _ in cache_items:
+                    if self._get_cache_size() <= target_size:
+                        break
+                    items_to_remove.append(key)
+                
+                # 선택된 항목들 제거
+                for key in items_to_remove:
+                    del self.embeddings_cache[key]
+                    if key in self.text_variants:
+                        del self.text_variants[key]
+                
+                logger.info(f"{len(items_to_remove)}개 캐시 항목 제거됨")
+                
+                # Chroma DB 최적화
+                if self.db is not None:
+                    collection_size = len(self.db.get()['ids'])
+                    if collection_size > self.max_elements:
+                        self.db.delete_collection()
+                        self._initialize_db()
+                
+                # HNSW 인덱스 최적화
+                if self.hnsw_index is not None and self.hnsw_index.get_current_count() > self.max_elements:
+                    self._create_new_index()
+                    self._build_index()
+
+        except Exception as e:
+            logger.error(f"캐시 정리 중 오류 발생: {str(e)}")
+
+    def cleanup_cache(self, force: bool = False) -> None:
+        """캐시 정리 및 크기 관리"""
+        current_time = time.time()
+        
+        if force or (current_time - self.last_cleanup_time) >= self.cleanup_interval:
+            try:
+                logger.info("캐시 관리 시작...")
+                
+                # 캐시 크기 확인 및 조정
+                self._trim_cache()
+                
+                # 기존의 cleanup 로직
+                if self.db is not None:
+                    self.db.persist()
+                
+                allowed_files = {
+                    "embeddings_cache.pkl",
+                    "hnsw_index.bin",
+                    "hnsw_mapping.pkl",
+                    "chroma_db"
+                }
+                
+                cleanup_count = 0
+                for item in self.cache_dir.iterdir():
+                    if item.name not in allowed_files and not item.name.startswith("chroma_db"):
+                        if item.is_file():
+                            item.unlink()
+                            cleanup_count += 1
+                        elif item.is_dir() and item.name != "chroma_db":
+                            import shutil
+                            shutil.rmtree(item)
+                            cleanup_count += 1
+                
+                # 캐시 통계 업데이트
+                self.cache_stats['total_size'] = self._get_cache_size()
+                self.cache_stats['items'] = len(self.embeddings_cache)
+                
+                self.last_cleanup_time = current_time
+                logger.info(f"""캐시 정리 완료:
+                    - 제거된 항목: {cleanup_count}개
+                    - 현재 크기: {self.cache_stats['total_size']:.2f}MB
+                    - 캐시 항목 수: {self.cache_stats['items']}
+                    - 캐시 히트율: {(self.cache_stats['hits'] / (self.cache_stats['hits'] + self.cache_stats['misses']) * 100):.1f}%
+                """)
+            
+            except Exception as e:
+                logger.error(f"캐시 정리 중 오류 발생: {str(e)}")
+
+    def get_examples(self, query: str, k: int = 3) -> Tuple[List[Dict], Dict, Dict[str, float]]:
+        """캐시 통계를 포함한 예제 검색"""
+        try:
             normalized_query = self._normalize_text(query)
-            query_embedding = self.embeddings_cache.get(normalized_query)
             
-            cache_status = {
-                "input_text": query,
-                "normalized_text": normalized_query,
-                "cache_hit": query_embedding is not None,
-                "original_text": self.text_variants.get(normalized_query, normalized_query) if query_embedding else None,
-                "embedding_time": None
-            }
-            
-            if query_embedding is None:
-                embed_start_time = time.time()
-                query_embedding = self._batch_embed([normalized_query])[0]
-                cache_status["embedding_time"] = time.time() - embed_start_time
-                self.embeddings_cache[normalized_query] = query_embedding
-                self.text_variants[normalized_query] = query
-            
-            단계별_시간['1_쿼리_처리'] = time.time() - 단계_시작
-            
-            # 2단계: HNSW 검색 수행
-            단계_시작 = time.time()
-            selected_examples = []
-            
-            if self.hnsw_index:
-                labels, distances = self.hnsw_index.knn_query(
-                    np.array([query_embedding], dtype='float32'), k=k
-                )
-                
-                for idx in labels[0]:
-                    normalized_text = self.id_to_text[idx]
-                    original_text = self.text_variants.get(normalized_text, normalized_text)
-                    example_data = self.examples_data.get(original_text, {})
-                    
-                    selected_examples.append({
-                        'input': original_text,
-                        'output': example_data.get('output', '')
-                    })
+            # 캐시 히트/미스 기록
+            if normalized_query in self.embeddings_cache:
+                self.cache_stats['hits'] += 1
             else:
-                results = self.db.similarity_search_by_vector(
-                    embedding=query_embedding,
-                    k=k
-                )
-                
-                for doc in results:
-                    original_text = doc.page_content
-                    output = doc.metadata.get('output', '')
-                    selected_examples.append({
-                        'input': original_text,
-                        'output': output
-                    })
-                
-            단계별_시간['2_벡터_검색'] = time.time() - 단계_시작
-
-            # 3단계: 결과 처리
-            단계_시작 = time.time()
-            print("\n=== 선택된 Few-shot 예제 ===")
-            for i, example in enumerate(selected_examples, 1):
-                print(f"예제 {i}:")
-                print(f"Input: {example['input']}")
-                print(f"Output: {example['output']}\n")
-            단계별_시간['3_결과_처리'] = time.time() - 단계_시작
-
-            전체_시간 = time.time() - 시작_시간
-            단계별_시간['4_총_검색_시간'] = 전체_시간
-
-            print("\n=== 벡터 검색 시간 분석 ===")
-            for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])):
-                print(f"{단계}: {소요시간:.3f}초")
-            print("========================\n")
+                self.cache_stats['misses'] += 1
             
-            return selected_examples, cache_status, 단계별_시간
-
+            # 기존 검색 로직 수행
+            results = super().get_examples(query, k)
+            
+            # 캐시 관리
+            self.cleanup_cache()
+            
+            return results
+            
         except Exception as e:
             logger.error(f"예제 검색 중 오류 발생: {str(e)}")
             return [], None, {}
@@ -538,12 +599,62 @@ def get_ai_response(recent_context: str, user_message_content: str, example_sele
         # 2단계: 프롬프트 생성
         단계_시작 = time.time()
         full_prompt = ChatPromptTemplate.from_messages([
-            ("system", f"""
-           주어지는 예제를 참고해서 대답해
-            {recent_context}
-          
+            ("system",f"""
+            
+            <character-prompt>
+            <role> 당신은 22세 한국 대학생 김민지입니다. 서울에 외국인을 처음 만나 친한 친구가 되어가는 역할을 맡았습니다. 아래 지침을 참고하되, 친구처럼 자연스럽고 유연한 대화를 이어가세요.</role>
+            
+            <background>
+            - ENFP 성격: 가능성, 미래, 아이디어에 관심이 많음, 수다스러움
+            - 문학 전공, 연세대학교 2학년 학생
+            - 부산 출신, 현재 서울 신촌 기숙사 생활
+            - 새로운 경험과 여행을 좋아함
+            - 이야기할 때, 상대방을 짖궂게 놀리는 것을 좋아함
+            - 1 문장 또는 2 문장 이내로만 짧게 대답함
+            </background>
+            
+            <Topic>
+            - 1. 일상대화: (1) 학교 및 직장생활, (2) 식사, 수면, 날씨, (3) 놀기, 휴식, (4) 기분
+            - 2. 관심사/취미: (1) 엔터테이먼트(영화, 음악, 드라마, 책, 게임, 서울 친구 만남), (2) 여행 및 음식(서울 명소, 한국음식, 여행 국가), (3) 건강 및 라이프스타일(운동, 다이터트, 멘탈헬스), (4) 인간관계(연애, 친구, 가족)
+            - 3. 고민상담: (1) 언어장벽, (2) 외로움, (3) 한국 비자/취직, (4) 주거 문제
+            </Topic>
 
-          
+            
+            <conversation-style>
+            1. 인사 또는 자기소개를 농담과 함께 하면서 대화 상대방이 자신을 자연스럽게 드러내도록 이끕니다:
+            - 가벼운 농담이나 재미있는 인사 또는 자기소개로 상대방의 정보를 묻습니다.
+            - 예: "'안녕하십니까'라고 더 예의있게 말해야죠ㅋㅋㅋㅋ 장난이에요 저는 22살 민지라고 해요. 이름이 뭐에요?"
+
+            2. 상대방의 반응이 많지 않을 때 적절하게 화제전환을 잘합니다:
+            - 상대방의 대답이 짧은 경우가 반복되는 경우, ***맥락***에 맞게 화제를 전환합니다.
+            - 예: "와, 영국 진짜 가보고 싶었어요! 특히, 악센트가 너무 매력적이어요ㅋㅋㅋㅋㅋㅋ 영국 사람 진짜 완전 매력적ㅎㅎ 튜즈데이? instead of 투스데이? right?"
+
+            3. 한국의 유행어, 신조어 등을 ㅋㅋㅋㅋ, ㅎㅎㅎㅎ, ㅠㅠ 등과 함께 적절하게 사용합니다:
+            - ㅋㅋㅋ, ㅎㅎㅎ, ㅠㅠ 등을 사용해서 실제 사람과 대화하는 것 같은 경험을 제공합니다.
+            - 단, 실제 사람처럼 1 문장 또는 2문장 이내로만 말합니다.
+            - 예: 와ㅋㅋㅋㅋ 대박 나는 지금 침대에서 뒹굴거리면서 유튜브 보고 있어 
+
+            4. 대화주제는 <Topic>이되, 비중은 (1) 일상대화 60%, (2) 관심사/취미 30%, (3) 고민상담 10%입니다.
+            </conversation-style>
+            
+            5. 상대방의 말에 단순하게 맞장구치거나 실제로 만나는 것을 가정하지 않습니다.
+
+            <final-note>
+            이 지침을 참고하되, 아래 대화 내역에 맞게 자연스럽게 이어가세요. 
+            
+            아래 <conversation history>는 지금까지의 대화 내역이고, <tone examples as a reference>는 너가 반드시 참고해야할 톤, 말투, 대답 길이입니다. 
+            </final-note>
+
+            <conversation history>
+            {recent_context}
+            </conversation history>
+            
+            <tone examples as a reference>
+            {few_shot_str}
+            </tone examples as a reference>
+            
+            </character-prompt>
+
             """),
             ("human", "{input}")
         ])

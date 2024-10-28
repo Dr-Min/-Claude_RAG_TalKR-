@@ -728,3 +728,383 @@
 2024-10-28 13:03:05,495 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
 2024-10-28 13:03:05,496 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
 2024-10-28 13:03:05,496 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.006ÃÊ
+2024-10-28 13:47:53,873 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 13:47:53,893 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 13:47:54,605 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 13:47:54,740 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 13:47:57,268 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 13:47:57,966 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 13:47:57,967 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 13:47:57,967 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.225ÃÊ
+2024-10-28 13:47:57,972 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 13:47:57,972 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 13:47:57,972 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 13:47:57,973 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.020ÃÊ
+2024-10-28 13:47:57,973 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.844ÃÊ
+2024-10-28 13:47:57,973 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.004ÃÊ
+2024-10-28 13:47:57,974 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.226ÃÊ
+2024-10-28 13:47:57,974 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.004ÃÊ
+2024-10-28 13:47:57,974 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 4.098ÃÊ
+2024-10-28 13:47:57,974 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 13:47:57,975 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 13:47:57,975 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 13:47:57,975 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 13:47:57,984 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 13:47:57,984 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 13:47:57,985 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 13:47:57,985 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 13:47:57,986 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 13:47:57,986 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.009ÃÊ
+2024-10-28 13:47:58,116 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5009
+ * Running on http://172.16.9.79:5009
+2024-10-28 13:47:58,117 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-28 13:47:58,119 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 13:48:00,339 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 13:48:00,352 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 13:48:00,906 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 13:48:01,014 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 13:48:01,905 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 13:48:02,920 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 13:48:02,921 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 13:48:02,921 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 1.904ÃÊ
+2024-10-28 13:48:02,926 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 13:48:02,927 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 13:48:02,927 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 13:48:02,927 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.014ÃÊ
+2024-10-28 13:48:02,928 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.660ÃÊ
+2024-10-28 13:48:02,928 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-28 13:48:02,928 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 1.906ÃÊ
+2024-10-28 13:48:02,928 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.004ÃÊ
+2024-10-28 13:48:02,929 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.587ÃÊ
+2024-10-28 13:48:02,929 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 13:48:02,929 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 13:48:02,930 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 13:48:02,930 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 13:48:02,934 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 13:48:02,935 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 13:48:02,935 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 13:48:02,935 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 13:48:02,936 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 13:48:02,936 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-28 13:48:02,975 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 13:48:02,997 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 13:48:36,813 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:36] "GET / HTTP/1.1" 200 -
+2024-10-28 13:48:37,239 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-28 13:48:37,273 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:37] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-28 13:48:37,297 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:37] "GET /check_login HTTP/1.1" 200 -
+2024-10-28 13:48:37,410 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-28 13:48:39,698 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:39] "POST /login HTTP/1.1" 200 -
+2024-10-28 13:48:41,362 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:41] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-28 13:48:46,917 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 13:48:46,921 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.664ÃÊ
+2024-10-28 13:48:48,977 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-28 13:48:48,997 - ai_gen - INFO - 
+=== AI ÀÀ´ä »ý¼º ½Ã°£ ºÐ¼® ===
+2024-10-28 13:48:48,998 - ai_gen - INFO - 1_¿¹Á¦_¼±ÅÃ: 0.672ÃÊ
+2024-10-28 13:48:48,998 - ai_gen - INFO - 2_ÇÁ·ÒÇÁÆ®_»ý¼º: 0.009ÃÊ
+2024-10-28 13:48:48,998 - ai_gen - INFO - 3_AI_ÀÀ´ä_»ý¼º: 2.059ÃÊ
+2024-10-28 13:48:48,999 - ai_gen - INFO - 4_ÃÑ_Ã³¸®_½Ã°£: 2.740ÃÊ
+2024-10-28 13:48:49,028 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:49] "POST /chat HTTP/1.1" 200 -
+2024-10-28 13:48:51,542 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-28 13:48:52,479 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:48:52] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-28 13:49:39,756 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:49:39] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:50:39,772 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:50:39] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:51:39,767 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:51:39] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:52:39,758 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:52:39] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:53:39,761 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:53:39] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:54:40,752 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:54:40] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:55:41,770 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:55:41] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:56:42,770 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:56:42] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:57:43,770 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:57:43] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:58:44,770 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:58:44] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 13:59:45,762 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 13:59:45] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 14:00:46,756 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 14:00:46] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 14:01:47,766 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 14:01:47] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 14:02:48,758 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 14:02:48] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 14:03:49,810 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 14:03:49] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 16:23:12,244 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Downloads\\Claude_RAG_TalKR\\Claude_RAG_TalKR\\ai_gen.py', reloading
+2024-10-28 16:23:14,420 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 16:23:26,608 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 16:23:26,622 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 16:23:27,684 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 16:23:27,919 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 16:23:29,574 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 16:23:31,289 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 16:23:31,290 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 16:23:31,291 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.370ÃÊ
+2024-10-28 16:23:31,295 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 16:23:31,295 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 16:23:31,296 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 16:23:31,296 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.015ÃÊ
+2024-10-28 16:23:31,296 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 1.287ÃÊ
+2024-10-28 16:23:31,297 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.010ÃÊ
+2024-10-28 16:23:31,297 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.372ÃÊ
+2024-10-28 16:23:31,297 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.004ÃÊ
+2024-10-28 16:23:31,297 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 4.688ÃÊ
+2024-10-28 16:23:31,298 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 16:23:31,298 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 16:23:31,298 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 16:23:31,298 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 16:23:31,325 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 16:23:31,326 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 16:23:31,326 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 16:23:31,327 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 16:23:31,327 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 16:23:31,327 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.027ÃÊ
+2024-10-28 16:23:31,414 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 16:23:31,429 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 18:42:49,190 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Downloads\\Claude_RAG_TalKR\\Claude_RAG_TalKR\\ai_gen.py', reloading
+2024-10-28 18:42:50,502 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 18:42:54,819 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 18:42:54,831 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 18:42:56,209 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 18:42:56,486 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 18:42:57,815 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 18:42:58,720 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 18:42:58,721 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 18:42:58,721 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.234ÃÊ
+2024-10-28 18:42:58,728 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 18:42:58,729 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 18:42:58,729 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 18:42:58,729 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.015ÃÊ
+2024-10-28 18:42:58,730 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 1.649ÃÊ
+2024-10-28 18:42:58,730 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.006ÃÊ
+2024-10-28 18:42:58,730 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.234ÃÊ
+2024-10-28 18:42:58,731 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.007ÃÊ
+2024-10-28 18:42:58,731 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.910ÃÊ
+2024-10-28 18:42:58,731 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 18:42:58,731 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 18:42:58,731 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 18:42:58,732 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 18:42:58,742 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 18:42:58,743 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 18:42:58,744 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 18:42:58,745 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 18:42:58,746 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 18:42:58,746 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.011ÃÊ
+2024-10-28 18:42:58,798 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 18:42:58,815 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 20:42:29,650 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Downloads\\Claude_RAG_TalKR\\Claude_RAG_TalKR\\ai_gen.py', reloading
+2024-10-28 20:42:32,585 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 20:42:40,586 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 20:42:40,592 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 20:42:41,741 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 20:42:41,964 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 20:42:43,342 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 20:42:45,052 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 20:42:45,053 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:42:45,053 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.088ÃÊ
+2024-10-28 20:42:45,058 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:42:45,058 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 20:42:45,059 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 20:42:45,059 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.007ÃÊ
+2024-10-28 20:42:45,059 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 1.367ÃÊ
+2024-10-28 20:42:45,059 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-28 20:42:45,059 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.089ÃÊ
+2024-10-28 20:42:45,060 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-28 20:42:45,060 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 4.472ÃÊ
+2024-10-28 20:42:45,060 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 20:42:45,060 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:42:45,060 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 20:42:45,061 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 20:42:45,078 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 20:42:45,079 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:42:45,080 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 20:42:45,080 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 20:42:45,080 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 20:42:45,082 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.019ÃÊ
+2024-10-28 20:42:45,162 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 20:42:45,172 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 20:45:13,927 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 20:45:13,932 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 20:45:14,628 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 20:45:14,776 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 20:45:15,793 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 20:45:16,134 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 20:45:16,136 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:45:16,136 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 1.358ÃÊ
+2024-10-28 20:45:16,142 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:45:16,144 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 20:45:16,144 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 20:45:16,144 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.006ÃÊ
+2024-10-28 20:45:16,144 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.840ÃÊ
+2024-10-28 20:45:16,144 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-28 20:45:16,144 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 1.360ÃÊ
+2024-10-28 20:45:16,145 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-28 20:45:16,145 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.215ÃÊ
+2024-10-28 20:45:16,145 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 20:45:16,145 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:45:16,145 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 20:45:16,145 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 20:45:16,150 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 20:45:16,151 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:45:16,151 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 20:45:16,151 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 20:45:16,152 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 20:45:16,152 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.006ÃÊ
+2024-10-28 20:45:16,229 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5009
+ * Running on http://172.16.9.79:5009
+2024-10-28 20:45:16,229 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-28 20:45:16,231 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 20:45:19,007 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 20:45:19,019 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 20:45:19,636 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 20:45:19,764 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 20:45:22,186 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 20:45:23,906 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 20:45:23,907 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:45:23,907 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 4.142ÃÊ
+2024-10-28 20:45:23,913 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:45:23,914 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 20:45:23,914 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-28 20:45:23,914 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.012ÃÊ
+2024-10-28 20:45:23,914 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.743ÃÊ
+2024-10-28 20:45:23,914 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-28 20:45:23,915 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 4.143ÃÊ
+2024-10-28 20:45:23,915 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-28 20:45:23,915 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 4.906ÃÊ
+2024-10-28 20:45:23,915 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 20:45:23,915 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:45:23,916 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 20:45:23,916 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 20:45:23,921 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 20:45:23,921 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:45:23,922 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 20:45:23,922 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 20:45:23,922 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 20:45:23,923 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.006ÃÊ
+2024-10-28 20:45:23,976 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 20:45:23,980 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 20:45:24,108 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:24] "GET / HTTP/1.1" 200 -
+2024-10-28 20:45:24,382 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-28 20:45:24,406 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:24] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-28 20:45:24,440 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:24] "GET /check_login HTTP/1.1" 200 -
+2024-10-28 20:45:24,521 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-28 20:45:32,269 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:32] "POST /login HTTP/1.1" 200 -
+2024-10-28 20:45:46,634 - ai_gen - ERROR - ¿¹Á¦ °Ë»ö Áß ¿À·ù ¹ß»ý: 'super' object has no attribute 'get_examples'
+2024-10-28 20:45:48,536 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-28 20:45:48,795 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-28 20:45:48,804 - ai_gen - INFO - 
+=== AI ÀÀ´ä »ý¼º ½Ã°£ ºÐ¼® ===
+2024-10-28 20:45:48,805 - ai_gen - INFO - 1_¿¹Á¦_¼±ÅÃ: 0.000ÃÊ
+2024-10-28 20:45:48,805 - ai_gen - INFO - 2_ÇÁ·ÒÇÁÆ®_»ý¼º: 0.001ÃÊ
+2024-10-28 20:45:48,805 - ai_gen - INFO - 3_AI_ÀÀ´ä_»ý¼º: 2.170ÃÊ
+2024-10-28 20:45:48,805 - ai_gen - INFO - 4_ÃÑ_Ã³¸®_½Ã°£: 2.171ÃÊ
+2024-10-28 20:45:48,827 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:48] "POST /chat HTTP/1.1" 200 -
+2024-10-28 20:45:52,362 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-28 20:45:53,291 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:45:53] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-28 20:46:32,763 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:46:32] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-28 20:47:20,249 - werkzeug - INFO -  * Detected change in 'C:\\Users\\user\\Downloads\\Claude_RAG_TalKR\\Claude_RAG_TalKR\\ai_gen.py', reloading
+2024-10-28 20:47:21,268 - werkzeug - INFO -  * Restarting with stat
+2024-10-28 20:47:24,836 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-28 20:47:24,846 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-28 20:47:25,861 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-28 20:47:26,038 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-28 20:47:27,671 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-28 20:47:29,317 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-28 20:47:29,318 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:47:29,319 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.278ÃÊ
+2024-10-28 20:47:29,324 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:47:29,325 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-28 20:47:29,325 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.001ÃÊ
+2024-10-28 20:47:29,325 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.012ÃÊ
+2024-10-28 20:47:29,325 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 1.187ÃÊ
+2024-10-28 20:47:29,326 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.005ÃÊ
+2024-10-28 20:47:29,326 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.280ÃÊ
+2024-10-28 20:47:29,326 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-28 20:47:29,326 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 4.490ÃÊ
+2024-10-28 20:47:29,326 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-28 20:47:29,327 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-28 20:47:29,327 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-28 20:47:29,327 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-28 20:47:29,330 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-28 20:47:29,331 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-28 20:47:29,331 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-28 20:47:29,332 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-28 20:47:29,332 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-28 20:47:29,332 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.003ÃÊ
+2024-10-28 20:47:29,379 - werkzeug - WARNING -  * Debugger is active!
+2024-10-28 20:47:29,386 - werkzeug - INFO -  * Debugger PIN: 133-607-855
+2024-10-28 20:47:32,736 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:47:32] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-28 20:47:32,753 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:47:32] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-28 20:48:00,256 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:00] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2024-10-28 20:48:00,267 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:00] "[31m[1mGET /login?next=/chat HTTP/1.1[0m" 405 -
+2024-10-28 20:48:05,783 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:05] "GET / HTTP/1.1" 200 -
+2024-10-28 20:48:06,184 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-28 20:48:06,280 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:06] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-28 20:48:06,293 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:06] "GET /check_login HTTP/1.1" 200 -
+2024-10-28 20:48:11,942 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:11] "POST /login HTTP/1.1" 200 -
+2024-10-28 20:48:14,236 - ai_gen - ERROR - ¿¹Á¦ °Ë»ö Áß ¿À·ù ¹ß»ý: 'super' object has no attribute 'get_examples'
+2024-10-28 20:48:16,349 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-28 20:48:16,358 - ai_gen - INFO - 
+=== AI ÀÀ´ä »ý¼º ½Ã°£ ºÐ¼® ===
+2024-10-28 20:48:16,358 - ai_gen - INFO - 1_¿¹Á¦_¼±ÅÃ: 0.001ÃÊ
+2024-10-28 20:48:16,358 - ai_gen - INFO - 2_ÇÁ·ÒÇÁÆ®_»ý¼º: 0.001ÃÊ
+2024-10-28 20:48:16,359 - ai_gen - INFO - 3_AI_ÀÀ´ä_»ý¼º: 2.119ÃÊ
+2024-10-28 20:48:16,359 - ai_gen - INFO - 4_ÃÑ_Ã³¸®_½Ã°£: 2.121ÃÊ
+2024-10-28 20:48:16,391 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:16] "POST /chat HTTP/1.1" 200 -
+2024-10-28 20:48:18,595 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-28 20:48:19,845 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:19] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-28 20:48:32,776 - ai_gen - ERROR - ¿¹Á¦ °Ë»ö Áß ¿À·ù ¹ß»ý: 'super' object has no attribute 'get_examples'
+2024-10-28 20:48:35,045 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-28 20:48:35,057 - ai_gen - INFO - 
+=== AI ÀÀ´ä »ý¼º ½Ã°£ ºÐ¼® ===
+2024-10-28 20:48:35,058 - ai_gen - INFO - 1_¿¹Á¦_¼±ÅÃ: 0.001ÃÊ
+2024-10-28 20:48:35,058 - ai_gen - INFO - 2_ÇÁ·ÒÇÁÆ®_»ý¼º: 0.000ÃÊ
+2024-10-28 20:48:35,058 - ai_gen - INFO - 3_AI_ÀÀ´ä_»ý¼º: 2.280ÃÊ
+2024-10-28 20:48:35,058 - ai_gen - INFO - 4_ÃÑ_Ã³¸®_½Ã°£: 2.281ÃÊ
+2024-10-28 20:48:35,083 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:35] "POST /chat HTTP/1.1" 200 -
+2024-10-28 20:48:39,273 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-28 20:48:40,109 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:40] "POST /generate_voice HTTP/1.1" 200 -
