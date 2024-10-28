@@ -23,7 +23,7 @@ import psutil
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
 
-# 로깅 설정
+# # 로깅 설정
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
