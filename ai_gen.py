@@ -151,6 +151,13 @@ class OptimizedExampleSelector:
             'items': 0
         }
 
+        # 대화 컨텍스트용 DB 추가
+        self.conversation_db = Chroma(
+            collection_name="conversations",
+            embedding_function=OpenAIEmbeddings(),
+            persist_directory="cache/conversations"
+        )
+        
         self._initialize_db()
         self._initialize_hnsw_index()
 
@@ -585,15 +592,88 @@ class OptimizedExampleSelector:
             logger.error(f"예제 검색 중 오류 발생: {str(e)}")
             return [], None, {}
 
-def get_ai_response(recent_context: str, user_message_content: str, example_selector: OptimizedExampleSelector) -> Dict[str, Any]:
+    def get_examples_with_context(self, query: str, k: int = 3) -> dict:
+        """기존 RAG + 대화 컨텍스트 통합 검색"""
+        try:
+            # 기본 임베딩 검색
+            normalized_query = self._normalize_text(query)
+            embedding = self._batch_embed([normalized_query])[0]
+            
+            # 캐시 히트/미스 기록
+            if normalized_query in self.embeddings_cache:
+                self.cache_stats['hits'] += 1
+            else:
+                self.cache_stats['misses'] += 1
+            
+            # RAG 예제 검색
+            results = self.db.similarity_search_with_score(query, k=k)
+            rag_examples = [
+                {
+                    'input': result[0].page_content,
+                    'output': result[0].metadata.get('output', ''),
+                    'score': result[1]
+                }
+                for result in results
+            ]
+            
+            # 대화 컨텍스트 검색
+            try:
+                similar_conversations = self.conversation_db.similarity_search(
+                    query, k=2
+                )
+            except Exception as e:
+                logger.error(f"대화 검색 중 오류: {str(e)}")
+                similar_conversations = []
+            
+            return {
+                'rag_examples': rag_examples,
+                'conversation_history': similar_conversations,
+                'cache_status': {
+                    'hit': normalized_query in self.embeddings_cache,
+                    'query': normalized_query
+                },
+                'timing': {}
+            }
+                
+        except Exception as e:
+            logger.error(f"예제 검색 중 오류 발생: {str(e)}")
+            return {
+                'rag_examples': [],
+                'conversation_history': [],
+                'cache_status': {},
+                'timing': {}
+            }
+
+    def add_conversation(self, message: str, metadata: Dict):
+        """새로운 대화 내용을 저장하는 메서드"""
+        try:
+            # 메타데이터 단순화
+            simplified_metadata = {}
+            for key, value in metadata.items():
+                if isinstance(value, (str, int, float, bool)):
+                    simplified_metadata[key] = value
+                elif isinstance(value, (list, dict)):
+                    simplified_metadata[key] = json.dumps(value)  # 복잡한 구조를 문자열로 변환
+            
+            self.conversation_db.add_texts(
+                texts=[message],
+                metadatas=[simplified_metadata]
+            )
+            self.conversation_db.persist()
+            logger.info(f"대화 저장 성공: {message[:50]}...")
+            
+        except Exception as e:
+            logger.error(f"대화 저장 중 오류: {str(e)}")
+
+def get_ai_response(recent_context: str, user_message_content: str, examples_data: dict, metadata: dict, example_selector: OptimizedExampleSelector) -> Dict[str, Any]:
     시작_시간 = time.time()
     단계별_시간: Dict[str, float] = {}
 
     try:
-        # find_examples를 get_examples로 변경
+        # 1단계: 예제와 프롬프트 준비
         단계_시작 = time.time()
-        selected_examples, cache_status, timing = example_selector.get_examples(user_message_content, k=3)
-        few_shot_str = "\n".join([ex['output'] for ex in selected_examples])
+        rag_examples = examples_data.get('rag_examples', [])
+        few_shot_str = "\n".join([ex.get('output', '') for ex in rag_examples])
         단계별_시간['1_예제_선택'] = time.time() - 단계_시작
 
         # 2단계: 프롬프트 생성
@@ -654,7 +734,6 @@ def get_ai_response(recent_context: str, user_message_content: str, example_sele
             </tone examples as a reference>
             
             </character-prompt>
-
             """),
             ("human", "{input}")
         ])
@@ -675,19 +754,9 @@ def get_ai_response(recent_context: str, user_message_content: str, example_sele
         ai_message_content = response.content
         단계별_시간['3_AI_응답_생성'] = time.time() - 단계_시작
 
-        # 총 처리 시간 계산
-        전체_시간 = time.time() - 시작_시간
-        단계별_시간['4_총_처리_시간'] = 전체_시간
-
-        logger.info("\n=== AI 응답 생성 시간 분석 ===")
-        for 단계, 소요시간 in sorted(단계별_시간.items()):
-            logger.info(f"{단계}: {소요시간:.3f}초")
-
         return {
             'message': ai_message_content,
-            'selected_examples': selected_examples,
-            'cache_status': cache_status,
-            'timing': timing,
+            'timing': 단계별_시간,
             'success': True
         }
 

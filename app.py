@@ -90,6 +90,33 @@ class Message(db.Model):
     is_user = db.Column(db.Boolean, nullable=False)
     timestamp = db.Column(db.DateTime, default=lambda: datetime.now(KST))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    message_metadata = db.Column(db.JSON, nullable=True)
+
+# MetadataManager 클래스 추가
+class MetadataManager:
+    def __init__(self, user_id: int):
+        self.user_id = user_id
+        self.metadata = {
+            'user_id': user_id,
+            'topics': [],
+            'sentiment': None,
+            'timestamp': datetime.now(KST).isoformat(),
+            'interaction_count': 0
+        }
+
+    def update_metadata(self, message: str) -> dict:
+        """메시지 기반으로 메타데이터 업데이트"""
+        # 기존 대화 수 조회
+        interaction_count = Message.query.filter_by(user_id=self.user_id).count()
+        
+        # 메타데이터 업데이트
+        self.metadata.update({
+            'interaction_count': interaction_count + 1,
+            'timestamp': datetime.now(KST).isoformat(),
+            'message_length': len(message)
+        })
+        
+        return self.metadata
 
 # 관리자 뷰 설정
 class SecureModelView(ModelView):
@@ -136,7 +163,10 @@ def chat():
     user_message_content = request.json['message']
     
     try:
-        # 1단계: 대화 세션 확인/생성
+        # 1단계: 메타데이터 관리자 초기화
+        metadata_manager = MetadataManager(current_user.id)
+        
+        # 2단계: 대화 세션 확인/생성
         시작_시간 = time.time()
         active_conversation = Conversation.query.filter_by(
             user_id=current_user.id, 
@@ -149,61 +179,73 @@ def chat():
             db.session.commit()
         단계별_시간['1_세션_확인'] = time.time() - 시작_시간
             
-        # 2단계: 사용자 메시지 저장
+        # 3단계: 메타데이터 업데이트
+        시작_시간 = time.time()
+        updated_metadata = metadata_manager.update_metadata(user_message_content)
+        단계별_시간['2_메타데이터_업데이트'] = time.time() - 시작_시간
+
+        # 4단계: 사용자 메시지 저장
         시작_시간 = time.time()
         user_message = Message(
             conversation_id=active_conversation.id,
             content=user_message_content,
             is_user=True,
-            user_id=current_user.id
+            user_id=current_user.id,
+            message_metadata=updated_metadata
         )
         db.session.add(user_message)
         db.session.commit()
-        단계별_시간['2_메시지_저장'] = time.time() - 시작_시간
+        단계별_시간['3_메시지_저장'] = time.time() - 시작_시간
 
-        # 3단계: 최근 컨텍스트 가져오기
+        # 5단계: 최근 컨텍스트 가져오기
         시작_시간 = time.time()
         recent_context = get_recent_context(active_conversation.id)
-        단계별_시간['3_컨텍스트_조회'] = time.time() - 시작_시간
+        단계별_시간['4_컨텍스트_조회'] = time.time() - 시작_시간
 
-        # 4단계: AI 응답 생성
+        # 6단계: RAG + 대화 검색
         시작_시간 = time.time()
-        ai_response = get_ai_response(recent_context, user_message_content, example_selector)
-        ai_message_content = ai_response['message']
-        selected_examples = ai_response['selected_examples']
-        cache_status = ai_response['cache_status']
-        단계별_시간['4_AI_응답_생성'] = time.time() - 시작_시간
+        examples_data = example_selector.get_examples_with_context(user_message_content)
+        단계별_시간['5_예제_검색'] = time.time() - 시작_시간
 
-        # 5단계: AI 응답 저장
+        # 7단계: AI 응답 생성
+        시작_시간 = time.time()
+        ai_response = get_ai_response(
+            recent_context=recent_context,
+            user_message_content=user_message_content,
+            examples_data=examples_data,
+            metadata=updated_metadata,
+            example_selector=example_selector
+        )
+        단계별_시간['6_AI_응답_생성'] = time.time() - 시작_시간
+
+        # 8단계: AI 응답 저장
         시작_시간 = time.time()
         ai_message = Message(
             conversation_id=active_conversation.id,
-            content=ai_message_content,
+            content=ai_response['message'],
             is_user=False,
-            user_id=current_user.id
+            user_id=current_user.id,
+            message_metadata=None
         )
         db.session.add(ai_message)
         db.session.commit()
-        단계별_시간['5_응답_저장'] = time.time() - 시작_시간
+        단계별_시간['7_응답_저장'] = time.time() - 시작_시간
+
+        # 9단계: 벡터 DB에 대화 추가
+        example_selector.add_conversation(
+            message=user_message_content,
+            metadata=updated_metadata
+        )
 
         메시지_처리_총시간 = time.time() - 메시지_처리_시작_시간
-        단계별_시간['6_메시지_처리_총시간'] = 메시지_처리_총시간
-
-        전체_처리_시간 = time.time() - 전체_시작_시간
-        단계별_시간['7_전체_처리_시간'] = 전체_처리_시간
-
-        print("\n=== 처리 시간 분석 ===")
-        for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])): 
-            print(f"{단계}: {소요시간:.3f}초")
-        print("===================\n")
+        단계별_시간['8_메시지_처리_총시간'] = 메시지_처리_총시간
 
         return jsonify({
-            'message': ai_message_content,
+            'message': ai_response['message'],
             'message_id': ai_message.id,
             'success': True,
             'timing': 단계별_시간,
-            'selected_examples': selected_examples,
-            'cache_status': cache_status  # 캐시 상태 추가
+            'metadata': updated_metadata
         })
 
     except Exception as e:
