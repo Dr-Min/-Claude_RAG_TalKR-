@@ -22,6 +22,7 @@ from ai_gen import OptimizedExampleSelector, get_ai_response
 import time  # 시간 측정용
 from functools import lru_cache
 import json
+from metadata_manager import MetadataManager
 
 # 환경 변수 로드
 load_dotenv()
@@ -98,31 +99,27 @@ class Message(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     message_metadata = db.Column(db.JSON, nullable=True)
 
-# MetadataManager 클래스 추가
-class MetadataManager:
-    def __init__(self, user_id: int):
-        self.user_id = user_id
-        self.metadata = {
-            'user_id': user_id,
+    def set_metadata(self, metadata):
+        """메타데이터 저장"""
+        if isinstance(metadata, dict):
+            # JSON으로 직렬화된 문자열이 아닌 딕셔너리 그대로 저장
+            self.message_metadata = metadata
+
+    def get_metadata(self):
+        """메타데이터 조회"""
+        if self.message_metadata:
+            return self.message_metadata
+        return {
             'topics': [],
+            'entities': [],
             'sentiment': None,
-            'timestamp': datetime.now(KST).isoformat(),
-            'interaction_count': 0
+            'preferences': {},
+            'conversation_context': {
+                'recent_topics': [],
+                'mentioned_items': []
+            }
         }
 
-    def update_metadata(self, message: str) -> dict:
-        """메시지 기반으로 메타데이터 업데이트"""
-        # 기존 대화 수 조회
-        interaction_count = Message.query.filter_by(user_id=self.user_id).count()
-        
-        # 메타데이터 업데이트
-        self.metadata.update({
-            'interaction_count': interaction_count + 1,
-            'timestamp': datetime.now(KST).isoformat(),
-            'message_length': len(message)
-        })
-        
-        return self.metadata
 
 # 관리자 뷰 설정
 class SecureModelView(ModelView):
@@ -242,11 +239,15 @@ def chat():
         user_example_selector = get_user_example_selector(current_user.id)
         end_timing('2_example_selector_init', start_time)
         
-        # 메타데이터 업데이트
+        # 메타데이터 매니저 초기화 및 처리
         start_time = record_timing('3_metadata_processing')
-        metadata_manager = MetadataManager(current_user.id)
+        metadata_manager = MetadataManager(
+            user_id=current_user.id,
+            message_model=Message  # Message 모델 클래스를 직접 전달
+        )
         updated_metadata = metadata_manager.update_metadata(user_message_content)
         end_timing('3_metadata_processing', start_time)
+        
         print(f"\n업데이트된 메타데이터: {json.dumps(updated_metadata, indent=2, ensure_ascii=False)}")
         
         # 대화 세션 확인/생성
@@ -268,9 +269,9 @@ def chat():
             conversation_id=active_conversation.id,
             content=user_message_content,
             is_user=True,
-            user_id=current_user.id,
-            message_metadata=updated_metadata
+            user_id=current_user.id
         )
+        user_message.set_metadata(updated_metadata)  # set_metadata 메서드 사용
         db.session.add(user_message)
         db.session.commit()
         end_timing('5_message_storage', start_time)
@@ -325,7 +326,7 @@ def chat():
         # 한글 단계명 정의
         step_names = {
             '1_message_reception': '메시지 수신',
-            '2_example_selector_init': '예제 선택기 초기화',
+            '2_example_selector_init': '��제 선택기 초기화',
             '3_metadata_processing': '메타데이터 처리',
             '4_session_management': '세션 관리',
             '5_context_collection': '컨텍스트 수집',
@@ -600,7 +601,7 @@ def get_history():
 @app.route('/update_usage_time', methods=['POST'])
 @login_required
 def update_usage_time():
-    """사용자의 총 사용 ���간을 업데이트하는 라우트"""
+    """사용자의 총 사용 간을 업데이트하는 라우트"""
     data = request.json
     current_user.total_usage_time += data['time']
     db.session.commit()

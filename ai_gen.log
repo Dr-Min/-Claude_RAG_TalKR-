@@ -3369,3 +3369,1608 @@ Try filtering complex metadata from the document using langchain_community.vecto
 2024-10-29 23:07:08,781 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
 2024-10-29 23:07:09,071 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:07:09] "POST /generate_voice HTTP/1.1" 200 -
 2024-10-29 23:07:27,976 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:07:28,833 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:07:32,426 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:07:32,431 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:07:55,159 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:07:55] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-29 23:07:55,165 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:07:55] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-29 23:08:55,168 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:08:55] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-29 23:08:55,176 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:08:55] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-29 23:09:47,898 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:09:48,289 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:09:52,224 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:09:52,229 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:09:52,356 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:09:52] "GET / HTTP/1.1" 200 -
+2024-10-29 23:09:52,604 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:09:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:09:52,609 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:09:52] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:09:52,628 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:09:52] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:09:54,837 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:09:54] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:09:57,860 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:09:58,037 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:09:58,050 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:09:58,059 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:09:58,102 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:09:59,302 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:00,311 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:10:00,312 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:10:00,312 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.209ÃÊ
+2024-10-29 23:10:00,321 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:10:00,321 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:10:00,321 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.009ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.040ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.210ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.008ÃÊ
+2024-10-29 23:10:00,322 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.270ÃÊ
+2024-10-29 23:10:00,323 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:10:00,323 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:10:00,323 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:10:00,324 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:10:00,332 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:10:00,334 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:10:00,334 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:10:00,334 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:10:00,334 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:10:00,334 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.009ÃÊ
+2024-10-29 23:10:00,941 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:00,944 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.555ÃÊ
+2024-10-29 23:10:01,319 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:02,043 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:04,135 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:10:04,494 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:04,522 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³çÇÏ¿À...
+2024-10-29 23:10:04,528 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:04] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:10:06,544 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:10:07,444 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:07] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:10:19,943 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:19,948 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.355ÃÊ
+2024-10-29 23:10:20,391 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:20,746 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:22,435 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:10:22,836 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:22,864 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×·¡ ³»°¡ ¹«½¼ ¿µÈ­ÁÁ¾ÆÇÏ´ÂÁö ¾Ë¾Æ?...
+2024-10-29 23:10:22,881 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:22] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:10:24,989 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:10:25,891 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:25] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:10:34,905 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:34,907 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.365ÃÊ
+2024-10-29 23:10:35,598 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:36,053 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:38,136 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:10:38,664 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:38,693 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ´Ù¸¥ ¿µÈ­´Â?...
+2024-10-29 23:10:38,696 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:38] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:10:40,476 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:10:40,879 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:40] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:10:51,510 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:51,512 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.534ÃÊ
+2024-10-29 23:10:51,827 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:52,276 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:54,556 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:10:54,931 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:10:55,003 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:10:55,029 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÇÑ¹ø ¸ÂÃçºÁ ³»°¡ ¹¹ ÁÁ¾ÆÇÒÁö...
+2024-10-29 23:10:55,032 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:55] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:10:57,076 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:10:57,980 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:10:57] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:11:19,556 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:19,558 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.327ÃÊ
+2024-10-29 23:11:20,062 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:20,719 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:23,032 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:11:23,478 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:23,508 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×°Ô ¹«½¼ ÀÌ¾ß±âÀÎµ¥ ½ºÆ÷ÀÏ·¯ÇØÁà...
+2024-10-29 23:11:23,524 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:11:23] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:11:25,788 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:11:27,491 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:11:27] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:11:37,268 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:37,271 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.503ÃÊ
+2024-10-29 23:11:37,921 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:38,228 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:41,198 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:11:41,607 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:11:41,627 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾Æ´Ï ½ºÆ÷ÇØ´Þ¶ó°í...
+2024-10-29 23:11:41,632 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:11:41] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:11:43,724 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:11:45,674 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:11:45] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:11:54,909 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:11:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:12:02,853 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:02,858 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.522ÃÊ
+2024-10-29 23:12:03,254 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:03,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:07,669 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:12:08,071 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:08,098 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×°Ô ¹º ½ºÆ÷ÀÏ·¯¾ß ¶È¹Ù·Î ½ºÆ÷ÀÏ·¯ÇØÁà...
+2024-10-29 23:12:08,102 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:12:08] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:12:10,374 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:12:13,009 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:12:13] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:12:32,080 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:32,081 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.511ÃÊ
+2024-10-29 23:12:32,388 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:32,673 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:34,716 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:12:35,642 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:35,755 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿­¿ªÇÐ ¹ýÄ¢À» ½±°Ô ¼³¸íÇØÁà...
+2024-10-29 23:12:35,758 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:12:35] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:12:37,788 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:12:38,319 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:12:38] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:12:54,905 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:12:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:12:56,297 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:56,299 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.499ÃÊ
+2024-10-29 23:12:57,245 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:12:57,934 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:00,642 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:13:01,061 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:01,089 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÇØ´Þ¶ó°í Áß¿äÇØ...
+2024-10-29 23:13:01,098 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:01] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:13:03,257 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:13:04,581 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:04] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:13:13,418 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:13,420 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.502ÃÊ
+2024-10-29 23:13:13,689 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:14,156 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:16,419 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:13:16,725 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:16,770 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: Ã£¾Æ¼­¶óµµ ÇØÁà ³ª ÀÌ°Å ³»ÀÏ ½ÃÇèºÁ¾ßµÅ...
+2024-10-29 23:13:16,786 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:16] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:13:18,964 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:13:20,032 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:20] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:13:38,231 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:38,235 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.406ÃÊ
+2024-10-29 23:13:38,737 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:39,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:41,234 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:13:41,654 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:41,680 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¤·...
+2024-10-29 23:13:41,694 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:41] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:13:44,118 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:13:44,616 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:44,617 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.544ÃÊ
+2024-10-29 23:13:44,832 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:44] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:13:44,919 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:45,462 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:47,621 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:13:48,069 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:13:48,104 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: »¡¸® ´ë´Ù...
+2024-10-29 23:13:48,110 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:48] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:13:50,032 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:13:50,690 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:50] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:13:54,903 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:13:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:14:02,357 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:02,360 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.542ÃÊ
+2024-10-29 23:14:02,742 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:03,682 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:05,879 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:14:06,194 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:06,220 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿­¿ªÇÐ ¹ýÄ¢ ¼³¸íÇØÁà ¼³¸í¾ÈÇØÁÖ¸é ÀÚ»ìÇÒ°Å¾ß...
+2024-10-29 23:14:06,227 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:14:06] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:14:08,551 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:14:10,351 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:14:10] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:14:21,273 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:21,275 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.473ÃÊ
+2024-10-29 23:14:21,588 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:22,487 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:24,983 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:14:25,842 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:14:25,868 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×·¡¼­ Ã£¾ÆºÃ¾î?...
+2024-10-29 23:14:25,876 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:14:25] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:14:28,746 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:14:29,392 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:14:29] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:14:54,904 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:14:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:15:54,891 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:15:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:16:16,581 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:16,587 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.557ÃÊ
+2024-10-29 23:16:17,591 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:18,082 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:19,956 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:16:20,405 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:20,434 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª ÇÑ±¹¸» ¾Ë·ÁÁà...
+2024-10-29 23:16:20,439 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:16:20] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:16:22,185 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:16:22,994 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:16:22] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:16:37,796 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:37,798 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.393ÃÊ
+2024-10-29 23:16:38,109 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:38,543 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:40,471 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:16:40,770 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:40,803 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³Ê°¡ ¾Ë¾Æ¼­ ÇØÁà...
+2024-10-29 23:16:40,816 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:16:40] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:16:42,780 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:16:43,774 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:16:43] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:16:54,903 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:16:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:16:56,320 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:56,324 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.584ÃÊ
+2024-10-29 23:16:57,003 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:57,494 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:16:59,826 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:17:00,137 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:00,161 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³çÇÏ¼¼¿©...
+2024-10-29 23:17:00,177 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:00] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:17:02,342 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:17:03,549 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:03] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:17:20,005 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:20,012 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.624ÃÊ
+2024-10-29 23:17:20,339 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:20,677 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:23,104 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:17:23,545 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:23,575 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÀÌ°Ô ¹«½¼¶æÀÎµ¥?...
+2024-10-29 23:17:23,581 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:23] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:17:25,592 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:17:27,386 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:27] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:17:44,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:44,396 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.562ÃÊ
+2024-10-29 23:17:44,714 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:45,222 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:47,502 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:17:47,926 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:17:48,013 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ´Ù¸¥°Íµµ ¾Ë·ÁÁà...
+2024-10-29 23:17:48,018 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:48] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:17:49,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:17:51,175 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:51] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:17:54,891 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:17:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:18:12,539 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:12,543 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.348ÃÊ
+2024-10-29 23:18:12,922 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:13,434 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:15,337 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:18:15,745 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:15,773 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾Æ ¹è°íÆÄ¿ä....
+2024-10-29 23:18:15,777 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:15] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:18:17,878 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:18:18,975 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:18] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:18:29,112 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:29,114 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.363ÃÊ
+2024-10-29 23:18:29,621 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:29,963 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:32,510 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:18:32,818 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:32,844 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¶æµµ ¾Ë·ÁÁà¾ßÁö...
+2024-10-29 23:18:32,851 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:32] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:18:34,866 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:18:36,879 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:36] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:18:49,194 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:49,196 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.551ÃÊ
+2024-10-29 23:18:49,603 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:49,943 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:52,249 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:18:52,701 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:18:52,730 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿Í ÁøÂ¥ ¸ÀÀÖ´Ù...
+2024-10-29 23:18:52,734 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:52] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:18:54,909 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:18:54,917 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:18:56,137 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:18:56] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:19:09,388 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:09,390 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.392ÃÊ
+2024-10-29 23:19:09,805 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:10,096 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:12,163 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:19:12,465 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:12,493 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: Àß ¸Ô¾ú¼ü´Ïµ¥ÀÌ...
+2024-10-29 23:19:12,497 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:12] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:19:14,412 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:19:15,177 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:15] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:19:27,279 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:27,283 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.379ÃÊ
+2024-10-29 23:19:27,601 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:28,070 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:30,061 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:19:30,490 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:30,517 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×·¸±¸¸¶...
+2024-10-29 23:19:30,524 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:30] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:19:32,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:19:33,332 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:33] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:19:48,918 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:48,919 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.310ÃÊ
+2024-10-29 23:19:49,281 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:49,589 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:51,574 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:19:52,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:19:52,081 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: °í¸¶¿ö...
+2024-10-29 23:19:52,087 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:52] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:19:53,836 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:19:54,189 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:54] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:19:54,878 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:19:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:20:09,100 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:09,101 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.570ÃÊ
+2024-10-29 23:20:09,471 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:09,790 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:11,785 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:20:12,286 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:12,316 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: Â¯±Í¿©¿ö ÀÌ°Ô ¹«½¼¶æÀÎµ¥?...
+2024-10-29 23:20:12,321 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:12] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:20:14,553 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:20:16,419 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:16] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:20:36,134 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:36,136 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.534ÃÊ
+2024-10-29 23:20:36,539 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:36,930 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:39,318 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:20:39,567 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:39,594 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ´ÙÀ½ ¾Ë·ÁÁà....
+2024-10-29 23:20:39,601 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:39] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:20:41,295 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:20:41,861 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:41] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:20:51,635 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:51,637 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.392ÃÊ
+2024-10-29 23:20:51,958 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:52,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:54,886 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:20:55,145 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:20:55,479 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:20:55,507 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: Áö±Ý±îÁö ³»°¡ ¹è¿î°Íµé ÃÑÁ¤¸®ÇØÁà...
+2024-10-29 23:20:55,509 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:55] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:20:57,369 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:20:59,194 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:20:59] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:21:40,909 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:40,912 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.372ÃÊ
+2024-10-29 23:21:41,175 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:41,632 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:43,668 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:21:43,996 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:44,014 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×·¸±¸³ª...
+2024-10-29 23:21:44,021 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:21:44] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:21:46,546 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:21:47,645 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:21:47] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:21:50,646 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:50,650 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.359ÃÊ
+2024-10-29 23:21:50,891 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:51,341 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:53,546 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:21:54,020 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:21:54,046 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÀÀ ÃßÃµÇØÁà...
+2024-10-29 23:21:54,051 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:21:54] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:21:54,911 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:21:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:21:56,698 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:21:58,350 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:21:58] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:22:13,584 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:13,586 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.380ÃÊ
+2024-10-29 23:22:13,927 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:14,386 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:17,017 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:22:17,305 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:17,338 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ±×°Å ºÁµµ ÀÌÇØ¸øÇØ ÇÑ±¹ÀÎ¾Æ´Ï¶ó¼­...
+2024-10-29 23:22:17,346 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:22:17] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:22:19,512 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:22:21,034 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:22:21] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:22:54,021 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:54,025 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.385ÃÊ
+2024-10-29 23:22:54,457 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:54,919 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:22:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:22:54,966 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:58,742 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:22:59,068 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:22:59,095 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³»°¡ ¾Æ±î ¾î¶² ¿µÈ­ ÁÁ¾ÆÇß³Ä°í ¹°¾îº»°Å ±â¾ï³ª?...
+2024-10-29 23:22:59,099 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:22:59] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:23:01,301 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:23:02,634 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:23:02] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:23:54,907 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:23:54] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:50:00,341 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:50:01,610 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:50:15,260 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5009
+ * Running on http://172.16.9.79:5009
+2024-10-29 23:50:15,261 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-29 23:50:15,263 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:50:18,441 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:50:18,447 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:50:18,560 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:18] "GET / HTTP/1.1" 200 -
+2024-10-29 23:50:18,795 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:18] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:50:18,807 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:18] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:50:18,820 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:18] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:50:19,019 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-10-29 23:50:22,843 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:22] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:50:27,152 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:50:27,628 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:50:27,650 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:50:27,661 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:50:27,712 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:50:29,015 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:30,045 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:50:30,045 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:50:30,045 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.332ÃÊ
+2024-10-29 23:50:30,061 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:50:30,062 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:50:30,062 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-29 23:50:30,062 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.012ÃÊ
+2024-10-29 23:50:30,062 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.047ÃÊ
+2024-10-29 23:50:30,062 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-29 23:50:30,063 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.334ÃÊ
+2024-10-29 23:50:30,063 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.015ÃÊ
+2024-10-29 23:50:30,063 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.411ÃÊ
+2024-10-29 23:50:30,063 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:50:30,063 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:50:30,063 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:50:30,064 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:50:30,082 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:50:30,085 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:50:30,085 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:50:30,085 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:50:30,086 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:50:30,086 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.020ÃÊ
+2024-10-29 23:50:30,579 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:30,582 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.459ÃÊ
+2024-10-29 23:50:30,976 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:31,493 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:34,134 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:50:34,637 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:34,662 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç...
+2024-10-29 23:50:34,675 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:34] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:50:36,920 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:50:38,317 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:38] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:50:46,176 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:50:50,776 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:50,778 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.468ÃÊ
+2024-10-29 23:50:51,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:51,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:53,873 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:50:54,472 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:50:54,488 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¹º¼ö´Ù¿ä...
+2024-10-29 23:50:54,497 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:54] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:50:57,419 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:50:58,402 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:50:58] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:51:17,232 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:51:17,756 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:51:20,965 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:51:20,971 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:51:21,068 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:21] "GET / HTTP/1.1" 200 -
+2024-10-29 23:51:21,315 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:21] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:51:21,319 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:51:21,342 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:21] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:51:23,494 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:23] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:51:29,648 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:51:29,804 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:51:29,812 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:51:29,828 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:51:29,860 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:51:31,130 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:31,887 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:51:31,888 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:51:31,888 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.028ÃÊ
+2024-10-29 23:51:31,895 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:51:31,895 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:51:31,895 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-29 23:51:31,895 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.017ÃÊ
+2024-10-29 23:51:31,896 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.029ÃÊ
+2024-10-29 23:51:31,896 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-29 23:51:31,896 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.029ÃÊ
+2024-10-29 23:51:31,896 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.007ÃÊ
+2024-10-29 23:51:31,896 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.084ÃÊ
+2024-10-29 23:51:31,897 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:51:31,897 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:51:31,897 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:51:31,897 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:51:31,901 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:51:31,902 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:51:31,902 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:51:31,903 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:51:31,903 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:51:31,903 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-29 23:51:32,379 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:32,384 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.449ÃÊ
+2024-10-29 23:51:32,865 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:33,741 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:36,148 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:51:36,876 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:36,919 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¹¹ ÀÌ³â¾Æ...
+2024-10-29 23:51:36,925 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:36] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:51:39,117 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:51:40,005 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:51:40] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:51:56,899 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:56,901 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.442ÃÊ
+2024-10-29 23:51:57,208 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:51:57,723 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:52:00,058 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:52:00,481 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:52:00,516 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿À´Ã °øºÎ ³Ê¹« Èûµé¾ú¾î¿ä...
+2024-10-29 23:52:00,520 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:52:00] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:52:05,074 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:52:06,420 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:52:06] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:52:23,540 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:52:23] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:52:48,208 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:52:49,035 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:52:51,509 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:52:51,514 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:53:10,567 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:53:11,069 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:53:14,126 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:53:14,131 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:53:20,916 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:53:21,325 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:53:24,781 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:53:24,785 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:53:24,889 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:24] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-29 23:53:24,896 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:24] "GET / HTTP/1.1" 200 -
+2024-10-29 23:53:24,900 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:24] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-29 23:53:25,133 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:25] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:53:25,171 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:53:25,188 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:25] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:53:28,132 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:28] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:53:33,421 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:53:33,589 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:53:33,599 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:53:33,617 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:53:33,661 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:53:36,020 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:36,831 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:53:36,831 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:53:36,831 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.170ÃÊ
+2024-10-29 23:53:36,838 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:53:36,838 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:53:36,838 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.001ÃÊ
+2024-10-29 23:53:36,838 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.019ÃÊ
+2024-10-29 23:53:36,839 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.039ÃÊ
+2024-10-29 23:53:36,839 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.004ÃÊ
+2024-10-29 23:53:36,839 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.170ÃÊ
+2024-10-29 23:53:36,839 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.007ÃÊ
+2024-10-29 23:53:36,839 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.239ÃÊ
+2024-10-29 23:53:36,840 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:53:36,840 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:53:36,842 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:53:36,842 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:53:36,845 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:53:36,848 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:53:36,848 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:53:36,848 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:53:36,849 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:53:36,849 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.006ÃÊ
+2024-10-29 23:53:37,407 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:37,408 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.514ÃÊ
+2024-10-29 23:53:37,899 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:38,209 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:40,170 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:53:40,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:40,614 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾Æ¤Ñ¤¤³ç...
+2024-10-29 23:53:40,621 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:40] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:53:42,848 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:53:43,943 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:43] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:53:53,128 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:53,129 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.358ÃÊ
+2024-10-29 23:53:53,523 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:53,941 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:56,311 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:53:56,625 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:53:56,655 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¹º¼ö´ÙÀÌ³â¾Æ...
+2024-10-29 23:53:56,661 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:53:56] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:53:59,327 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:54:00,245 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:00] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:54:14,581 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:14,582 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.544ÃÊ
+2024-10-29 23:54:14,908 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:15,400 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:17,927 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:54:18,294 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:18,322 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¹«½¼ÀÏ?...
+2024-10-29 23:54:18,327 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:18] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:54:20,300 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:54:21,792 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:21] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:54:28,163 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:28] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:54:36,721 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:36,854 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.714ÃÊ
+2024-10-29 23:54:37,144 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:37,431 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:39,772 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:54:40,073 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:54:40,118 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: º´½ÅÀÌ³×?...
+2024-10-29 23:54:40,125 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:40] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:54:42,334 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:54:43,303 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:54:43] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:55:13,961 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:13,964 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.547ÃÊ
+2024-10-29 23:55:14,384 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:15,093 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:17,591 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:55:18,291 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:18,321 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿À´Ã °øºÎÇß´Âµ¥ ³Ê¹« Èûµé¾î...
+2024-10-29 23:55:18,327 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:55:18] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:55:20,458 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:55:21,714 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:55:21] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:55:28,169 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:55:28] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:55:37,193 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:37,194 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.444ÃÊ
+2024-10-29 23:55:37,461 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:37,818 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:40,267 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:55:40,577 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:55:40,604 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ±×·¡ °°ÀÌ °¡ÀÚ ¾ðÁ¦°¥·¡?...
+2024-10-29 23:55:40,612 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:55:40] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:55:43,303 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:55:44,984 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:55:44] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:56:28,159 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:56:28] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:56:52,106 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:56:52,734 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:56:56,127 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:56:56,132 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:56:57,954 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:56:57] "GET / HTTP/1.1" 200 -
+2024-10-29 23:56:58,181 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:56:58] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:56:58,229 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:56:58] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:56:58,238 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:56:58] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:57:01,312 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:57:01] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:57:03,950 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:57:04,127 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:57:04,139 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:57:04,159 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:57:04,204 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:57:05,283 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:06,153 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:57:06,154 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:57:06,154 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 1.948ÃÊ
+2024-10-29 23:57:06,160 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:57:06,161 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:57:06,161 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-29 23:57:06,162 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.020ÃÊ
+2024-10-29 23:57:06,162 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.043ÃÊ
+2024-10-29 23:57:06,162 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.004ÃÊ
+2024-10-29 23:57:06,162 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 1.949ÃÊ
+2024-10-29 23:57:06,163 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-29 23:57:06,163 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.020ÃÊ
+2024-10-29 23:57:06,163 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:57:06,164 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:57:06,164 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:57:06,164 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:57:06,175 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:57:06,176 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:57:06,176 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:57:06,177 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:57:06,177 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:57:06,178 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.012ÃÊ
+2024-10-29 23:57:06,665 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:06,720 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.496ÃÊ
+2024-10-29 23:57:07,005 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:07,462 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:10,013 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:57:10,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:10,410 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç...
+2024-10-29 23:57:10,418 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:57:10] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:57:12,631 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:57:13,528 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:57:13] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:57:28,956 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:28,958 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.477ÃÊ
+2024-10-29 23:57:29,483 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:29,968 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:32,785 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:57:33,170 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:57:33,197 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾ß Áö±Ý 12½ÃÀÎµ¥ ¹«½¼ ¼ö¾÷À»ÇØ...
+2024-10-29 23:57:33,203 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:57:33] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:57:35,088 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:57:36,538 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:57:36] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:58:01,362 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:01] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:58:04,213 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-29 23:58:05,440 - werkzeug - INFO -  * Restarting with stat
+2024-10-29 23:58:08,525 - werkzeug - WARNING -  * Debugger is active!
+2024-10-29 23:58:08,532 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-29 23:58:08,682 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:08] "GET / HTTP/1.1" 200 -
+2024-10-29 23:58:08,918 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:08] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-29 23:58:08,950 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:08] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-29 23:58:08,958 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:08] "GET /check_login HTTP/1.1" 200 -
+2024-10-29 23:58:12,104 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:12] "POST /login HTTP/1.1" 200 -
+2024-10-29 23:58:14,533 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:58:14,711 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-29 23:58:14,723 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-29 23:58:14,730 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-29 23:58:14,845 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-29 23:58:15,843 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:16,722 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-29 23:58:16,722 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:58:16,723 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 1.877ÃÊ
+2024-10-29 23:58:16,730 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:58:16,730 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-29 23:58:16,731 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-29 23:58:16,731 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.008ÃÊ
+2024-10-29 23:58:16,731 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.110ÃÊ
+2024-10-29 23:58:16,732 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.005ÃÊ
+2024-10-29 23:58:16,732 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 1.878ÃÊ
+2024-10-29 23:58:16,732 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.007ÃÊ
+2024-10-29 23:58:16,733 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.008ÃÊ
+2024-10-29 23:58:16,733 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-29 23:58:16,733 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-29 23:58:16,734 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-29 23:58:16,734 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-29 23:58:16,741 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-29 23:58:16,741 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-29 23:58:16,742 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-29 23:58:16,742 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-29 23:58:16,742 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-29 23:58:16,742 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.008ÃÊ
+2024-10-29 23:58:17,090 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:17,093 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.314ÃÊ
+2024-10-29 23:58:17,449 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:17,869 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:19,985 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:58:20,298 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:20,325 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç...
+2024-10-29 23:58:20,330 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:20] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:58:21,974 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:58:22,443 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:22] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:58:33,799 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:33,801 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.415ÃÊ
+2024-10-29 23:58:34,421 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:34,947 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:37,153 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:58:37,613 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:37,640 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÇÑ¹ø ¿ô¾îºÁ...
+2024-10-29 23:58:37,649 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:37] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:58:39,471 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:58:40,497 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:40] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:58:51,533 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:51,534 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.405ÃÊ
+2024-10-29 23:58:51,883 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:52,218 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:54,690 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:58:55,204 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:58:55,225 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¿¨...
+2024-10-29 23:58:55,230 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:55] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:58:57,478 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:58:58,782 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:58:58] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:59:12,138 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-29 23:59:13,694 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:13,699 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.436ÃÊ
+2024-10-29 23:59:14,172 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:14,506 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:16,585 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:59:16,977 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:17,003 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³Ê Ä£±¸ ´©±ºµ¥?...
+2024-10-29 23:59:17,009 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:17] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:59:18,891 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:59:19,747 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:19] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:59:30,425 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:30,427 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.600ÃÊ
+2024-10-29 23:59:30,863 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:31,178 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:33,125 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:59:33,407 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:33,421 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾Æ´Ï ³Ê¶û Ä£ÇÑÄ£±¸ ÀÌ¾ß±â ¼Ò°³ÇØÁà...
+2024-10-29 23:59:33,427 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:33] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:59:36,890 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:59:38,304 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:38] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-29 23:59:52,711 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:52,713 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.514ÃÊ
+2024-10-29 23:59:53,124 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:53,709 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:55,765 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-29 23:59:56,082 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-29 23:59:56,115 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¹º ÀÌ¾ß±â...
+2024-10-29 23:59:56,122 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:56] "POST /chat HTTP/1.1" 200 -
+2024-10-29 23:59:57,916 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-29 23:59:59,100 - werkzeug - INFO - 127.0.0.1 - - [29/Oct/2024 23:59:59] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:00:12,132 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:00:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:01:12,144 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:01:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:02:12,140 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:02:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:02:39,303 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-30 00:02:40,129 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:02:43,246 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:02:43,251 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:03:12,121 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:03:12] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 00:03:12,127 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:03:12] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 00:03:48,798 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\ai_gen.py", reloading
+2024-10-30 00:03:49,225 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:03:52,198 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:03:52,204 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:03:59,951 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:03:59] "GET / HTTP/1.1" 200 -
+2024-10-30 00:04:00,267 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:00] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:04:00,331 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:04:00,344 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:00] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:04:04,360 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:04] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:04:07,780 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:04:07,959 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:04:07,974 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:04:08,001 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:04:08,052 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:04:09,090 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:10,473 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:04:10,474 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:04:10,474 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.420ÃÊ
+2024-10-30 00:04:10,486 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:04:10,487 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:04:10,488 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.001ÃÊ
+2024-10-30 00:04:10,489 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.027ÃÊ
+2024-10-30 00:04:10,489 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.047ÃÊ
+2024-10-30 00:04:10,490 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.006ÃÊ
+2024-10-30 00:04:10,491 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.422ÃÊ
+2024-10-30 00:04:10,491 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.011ÃÊ
+2024-10-30 00:04:10,491 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.514ÃÊ
+2024-10-30 00:04:10,492 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:04:10,493 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:04:10,493 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:04:10,493 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:04:10,500 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:04:10,502 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:04:10,503 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:04:10,504 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:04:10,504 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:04:10,505 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.009ÃÊ
+2024-10-30 00:04:10,970 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:10,971 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.420ÃÊ
+2024-10-30 00:04:11,378 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:11,645 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:13,925 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:04:14,280 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:14,317 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç...
+2024-10-30 00:04:14,328 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:14] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:04:16,557 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:04:17,932 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:17] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:04:49,989 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:49,992 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 5.091ÃÊ
+2024-10-30 00:04:50,291 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:50,749 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:53,011 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:04:53,288 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:04:53,312 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç ¹Ý°¡¿ö ¤»¤» ³ªµµ ³Ê¹« ÁÁ¾Æ...
+2024-10-30 00:04:53,319 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:53] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:04:55,031 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:04:55,478 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:04:55] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:05:04,394 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:05:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:06:04,403 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:06:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:07:04,405 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:07:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:08:04,411 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:08:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:09:05,180 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:09:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:10:06,175 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:10:06] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:11:07,180 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:11:07] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:12:08,198 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:12:08] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:13:09,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:13:09] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:14:10,171 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:14:10] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:15:11,201 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:15:11] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:16:12,213 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:16:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:17:13,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:17:13] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:18:14,179 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:18:14] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:19:15,168 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:19:15] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:20:16,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:20:16] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:21:17,195 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:21:17] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:22:05,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:22:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:23:06,194 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:23:06] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:24:07,200 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:24:07] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:25:08,188 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:25:08] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:26:09,182 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:26:09] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:27:10,179 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:27:10] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:28:11,184 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:28:11] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:29:12,173 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:29:12] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:30:13,190 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:30:13] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:31:14,177 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:31:14] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:32:15,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:32:15] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:33:05,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:33:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:34:06,193 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:34:06] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:35:07,173 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:35:07] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:36:05,200 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:36:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:37:06,177 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:37:06] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:38:07,190 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:38:07] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:39:05,752 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:39:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:40:04,400 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:40:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:41:04,649 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:41:04] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:41:54,369 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:41:56,317 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:42:02,686 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:42:02,711 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:42:05,160 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:42:05] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 00:42:05,177 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:42:05] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 00:43:06,176 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:06] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 00:43:06,198 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:06] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 00:43:11,587 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:43:12,374 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:43:15,427 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:43:15,437 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:43:20,010 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:20] "GET / HTTP/1.1" 200 -
+2024-10-30 00:43:20,318 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:43:20,378 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:43:20,389 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:20] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:43:22,589 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:22] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:43:30,981 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:43:31,382 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:43:31,394 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:43:31,406 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:43:31,452 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:43:33,209 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:43:34,365 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:43:34,366 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:43:34,366 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.911ÃÊ
+2024-10-30 00:43:34,387 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:43:34,388 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:43:34,389 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 00:43:34,390 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.013ÃÊ
+2024-10-30 00:43:34,391 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.042ÃÊ
+2024-10-30 00:43:34,391 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.004ÃÊ
+2024-10-30 00:43:34,391 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.914ÃÊ
+2024-10-30 00:43:34,391 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.017ÃÊ
+2024-10-30 00:43:34,393 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.990ÃÊ
+2024-10-30 00:43:34,393 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:43:34,393 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:43:34,396 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:43:34,397 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:43:34,441 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:43:34,444 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:43:34,445 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:43:34,455 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:43:34,457 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:43:34,457 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.048ÃÊ
+2024-10-30 00:43:35,722 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:43:36,403 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:43:36,649 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.782ÃÊ
+2024-10-30 00:43:37,222 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:43:38,042 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:43:40,391 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:43:40,908 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:43:41,004 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³çÇÏ¼î...
+2024-10-30 00:43:41,009 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:41] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:43:43,055 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:43:43,659 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:43:43] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:44:00,825 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:44:01,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:44:01,170 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.313ÃÊ
+2024-10-30 00:44:01,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:44:02,010 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:44:04,379 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:44:04,680 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:44:04,704 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ÀÎÅÍ½ºÅÚ¶ó°¡ Á¦ÀÏ ÁÁ¾Æ...
+2024-10-30 00:44:04,709 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:44:04] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:44:07,259 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:44:09,004 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:44:09] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:44:22,622 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:44:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:45:23,181 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:45:23] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:46:23,186 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:46:23] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:46:30,632 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 00:46:31,495 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:46:35,830 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:46:35,839 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:47:06,231 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:47:06,843 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:47:10,598 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:47:10,604 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:47:10,767 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:10] "GET / HTTP/1.1" 200 -
+2024-10-30 00:47:11,075 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:47:11,081 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:47:11,109 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:11] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:47:13,362 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:13] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:47:18,879 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:47:19,102 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:47:19,118 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:47:19,137 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:47:19,171 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:47:20,174 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:47:21,881 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:47:21,882 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:47:21,882 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.709ÃÊ
+2024-10-30 00:47:21,887 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:47:21,887 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:47:21,888 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 00:47:21,888 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.020ÃÊ
+2024-10-30 00:47:21,889 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.031ÃÊ
+2024-10-30 00:47:21,889 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-30 00:47:21,890 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.710ÃÊ
+2024-10-30 00:47:21,890 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-30 00:47:21,890 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.769ÃÊ
+2024-10-30 00:47:21,890 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:47:21,891 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:47:21,891 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:47:21,891 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:47:21,899 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:47:21,900 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:47:21,900 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:47:21,901 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:47:21,901 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:47:21,901 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.009ÃÊ
+2024-10-30 00:47:23,118 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:47:24,142 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:47:24,146 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.820ÃÊ
+2024-10-30 00:47:24,557 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:47:25,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:47:27,430 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:47:27,732 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:47:27,751 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÀÎÅÍ½ºÅÚ¶ó ·¹Àüµå ÀÎÁ¤?...
+2024-10-30 00:47:27,756 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:27] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:47:29,610 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:47:30,833 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:47:30] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:48:14,244 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:48:14] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:49:14,174 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:49:14] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:50:12,984 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:50:14,229 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:50:18,531 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:50:18,537 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:50:18,668 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 00:50:18,676 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 00:50:18,683 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "GET / HTTP/1.1" 200 -
+2024-10-30 00:50:18,964 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:50:18,975 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:50:18,998 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:18] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:50:21,288 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:21] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:50:26,931 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:50:27,211 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:50:27,242 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:50:27,253 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:50:27,290 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:50:28,710 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:50:29,520 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:50:29,520 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:50:29,520 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.229ÃÊ
+2024-10-30 00:50:29,525 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:50:29,525 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:50:29,526 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 00:50:29,526 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.012ÃÊ
+2024-10-30 00:50:29,526 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.035ÃÊ
+2024-10-30 00:50:29,526 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-30 00:50:29,527 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.230ÃÊ
+2024-10-30 00:50:29,527 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.004ÃÊ
+2024-10-30 00:50:29,527 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.283ÃÊ
+2024-10-30 00:50:29,527 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:50:29,527 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:50:29,528 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:50:29,528 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:50:29,535 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:50:29,536 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:50:29,536 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:50:29,537 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:50:29,537 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:50:29,537 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.008ÃÊ
+2024-10-30 00:50:30,854 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:50:31,343 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:50:31,413 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.485ÃÊ
+2024-10-30 00:50:31,698 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:50:32,232 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:50:34,849 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:50:35,402 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:50:35,415 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â Å¸Â¥ ¿µÈ­ ³Ê¹« ÁÁ¾ÆÇØ...
+2024-10-30 00:50:35,424 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:35] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:50:37,594 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:50:38,886 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:50:38] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:51:22,169 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:51:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:52:22,217 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:52:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:53:22,179 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:53:32,691 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:53:33,906 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:53:38,063 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:53:38,081 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:53:47,478 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:53:48,126 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:53:51,872 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:53:51,878 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:53:52,125 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:52] "GET / HTTP/1.1" 200 -
+2024-10-30 00:53:52,367 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:53:52,394 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:52] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:53:52,407 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:52] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:53:55,741 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:53:55] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:53:58,761 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:53:58,967 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:53:59,005 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:53:59,027 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:53:59,083 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:54:01,129 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:54:02,010 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:54:02,011 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:54:02,011 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.926ÃÊ
+2024-10-30 00:54:02,019 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:54:02,019 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:54:02,020 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 00:54:02,020 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.022ÃÊ
+2024-10-30 00:54:02,020 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.055ÃÊ
+2024-10-30 00:54:02,020 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-30 00:54:02,021 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.928ÃÊ
+2024-10-30 00:54:02,021 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-30 00:54:02,021 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.013ÃÊ
+2024-10-30 00:54:02,021 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:54:02,021 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:54:02,021 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:54:02,022 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:54:02,025 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:54:02,026 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:54:02,027 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:54:02,028 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:54:02,028 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:54:02,028 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-30 00:54:03,332 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:54:04,119 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:54:04,123 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.701ÃÊ
+2024-10-30 00:54:04,526 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:54:04,934 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:54:07,290 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:54:07,700 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:54:07,733 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ÇÏÀÌ¿ë...
+2024-10-30 00:54:07,742 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:54:07] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:54:10,167 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:54:10,777 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:54:10] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:54:56,176 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:54:56] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:55:56,189 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:55:56] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:56:52,082 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 00:56:52,899 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:56:56,286 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:56:56,292 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:56:56,427 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:56:56] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 00:56:56,435 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:56:56] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 00:57:02,177 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 00:57:02,599 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:57:06,183 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:57:06,188 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:57:26,630 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 00:57:27,309 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 00:57:31,051 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 00:57:31,056 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 00:57:33,306 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:33] "GET / HTTP/1.1" 200 -
+2024-10-30 00:57:33,560 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 00:57:33,580 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:33] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 00:57:33,605 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:33] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 00:57:35,821 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:35] "POST /login HTTP/1.1" 200 -
+2024-10-30 00:57:38,801 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:57:38,992 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 00:57:39,022 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 00:57:39,040 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 00:57:39,082 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 00:57:40,090 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:57:41,032 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 00:57:41,033 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:57:41,033 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 1.950ÃÊ
+2024-10-30 00:57:41,039 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:57:41,040 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 00:57:41,041 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 00:57:41,041 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.019ÃÊ
+2024-10-30 00:57:41,041 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.040ÃÊ
+2024-10-30 00:57:41,042 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-30 00:57:41,042 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 1.951ÃÊ
+2024-10-30 00:57:41,042 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-30 00:57:41,042 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.017ÃÊ
+2024-10-30 00:57:41,042 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 00:57:41,043 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 00:57:41,043 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 00:57:41,043 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 00:57:41,047 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 00:57:41,048 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 00:57:41,048 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 00:57:41,050 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 00:57:41,051 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 00:57:41,051 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-30 00:57:42,690 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:57:43,147 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:57:43,149 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.420ÃÊ
+2024-10-30 00:57:43,555 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:57:44,451 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:57:46,796 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:57:47,243 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:57:47,260 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ¾È³ç...
+2024-10-30 00:57:47,265 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:47] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:57:49,243 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:57:50,514 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:57:50] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:58:01,076 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:58:01,616 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:01,617 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.522ÃÊ
+2024-10-30 00:58:01,970 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:02,299 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:05,667 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:58:06,434 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:06,464 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ´ç±ÙÀÌ ½È¾î...
+2024-10-30 00:58:06,470 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:58:06] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:58:08,643 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:58:10,255 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:58:10] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:58:26,598 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:58:27,098 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:27,100 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.485ÃÊ
+2024-10-30 00:58:27,399 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:27,778 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:30,527 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:58:30,838 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:58:30,856 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ¿ÀÀÌµµ ½È¾î...
+2024-10-30 00:58:30,861 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:58:30] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:58:33,003 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:58:34,876 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:58:34] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:58:35,858 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:58:35] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 00:59:16,499 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 00:59:16,982 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:59:16,984 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.464ÃÊ
+2024-10-30 00:59:17,421 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:59:17,771 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:59:20,983 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 00:59:21,668 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 00:59:21,684 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ÀÏ·Ð¸Ó½ºÅ© ÁÁ¾ÆÇØ...
+2024-10-30 00:59:21,689 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:59:21] "POST /chat HTTP/1.1" 200 -
+2024-10-30 00:59:23,779 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 00:59:24,977 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:59:24] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 00:59:35,866 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 00:59:35] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:00:36,182 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:00:36] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:01:36,185 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:01:36] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:02:07,797 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 01:02:08,648 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:02:12,424 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:02:12,430 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:02:12,565 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:12] "GET / HTTP/1.1" 200 -
+2024-10-30 01:02:12,853 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 01:02:12,858 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:12] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 01:02:12,883 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:12] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 01:02:16,282 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:16] "POST /login HTTP/1.1" 200 -
+2024-10-30 01:02:23,262 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:02:23,453 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:02:23,463 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 01:02:23,469 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 01:02:23,523 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 01:02:24,951 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:02:26,615 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 01:02:26,616 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:02:26,616 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.091ÃÊ
+2024-10-30 01:02:26,622 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:02:26,623 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 01:02:26,623 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 01:02:26,623 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.006ÃÊ
+2024-10-30 01:02:26,624 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.050ÃÊ
+2024-10-30 01:02:26,624 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.005ÃÊ
+2024-10-30 01:02:26,624 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.092ÃÊ
+2024-10-30 01:02:26,624 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-30 01:02:26,625 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.159ÃÊ
+2024-10-30 01:02:26,625 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 01:02:26,627 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:02:26,628 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 01:02:26,630 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 01:02:26,642 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 01:02:26,646 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:02:26,648 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 01:02:26,649 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 01:02:26,651 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 01:02:26,652 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.015ÃÊ
+2024-10-30 01:02:29,647 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:02:29,650 - metadata_manager - ERROR - ¸ÞÅ¸µ¥ÀÌÅÍ ÃßÃâ Áß ¿À·ù: Expecting value: line 1 column 1 (char 0)
+2024-10-30 01:02:30,240 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:02:30,243 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.562ÃÊ
+2024-10-30 01:02:31,006 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:02:31,442 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:02:34,357 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:02:34,652 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:02:34,674 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ´ç±ÙÀº ½È¾î...
+2024-10-30 01:02:34,681 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:34] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:02:36,920 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:02:37,786 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:02:37] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:03:16,333 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:03:16] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:03:57,659 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 01:03:58,685 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:04:02,344 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:04:02,349 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:04:02,465 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:02] "GET / HTTP/1.1" 200 -
+2024-10-30 01:04:02,725 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 01:04:02,788 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:02] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 01:04:02,797 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:02] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 01:04:05,032 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:05] "POST /login HTTP/1.1" 200 -
+2024-10-30 01:04:09,587 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:04:09,805 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:04:09,852 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 01:04:09,873 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 01:04:09,981 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 01:04:11,765 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:13,434 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 01:04:13,435 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:04:13,435 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.448ÃÊ
+2024-10-30 01:04:13,440 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:04:13,441 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 01:04:13,441 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.001ÃÊ
+2024-10-30 01:04:13,441 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.020ÃÊ
+2024-10-30 01:04:13,441 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.102ÃÊ
+2024-10-30 01:04:13,442 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.012ÃÊ
+2024-10-30 01:04:13,442 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.449ÃÊ
+2024-10-30 01:04:13,442 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.005ÃÊ
+2024-10-30 01:04:13,442 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.589ÃÊ
+2024-10-30 01:04:13,443 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 01:04:13,443 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:04:13,443 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 01:04:13,443 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 01:04:13,447 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 01:04:13,449 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:04:13,449 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 01:04:13,450 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 01:04:13,450 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 01:04:13,450 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-30 01:04:14,604 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:04:15,081 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:15,085 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.431ÃÊ
+2024-10-30 01:04:15,356 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:15,680 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:18,143 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:04:18,635 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:18,662 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â »ç°ú°¡ ÁÁ¾Æ...
+2024-10-30 01:04:18,666 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:18] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:04:20,902 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:04:22,323 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:22] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:04:34,555 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:04:34,917 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:34,919 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.339ÃÊ
+2024-10-30 01:04:35,315 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:35,642 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:38,481 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:04:38,860 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:04:38,884 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â Æ÷µµµµÁÁ¾Æ...
+2024-10-30 01:04:38,887 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:38] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:04:41,328 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:04:42,944 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:04:42] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:05:05,080 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:05:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:06:05,055 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:06:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:07:05,068 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:05] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:07:14,682 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 01:07:15,661 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:07:19,658 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:07:19,664 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:07:19,781 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:19] "GET / HTTP/1.1" 200 -
+2024-10-30 01:07:20,010 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 01:07:20,044 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 01:07:20,058 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:20] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 01:07:22,080 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:22] "POST /login HTTP/1.1" 200 -
+2024-10-30 01:07:26,120 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:07:26,312 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:07:26,323 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 01:07:26,350 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 01:07:26,399 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 01:07:27,510 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:28,451 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 01:07:28,452 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:07:28,452 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.052ÃÊ
+2024-10-30 01:07:28,461 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:07:28,461 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 01:07:28,461 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 01:07:28,462 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.031ÃÊ
+2024-10-30 01:07:28,463 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.043ÃÊ
+2024-10-30 01:07:28,464 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.002ÃÊ
+2024-10-30 01:07:28,464 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.054ÃÊ
+2024-10-30 01:07:28,464 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.007ÃÊ
+2024-10-30 01:07:28,464 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.137ÃÊ
+2024-10-30 01:07:28,464 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 01:07:28,465 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:07:28,465 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 01:07:28,466 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 01:07:28,477 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 01:07:28,480 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:07:28,481 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 01:07:28,482 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 01:07:28,482 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 01:07:28,482 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.014ÃÊ
+2024-10-30 01:07:29,715 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:07:30,090 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:30,092 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.337ÃÊ
+2024-10-30 01:07:30,391 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:30,889 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:33,686 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:07:34,096 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:34,113 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â »ç°ú°¡ ÁÁ¾Æ...
+2024-10-30 01:07:34,118 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:34] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:07:36,863 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:07:37,484 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:37] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:07:49,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:07:50,062 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:50,092 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.552ÃÊ
+2024-10-30 01:07:50,404 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:50,679 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:52,994 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:07:53,308 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:07:53,323 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â Æ÷µµµµÁÁ¾Æ...
+2024-10-30 01:07:53,331 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:53] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:07:55,617 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:07:56,922 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:07:56] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:08:22,106 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:08:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:09:22,122 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:09:22] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:09:42,388 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 01:09:43,410 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:09:46,882 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:09:46,886 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:10:13,742 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 01:10:14,237 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:10:17,772 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:10:17,778 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:10:17,909 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:17] "GET / HTTP/1.1" 200 -
+2024-10-30 01:10:18,142 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:18] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 01:10:18,156 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:18] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 01:10:18,166 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:18] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 01:10:20,809 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:20] "POST /login HTTP/1.1" 200 -
+2024-10-30 01:10:26,067 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:10:26,238 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:10:26,248 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 01:10:26,254 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 01:10:26,303 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 01:10:27,949 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:28,720 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 01:10:28,720 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:10:28,721 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 2.417ÃÊ
+2024-10-30 01:10:28,728 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:10:28,728 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 01:10:28,729 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.001ÃÊ
+2024-10-30 01:10:28,729 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.006ÃÊ
+2024-10-30 01:10:28,729 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.046ÃÊ
+2024-10-30 01:10:28,730 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.003ÃÊ
+2024-10-30 01:10:28,730 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 2.418ÃÊ
+2024-10-30 01:10:28,730 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-30 01:10:28,730 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 2.481ÃÊ
+2024-10-30 01:10:28,731 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 01:10:28,731 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:10:28,732 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 01:10:28,732 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 01:10:28,736 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 01:10:28,737 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:10:28,737 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 01:10:28,738 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 01:10:28,738 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 01:10:28,738 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.005ÃÊ
+2024-10-30 01:10:29,929 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:10:30,435 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:30,438 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.438ÃÊ
+2024-10-30 01:10:30,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:31,165 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:33,949 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:10:34,505 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:34,520 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â °è¶õ¸»ÀÌ°¡ ÁÁ¾Æ...
+2024-10-30 01:10:34,526 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:34] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:10:36,689 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:10:37,513 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:37] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:10:52,856 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:10:53,227 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:53,230 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.347ÃÊ
+2024-10-30 01:10:54,683 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:55,852 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:58,418 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:10:58,886 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:10:59,024 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â °è¶õÂòµµ ÁÁ¾Æ...
+2024-10-30 01:10:59,027 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:10:59] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:11:00,951 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:11:02,433 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:11:02] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:11:20,858 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:11:20] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:12:20,860 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:12:20] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:13:20,853 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:13:20] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:13:21,059 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\app.py", reloading
+2024-10-30 01:13:22,360 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:13:27,190 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:13:27,195 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:14:19,887 - werkzeug - INFO -  * Detected change in "C:\\Users\\user\\Desktop\\Min's coding factory\\-Claude_RAG_TalKR-\\metadata_manager.py", reloading
+2024-10-30 01:14:20,486 - werkzeug - INFO -  * Restarting with stat
+2024-10-30 01:14:24,517 - werkzeug - WARNING -  * Debugger is active!
+2024-10-30 01:14:24,521 - werkzeug - INFO -  * Debugger PIN: 881-318-950
+2024-10-30 01:14:24,691 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:24] "[32mPOST /update_usage_time HTTP/1.1[0m" 302 -
+2024-10-30 01:14:24,707 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:24] "[31m[1mGET /login?next=/update_usage_time HTTP/1.1[0m" 405 -
+2024-10-30 01:14:24,713 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:24] "GET / HTTP/1.1" 200 -
+2024-10-30 01:14:24,999 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:24] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2024-10-30 01:14:25,008 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2024-10-30 01:14:25,025 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:25] "GET /check_login HTTP/1.1" 200 -
+2024-10-30 01:14:27,491 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:27] "POST /login HTTP/1.1" 200 -
+2024-10-30 01:14:37,048 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:14:37,292 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-10-30 01:14:37,312 - ai_gen - INFO - 
+±âÁ¸ Ä³½Ã ÆÄÀÏ ¹ß°ß!
+2024-10-30 01:14:37,337 - ai_gen - INFO - ·ÎµåµÈ Ä³½Ã ¿£Æ®¸® ¼ö: 99
+2024-10-30 01:14:37,393 - ai_gen - INFO - 
+¸ðµç ÅØ½ºÆ®°¡ ÀÌ¹Ì Ä³½ÃµÇ¾î ÀÖÀ½
+2024-10-30 01:14:39,500 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:14:41,229 - ai_gen - INFO - 
+=== DB ¾÷µ¥ÀÌÆ® ¿Ï·á ===
+2024-10-30 01:14:41,230 - ai_gen - INFO - Ã³¸®µÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:14:41,230 - ai_gen - INFO - ÃÑ ¼Ò¿ä ½Ã°£: 3.835ÃÊ
+2024-10-30 01:14:41,236 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:14:41,237 - ai_gen - INFO - 
+=== ÃÊ±âÈ­ ½Ã°£ ºÐ¼® ===
+2024-10-30 01:14:41,237 - ai_gen - INFO - 1_Ä³½Ã_µð·ºÅä¸®_¼³Á¤: 0.000ÃÊ
+2024-10-30 01:14:41,238 - ai_gen - INFO - 2_Ä³½Ã_·Îµå: 0.025ÃÊ
+2024-10-30 01:14:41,238 - ai_gen - INFO - 3_DB_ÃÊ±âÈ­: 0.051ÃÊ
+2024-10-30 01:14:41,238 - ai_gen - INFO - 4_µ¥ÀÌÅÍ_·Îµå_¹×_Ã³¸®: 0.006ÃÊ
+2024-10-30 01:14:41,238 - ai_gen - INFO - 5_DB_¾÷µ¥ÀÌÆ®: 3.836ÃÊ
+2024-10-30 01:14:41,239 - ai_gen - INFO - 6_Ä³½Ã_ÀúÀå: 0.006ÃÊ
+2024-10-30 01:14:41,239 - ai_gen - INFO - 7_ÃÑ_ÃÊ±âÈ­_½Ã°£: 3.924ÃÊ
+2024-10-30 01:14:41,239 - ai_gen - INFO - 
+=== Ä³½Ã »óÅÂ ===
+2024-10-30 01:14:41,239 - ai_gen - INFO - Ä³½ÃµÈ ÅØ½ºÆ® ¼ö: 99
+2024-10-30 01:14:41,239 - ai_gen - INFO - ¿øº» ÅØ½ºÆ® º¯Çü ¼ö: 99
+2024-10-30 01:14:41,240 - ai_gen - INFO - »õ·Î Ãß°¡µÈ ÅØ½ºÆ® ¼ö: 0
+2024-10-30 01:14:41,243 - ai_gen - INFO - ±âÁ¸ HNSW ÀÎµ¦½º¸¦ ·ÎµåÇß½À´Ï´Ù.
+2024-10-30 01:14:41,244 - ai_gen - WARNING - ³·Àº Ä³½Ã È÷Æ®À²: 0.0%
+2024-10-30 01:14:41,244 - ai_gen - INFO - 
+=== HNSW ÀÎµ¦½º »óÅÂ ===
+2024-10-30 01:14:41,244 - ai_gen - INFO - ÇöÀç ÀÎµ¦½º Å©±â: 99 º¤ÅÍ
+2024-10-30 01:14:41,245 - ai_gen - INFO - ÃÖ´ë º¤ÅÍ ¼ö: 10000
+2024-10-30 01:14:41,245 - ai_gen - INFO - ÃÊ±âÈ­ ½Ã°£: 0.004ÃÊ
+2024-10-30 01:14:42,770 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:14:43,200 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:14:43,201 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.380ÃÊ
+2024-10-30 01:14:43,767 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:14:45,065 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:14:47,785 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:14:48,672 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:14:48,694 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â °è¶õ±¸ÀÌ°¡ ÁÁ¾Æ...
+2024-10-30 01:14:48,700 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:48] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:14:50,586 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:14:52,279 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:14:52] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:15:06,225 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-30 01:15:06,674 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:15:06,677 - ai_gen - INFO - ¹èÄ¡ ÀÓº£µù Ã³¸® ½Ã°£: 0.416ÃÊ
+2024-10-30 01:15:06,982 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:15:07,282 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:15:09,791 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-10-30 01:15:10,279 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-10-30 01:15:10,305 - ai_gen - INFO - ´ëÈ­ ÀúÀå ¼º°ø: ³ª´Â ¸¶¶óÅÁÀÌ ÁÁ¾Æ...
+2024-10-30 01:15:10,309 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:15:10] "POST /chat HTTP/1.1" 200 -
+2024-10-30 01:15:12,126 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-10-30 01:15:13,039 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:15:13] "POST /generate_voice HTTP/1.1" 200 -
+2024-10-30 01:15:27,541 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:15:27] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:16:28,188 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:16:28] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 01:17:28,182 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 01:17:28] "POST /update_usage_time HTTP/1.1" 200 -
