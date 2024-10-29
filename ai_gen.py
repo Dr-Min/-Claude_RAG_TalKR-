@@ -779,19 +779,26 @@ def get_ai_response(
 
         # 2단계: AI 응답 생성
         단계_시작 = time.time()
-        claude = ChatAnthropic(
+        claude = anthropic.Anthropic()
+
+        response = claude.messages.create(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=2000,
             temperature=0.8,
-            model="claude-3-sonnet-20240229",
-            max_tokens_to_sample=2000,
-            anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')
+            system=system_prompt,
+            messages=[
+                {
+                    "role": "assistant",  # system prompt는 assistant role로 전달
+                    "content": system_prompt
+                },
+                {
+                    "role": "user", 
+                    "content": user_message_content
+                }
+            ]
         )
 
-        response = claude.invoke([
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_message_content}
-        ])
-
-        ai_message_content = response.content
+        ai_message_content = response.content[0].text
         단계별_시간['2_AI_응답_생성'] = time.time() - 단계_시작
 
         전체_시간 = time.time() - 시작_시간

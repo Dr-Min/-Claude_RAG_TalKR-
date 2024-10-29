@@ -3,6 +3,10 @@ from openai import OpenAI
 from datetime import datetime
 import json
 from pytz import timezone
+from dotenv import load_dotenv
+
+load_dotenv()
+client = OpenAI()
 
 KST = timezone('Asia/Seoul')
 
@@ -27,8 +31,11 @@ class MetadataManager:
     def extract_metadata_with_ai(self, message: str) -> dict:
         """AI를 사용하여 메시지에서 메타데이터 추출"""
         try:
+            print("\n=== AI 메타데이터 추출 시작 ===")
+            print(f"요청 메시지: {message}")
+            
             response = self.client.chat.completions.create(
-                model="gpt-4o-mini",  # 또는 사용 가능한 최신 모델
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": """메타데이터 관리자입니다. 
                     사용자의 메시지에서 다음 정보를 추출하여 JSON 형식으로 반환하세요:
@@ -55,12 +62,15 @@ class MetadataManager:
                 temperature=0
             )
             
-            # AI 응답을 JSON으로 파싱
             extracted_data = json.loads(response.choices[0].message.content)
+            print("\n추출된 메타데이터:")
+            print(json.dumps(extracted_data, indent=2, ensure_ascii=False))
             return extracted_data
             
         except Exception as e:
-            print(f"메타데이터 추출 중 오류 발생: {str(e)}")
+            print(f"\n메타데이터 추출 중 상세 오류:")
+            print(f"오류 타입: {type(e).__name__}")
+            print(f"오류 내용: {str(e)}")
             return {}
 
     def update_metadata(self, message: str) -> dict:
