@@ -178,6 +178,7 @@ const ChatApp = (function () {
 
   // 서버에 메시지 전송
   // 서버에 메시지 전송
+  // 기존의 sendMessageToServer 함수를 다음과 같이 수정
   function sendMessageToServer(message) {
     return fetch("/chat", {
       method: "POST",
@@ -191,19 +192,10 @@ const ChatApp = (function () {
       })
       .then((data) => {
         if (data.timing) {
-          console.log("\n=== 처리 시간 분석 ===");
-          // 단계별 시간 출력
-          Object.entries(data.timing)
-            .sort((a, b) => {
-              const aNum = parseInt(a[0].split("_")[0]) || Infinity;
-              const bNum = parseInt(b[0].split("_")[0]) || Infinity;
-              return aNum - bNum;
-            })
-            .forEach(([단계, 소요시간]) => {
-              console.log(`${단계}: ${소요시간.toFixed(3)}초`);
-            });
+          console.log("\n"); // 가독성을 위한 빈 줄
+          printTimingInfo(data.timing);
 
-          // 캐시 상태 출력 추가
+          // 캐시 상태 출력
           if (data.cache_status) {
             console.log("\n=== 캐시 상태 ===");
             console.log(`입력 텍스트: ${data.cache_status.input_text}`);
@@ -230,13 +222,14 @@ const ChatApp = (function () {
               console.log(`Output: ${example.output}\n`);
             });
           }
-          console.log("===================\n");
         }
         return data;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error;
       });
   }
-
-  // 메시지 추가
   // 메시지 추가
   function addMessage(message, isUser, audioData) {
     const messageDiv = document.createElement("div");
@@ -560,7 +553,7 @@ const ChatApp = (function () {
     }
   }
 
-  // ��그인 함수
+  // 로그인 함수
   function login() {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
@@ -982,3 +975,25 @@ const ChatApp = (function () {
 
 // DOM이 로드된 후 앱 초기화
 document.addEventListener("DOMContentLoaded", ChatApp.init);
+
+// 타이밍 정보 출력 함수
+function printTimingInfo(timing) {
+  console.group("🕒 처리 시간 분석");
+  console.log(`총 소요 시간: ${timing.총_처리_시간}`);
+
+  console.group("단계별 처리 시간");
+  Object.entries(timing.단계별_처리_시간).forEach(([stepName, stepInfo]) => {
+    // 이미 문자열 형태로 받은 소요 시간을 그대로 출력
+    console.group(`◆ ${stepName}: ${stepInfo.소요_시간}`);
+
+    if (stepInfo.세부_단계) {
+      Object.entries(stepInfo.세부_단계).forEach(([subName, subTime]) => {
+        console.log(`└─ ${subName}: ${subTime}`);
+      });
+    }
+
+    console.groupEnd();
+  });
+  console.groupEnd();
+  console.groupEnd();
+}

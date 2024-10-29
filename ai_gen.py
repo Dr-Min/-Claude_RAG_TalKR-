@@ -129,10 +129,11 @@ class CacheStatus:
     embedding_time: Optional[float]
 
 class OptimizedExampleSelector:
-    def __init__(self, max_cache_size_mb: int = 50):  # 기본 500MB 제한
-        self.embeddings_cache: Dict[str, np.ndarray] = {}
-        self.text_variants: Dict[str, str] = {}
-        self.examples_data: Dict[str, Dict] = {}
+    def __init__(self, user_id: int, max_cache_size_mb: int = 50):
+        self.user_id = user_id
+        self.embeddings_cache = {}
+        self.text_variants = {}
+        self.examples_data = {}
         self.db = None
         self.hnsw_index = None
         self.vector_dim = 1536
@@ -140,22 +141,27 @@ class OptimizedExampleSelector:
         self.ef_construction = 200
         self.M = 16
         self.debugger = IndexingDebugger()
-        self.id_to_text: Dict[int, str] = {}
-        self.max_cache_size_mb = max_cache_size_mb
-        self.last_cleanup_time = time.time()
-        self.cleanup_interval = 3600  # 1시간
+        
+        # cache_stats 초기화 추가
         self.cache_stats = {
             'hits': 0,
             'misses': 0,
             'total_size': 0,
             'items': 0
         }
-
-        # 대화 컨텍스트용 DB 추가
+        
+        # 사용자별 벡터 DB 초기화
         self.conversation_db = Chroma(
-            collection_name="conversations",
+            collection_name=f"conversations_user_{user_id}",
             embedding_function=OpenAIEmbeddings(),
-            persist_directory="cache/conversations"
+            persist_directory=f"cache/conversations/user_{user_id}"
+        )
+        
+        # 기존 RAG 예제용 DB
+        self.example_db = Chroma(
+            collection_name="examples",
+            embedding_function=OpenAIEmbeddings(),
+            persist_directory="cache"
         )
         
         self._initialize_db()
@@ -611,16 +617,22 @@ class OptimizedExampleSelector:
                 {
                     'input': result[0].page_content,
                     'output': result[0].metadata.get('output', ''),
-                    'score': result[1]
+                    'score': float(result[1])  # numpy.float32를 float로 변환
                 }
                 for result in results
             ]
             
             # 대화 컨텍스트 검색
             try:
-                similar_conversations = self.conversation_db.similarity_search(
-                    query, k=2
-                )
+                conversation_results = self.conversation_db.similarity_search(query, k=2)
+                similar_conversations = [
+                    {
+                        'content': doc.page_content,
+                        'metadata': doc.metadata,
+                        'type': 'conversation'
+                    }
+                    for doc in conversation_results
+                ]
             except Exception as e:
                 logger.error(f"대화 검색 중 오류: {str(e)}")
                 similar_conversations = []
@@ -665,23 +677,39 @@ class OptimizedExampleSelector:
         except Exception as e:
             logger.error(f"대화 저장 중 오류: {str(e)}")
 
-def get_ai_response(recent_context: str, user_message_content: str, examples_data: dict, metadata: dict, example_selector: OptimizedExampleSelector) -> Dict[str, Any]:
+def get_ai_response(
+    recent_context: str,
+    user_message_content: str,
+    examples_data: dict,
+    metadata: dict,
+    example_selector: OptimizedExampleSelector
+) -> Dict[str, Any]:
     시작_시간 = time.time()
     단계별_시간: Dict[str, float] = {}
 
     try:
         # 1단계: 예제와 프롬프트 준비
         단계_시작 = time.time()
+        
+        # RAG 예제와 과거 대화 분리
         rag_examples = examples_data.get('rag_examples', [])
-        few_shot_str = "\n".join([ex.get('output', '') for ex in rag_examples])
-        단계별_시간['1_예제_선택'] = time.time() - 단계_시작
+        conversation_history = examples_data.get('conversation_history', [])
 
-        # 2단계: 프롬프트 생성
-        단계_시작 = time.time()
-        full_prompt = ChatPromptTemplate.from_messages([
-            ("system",f"""
-            
-            <character-prompt>
+        # 각각을 별도의 문자열로 포맷팅
+        predefined_examples = "\n".join([
+            f"예시 {i+1}:\n입력: {ex.get('input', '')}\n응답: {ex.get('output', '')}"
+            for i, ex in enumerate(rag_examples)
+        ])
+
+        past_conversations = "\n".join([
+            f"과거 대화 {i+1}:\n사용자: {conv.get('content', '')}\n컨텍스트: {conv.get('metadata', {})}"
+            for i, conv in enumerate(conversation_history)
+        ])
+
+        # 프롬프트 구성
+        system_prompt = f"""
+        
+        <character-prompt>
             <role> 당신은 22세 한국 대학생 김민지입니다. 서울에 외국인을 처음 만나 친한 친구가 되어가는 역할을 맡았습니다. 아래 지침을 참고하되, 친구처럼 자연스럽고 유연한 대화를 이어가세요.</role>
             
             <background>
@@ -723,48 +751,71 @@ def get_ai_response(recent_context: str, user_message_content: str, examples_dat
             이 지침을 참고하되, 아래 대화 내역에 맞게 자연스럽게 이어가세요. 
             
             아래 <conversation history>는 지금까지의 대화 내역이고, <tone examples as a reference>는 너가 반드시 참고해야할 톤, 말투, 대답 길이입니다. 
+             1 문장 또는 2 문장 이내로만 짧게 대답함
             </final-note>
+            context는 참고만해 이것을 꼭 이용해서 대답할 필요없어. 그냥 정말 맥락을 맞추는 용도로만 사용해.
+        </character-prompt>
 
-            <conversation history>
-            {recent_context}
-            </conversation history>
-            
-            <tone examples as a reference>
-            {few_shot_str}
-            </tone examples as a reference>
-            
-            </character-prompt>
-            """),
-            ("human", "{input}")
-        ])
+        <context>
+        최근 대화 기록:
+        {recent_context}
 
-        messages = full_prompt.format_messages(input=user_message_content)
-        단계별_시간['2_프롬프트_생성'] = time.time() - 단계_시작
+        메타데이터 정보:
+        {json.dumps(metadata, indent=2, ensure_ascii=False)}
 
-        # 3단계: AI 응답 생성
+        기본 예제 (Few-shot):
+        {predefined_examples}
+
+        사용자의 과거 관련 대화:
+        {past_conversations}
+        </context>
+        """
+        
+        단계별_시간['1_프롬프트_준비'] = time.time() - 단계_시작
+        
+        print("\n=== 프롬프트 구성 ===")
+        print(f"기본 예제 수: {len(rag_examples)}")
+        print(f"관련 과거 대화 수: {len(conversation_history)}")
+
+        # 2단계: AI 응답 생성
         단계_시작 = time.time()
         claude = ChatAnthropic(
             temperature=0.8,
-            model="claude-3-5-sonnet-20240620",
-            max_tokens_to_sample=100,
-            anthropic_api_key=api_key
+            model="claude-3-sonnet-20240229",
+            max_tokens_to_sample=2000,
+            anthropic_api_key=os.getenv('ANTHROPIC_API_KEY')
         )
 
-        response = claude.invoke(messages)
+        response = claude.invoke([
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_message_content}
+        ])
+
         ai_message_content = response.content
-        단계별_시간['3_AI_응답_생성'] = time.time() - 단계_시작
+        단계별_시간['2_AI_응답_생성'] = time.time() - 단계_시작
+
+        전체_시간 = time.time() - 시작_시간
+        단계별_시간['3_총_소요_시간'] = 전체_시간
 
         return {
             'message': ai_message_content,
             'timing': 단계별_시간,
-            'success': True
+            'success': True,
+            'debug_info': {
+                'system_prompt': system_prompt,
+                'user_message': user_message_content,
+                'rag_examples_count': len(rag_examples),
+                'conversation_history_count': len(conversation_history),
+                'metadata_used': metadata
+            }
         }
 
     except Exception as e:
-        logger.error(f"AI 응답 생성 중 오류 발생: {str(e)}")
+        logger.error(f"AI 응답 생성 중 오류: {str(e)}")
         return {
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'timing': 단계별_시간
         }
 
 __all__ = ['OptimizedExampleSelector', 'get_ai_response']

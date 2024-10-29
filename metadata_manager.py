@@ -2,87 +2,118 @@
 from openai import OpenAI
 from datetime import datetime
 import json
-import os
+from pytz import timezone
+
+KST = timezone('Asia/Seoul')
 
 class MetadataManager:
     def __init__(self, user_id: int):
         self.user_id = user_id
-        self.metadata_dir = 'metadata'
-        os.makedirs(self.metadata_dir, exist_ok=True)
-        self.metadata_file = f"{self.metadata_dir}/metadata_{user_id}.json"
-        self.client = OpenAI()
-
-    def load_metadata(self) -> dict:
-        try:
-            with open(self.metadata_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except FileNotFoundError:
-            return {
-                "user_preferences": {},
-                "personal_info": {},
-                "conversation_context": {
-                    "recent_topics": [],
-                    "key_points": []
-                }
+        self.client = OpenAI()  # OpenAI 클라이언트 초기화
+        self.metadata = {
+            'user_id': user_id,
+            'topics': [],
+            'entities': [],
+            'sentiment': None,
+            'preferences': {},
+            'timestamp': datetime.now(KST).isoformat(),
+            'interaction_count': 0,
+            'conversation_context': {
+                'recent_topics': [],
+                'mentioned_items': []
             }
+        }
 
-    def update_metadata(self, message: str) -> dict:
-        current_metadata = self.load_metadata()
-        
+    def extract_metadata_with_ai(self, message: str) -> dict:
+        """AI를 사용하여 메시지에서 메타데이터 추출"""
         try:
-            # GPT-4o-mini를 사용한 메타데이터 추출
             response = self.client.chat.completions.create(
-                model="gpt-4o-mini",
+                model="gpt-4o-mini",  # 또는 사용 가능한 최신 모델
                 messages=[
                     {"role": "system", "content": """메타데이터 관리자입니다. 
-                    사용자의 메시지에서 중요한 정보를 추출하여 구조화된 메타데이터로 변환합니다.
-                    새로운 정보는 추가하고, 기존 정보는 유지하면서 업데이트합니다.
-                    JSON 형식으로만 응답하세요."""},
-                    {"role": "user", "content": f"""현재 메타데이터:
-                    {json.dumps(current_metadata, indent=2, ensure_ascii=False)}
+                    사용자의 메시지에서 다음 정보를 추출하여 JSON 형식으로 반환하세요:
+                    - topics: 언급된 주제들의 배열
+                    - entities: 언급된 구체적 대상(영화, 책, 장소 등)의 배열
+                    - sentiment: 감정 상태 (positive, negative, neutral)
+                    - preferences: 사용자의 선호도 정보를 키-값 형태로
+                    - category: 대화의 카테고리 (entertainment, daily_life, question, etc)
                     
-                    새로운 메시지:
-                    {message}
-                    
-                    위 메시지에서 추출할 수 있는 새로운 정보를 기존 메타데이터에 추가하거나 업데이트해서
-                    JSON 형식으로만 반환해주세요."""}
+                    예시:
+                    입력: "나는 인터스텔라가 정말 좋아. 특히 우주 장면이 인상적이었어"
+                    출력: {
+                        "topics": ["영화", "우주", "SF"],
+                        "entities": ["인터스텔라"],
+                        "sentiment": "positive",
+                        "preferences": {
+                            "인터스텔라": "매우 좋아함",
+                            "우주_장면": "인상적"
+                        },
+                        "category": "entertainment"
+                    }"""},
+                    {"role": "user", "content": message}
                 ],
                 temperature=0
             )
             
-            # GPT 응답에서 JSON 추출
-            updated_metadata = json.loads(response.choices[0].message.content)
-            self.save_metadata(updated_metadata)
-            return updated_metadata
+            # AI 응답을 JSON으로 파싱
+            extracted_data = json.loads(response.choices[0].message.content)
+            return extracted_data
+            
+        except Exception as e:
+            print(f"메타데이터 추출 중 오류 발생: {str(e)}")
+            return {}
+
+    def update_metadata(self, message: str) -> dict:
+        """메시지 기반으로 메타데이터 업데이트"""
+        try:
+            # 기존 대화 수 조회
+            from app import Message  # 순환 참조 방지를 위해 지역 임포트
+            interaction_count = Message.query.filter_by(user_id=self.user_id).count()
+            
+            # AI를 사용하여 메타데이터 추출
+            extracted_metadata = self.extract_metadata_with_ai(message)
+            
+            # 메타데이터 업데이트
+            self.metadata.update({
+                'interaction_count': interaction_count + 1,
+                'timestamp': datetime.now(KST).isoformat(),
+                'message_length': len(message),
+                'topics': extracted_metadata.get('topics', []),
+                'entities': extracted_metadata.get('entities', []),
+                'sentiment': extracted_metadata.get('sentiment'),
+                'category': extracted_metadata.get('category')
+            })
+            
+            # preferences 업데이트 (기존 선호도 정보 유지하면서 새로운 정보 추가)
+            new_preferences = extracted_metadata.get('preferences', {})
+            if new_preferences:
+                if 'preferences' not in self.metadata:
+                    self.metadata['preferences'] = {}
+                self.metadata['preferences'].update(new_preferences)
+            
+            # 대화 컨텍스트 업데이트
+            if 'conversation_context' not in self.metadata:
+                self.metadata['conversation_context'] = {'recent_topics': [], 'mentioned_items': []}
+            
+            # 최근 토픽 업데이트 (최대 5개 유지)
+            recent_topics = self.metadata['conversation_context']['recent_topics']
+            new_topics = extracted_metadata.get('topics', [])
+            recent_topics.extend(new_topics)
+            self.metadata['conversation_context']['recent_topics'] = list(dict.fromkeys(recent_topics))[-5:]
+            
+            # 언급된 아이템 업데이트
+            mentioned_items = self.metadata['conversation_context']['mentioned_items']
+            new_entities = extracted_metadata.get('entities', [])
+            for entity in new_entities:
+                if entity not in mentioned_items:
+                    mentioned_items.append(entity)
+            
+            return self.metadata
             
         except Exception as e:
             print(f"메타데이터 업데이트 중 오류 발생: {str(e)}")
-            return current_metadata
-
-    def save_metadata(self, metadata: dict):
-        try:
-            with open(self.metadata_file, 'w', encoding='utf-8') as f:
-                json.dump(metadata, f, indent=4, ensure_ascii=False)
-        except Exception as e:
-            print(f"메타데이터 저장 중 오류 발생: {str(e)}")
+            return self.metadata
 
     def get_formatted_metadata(self) -> str:
-        """AI 프롬프트용 메타데이터 포맷팅"""
-        try:
-            metadata = self.load_metadata()
-            return json.dumps(metadata, indent=2, ensure_ascii=False)
-        except Exception as e:
-            print(f"메타데이터 포맷팅 중 오류 발생: {str(e)}")
-            return "{}"
-
-    def merge_metadata(self, old_metadata: dict, new_metadata: dict) -> dict:
-        """두 메타데이터를 재귀적으로 병합"""
-        if isinstance(old_metadata, dict) and isinstance(new_metadata, dict):
-            result = old_metadata.copy()
-            for key, value in new_metadata.items():
-                if key in result and isinstance(value, dict):
-                    result[key] = self.merge_metadata(result[key], value)
-                else:
-                    result[key] = value
-            return result
-        return new_metadata
+        """메타데이터를 포맷팅된 문자열로 반환"""
+        return json.dumps(self.metadata, indent=2, ensure_ascii=False)
