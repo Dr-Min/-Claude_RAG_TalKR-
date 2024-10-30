@@ -23,6 +23,29 @@ import time  # 시간 측정용
 from functools import lru_cache
 import json
 from metadata_manager import MetadataManager
+import logging
+import sys
+
+# 로거 설정
+logger = logging.getLogger('ai_gen')
+logger.setLevel(logging.INFO)
+
+# 콘솔 핸들러 설정
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+
+# 파일 핸들러 설정
+file_handler = logging.FileHandler('ai_gen.log', encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+
+# 포맷터 설정
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+file_handler.setFormatter(formatter)
+
+# 핸들러 추가
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
 
 # 환경 변수 로드
 load_dotenv()
@@ -326,7 +349,7 @@ def chat():
         # 한글 단계명 정의
         step_names = {
             '1_message_reception': '메시지 수신',
-            '2_example_selector_init': '��제 선택기 초기화',
+            '2_example_selector_init': '예제 선택기 초기화',
             '3_metadata_processing': '메타데이터 처리',
             '4_session_management': '세션 관리',
             '5_context_collection': '컨텍스트 수집',
@@ -580,9 +603,9 @@ def get_history():
         전체_처리_시간 = time.time() - 시작_시간
         단계별_시간['4_총_처리_시간'] = 전체_처리_시간
 
-        print("\n=== 히스토리 조회 시간 분석 ===")
+        logger.info("\n=== 히스토리 조회 시간 분석 ===")
         for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])):
-            print(f"{단계}: {소요시간:.3f}초")
+            logger.info(f"{단계}: {소요시간:.3f}초")
         print("===========================\n")
         
         return jsonify({
@@ -726,6 +749,15 @@ class UserConversationsView(BaseView):
                          grouped_conversations=grouped_messages)
 
 admin.add_view(UserConversationsView(name='User Conversations', endpoint='user_conversations'))
+
+@app.route('/initialize_examples', methods=['POST'])
+@login_required
+def initialize_examples():
+    try:
+        user_example_selector = get_user_example_selector(current_user.id)
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
     with app.app_context():

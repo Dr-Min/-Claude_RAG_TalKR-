@@ -579,7 +579,35 @@ const ChatApp = (function () {
     }
   }
 
-  // 로그인 함수
+  function handleLoginSuccess(data) {
+    setLoggedIn(true);
+    elements.authModal.style.display = "none";
+    updateUserId(data.username);
+    sessionStartTime = new Date();
+    startUsageTracking();
+
+    // 예제 초기화 요청
+    initializeExamples()
+      .then(() => console.log("예제 초기화 완료"))
+      .catch((error) => console.error("예제 초기화 중 오류:", error));
+  }
+
+  // 예제 초기화 함수 추가
+  function initializeExamples() {
+    return fetch("/initialize_examples", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("예제 초기화 실패");
+      }
+      return response.json();
+    });
+  }
+
+  // login 함수 수정
   function login() {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
@@ -592,11 +620,7 @@ const ChatApp = (function () {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setLoggedIn(true);
-          elements.authModal.style.display = "none";
-          updateUserId(username);
-          sessionStartTime = new Date();
-          startUsageTracking();
+          handleLoginSuccess(data);
         } else {
           setMessage("Failed to log in. Please try again.", "error");
         }
@@ -609,7 +633,6 @@ const ChatApp = (function () {
         );
       });
   }
-
   // 회원가입 함수
   function signup() {
     const username = document.getElementById("signup-username").value.trim();
