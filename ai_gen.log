@@ -5439,3 +5439,27 @@ Try filtering complex metadata from the document using langchain_community.vecto
 2024-10-30 13:25:44,076 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
 2024-10-30 13:25:45,964 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:25:45] "POST /generate_voice HTTP/1.1" 200 -
 2024-10-30 13:26:29,860 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:26:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:27:29,862 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:27:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:28:29,855 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:28:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:29:29,857 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:29:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:30:29,860 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:30:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:31:29,853 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:31:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:32:30,866 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:32:30] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:33:31,870 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:33:31] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:34:32,866 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:34:32] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:35:33,870 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:35:33] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:36:29,858 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:36:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:37:29,860 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:37:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:38:29,855 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:38:29] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:39:30,865 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:39:30] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:40:31,861 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:40:31] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:41:32,868 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:41:32] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:42:33,856 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:42:33] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:43:34,853 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:43:34] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:44:35,867 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:44:35] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:45:36,874 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:45:36] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:46:37,857 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:46:37] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:47:38,866 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:47:38] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:48:38,866 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:48:38] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:49:38,862 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:49:38] "POST /update_usage_time HTTP/1.1" 200 -
+2024-10-30 13:50:38,874 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2024 13:50:38] "POST /update_usage_time HTTP/1.1" 200 -
