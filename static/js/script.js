@@ -13,6 +13,10 @@ const ChatApp = (function () {
   let isTranslating = false;
   let pendingMessage = null;
   let messageQueue = [];
+  let lastProcessedResult = "";
+  let silenceTimer = null;
+  let lastSpeechTime = null;
+  let accumulatedTranscript = "";
 
   // DOM 요소 캐싱
   const elements = {
@@ -330,6 +334,10 @@ const ChatApp = (function () {
     recognition.lang = "ko-KR";
     recognition.interimResults = true;
     recognition.continuous = true;
+    recognition.maxAlternatives = 1;
+
+    // 침묵 타이머 설정 (밀리초 단위)
+    recognition.silenceTimeout = 5000; // 2초
 
     recognition.onstart = () => {
       console.log("음성 인식이 시작되었습니다.");
@@ -363,20 +371,34 @@ const ChatApp = (function () {
   function handleSpeechResult(event) {
     let currentTranscript = "";
 
+    // 음성이 감지될 때마다 타임스탬프 업데이트
+    lastSpeechTime = Date.now();
+
+    // 이전 타이머가 있다면 제거
+    if (silenceTimer) {
+      clearTimeout(silenceTimer);
+    }
+
     for (let i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         currentTranscript += event.results[i][0].transcript + " ";
+        accumulatedTranscript += event.results[i][0].transcript + " "; // 누적
       }
     }
 
-    elements.userInput.value = currentTranscript.trim();
+    elements.userInput.value = accumulatedTranscript.trim();
 
-    if (currentTranscript.trim() !== lastProcessedResult.trim()) {
-      if (currentTranscript.trim() !== "") {
-        lastProcessedResult = currentTranscript.trim();
-        sendMessage(lastProcessedResult, true);
+    // 새로운 침묵 타이머 설정
+    silenceTimer = setTimeout(() => {
+      if (accumulatedTranscript.trim() !== lastProcessedResult.trim()) {
+        if (accumulatedTranscript.trim() !== "") {
+          lastProcessedResult = accumulatedTranscript.trim();
+          sendMessage(lastProcessedResult, true);
+          stopListening();
+          accumulatedTranscript = ""; // 초기화
+        }
       }
-    }
+    }, 5000);
   }
 
   // 음성 인식 오류 처리
@@ -426,12 +448,16 @@ const ChatApp = (function () {
     console.log("음성 인식이 시작되었습니다.");
   }
 
-  // 음성 인식 중지
   function stopListening() {
     if (recognition) {
+      if (silenceTimer) {
+        clearTimeout(silenceTimer);
+        silenceTimer = null;
+      }
       recognition.stop();
       setListening(false);
       elements.voiceBtn.classList.remove("active");
+      accumulatedTranscript = ""; // 초기화 추가
       console.log("음성 인식이 중지되었습니다.");
     }
   }
