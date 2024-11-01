@@ -23,6 +23,8 @@ import logging
 import psutil
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
+from pydantic import Field
+
 
 # # 로깅 설정
 logging.basicConfig(
