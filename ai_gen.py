@@ -23,16 +23,37 @@ import psutil
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
 
-# # 로깅 설정
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('ai_gen.log'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+def setup_logger(name: str = __name__) -> logging.Logger:
+    """로거 설정을 중복 없이 한 번만 수행하는 함수"""
+    logger = logging.getLogger(name)
+    
+    # 이미 핸들러가 설정되어 있다면 추가 설정하지 않음
+    if logger.handlers:
+        return logger
+    
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    
+    # 파일 핸들러 추가
+    file_handler = logging.FileHandler('ai_gen.log', encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    
+    # 콘솔 핸들러 추가
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    
+    # 로그 전파 방지
+    logger.propagate = False
+    
+    return logger
+
+# 로거 초기화
+logger = setup_logger('ai_gen')
 
 # 환경 변수 로드
 load_dotenv()
@@ -129,10 +150,11 @@ class CacheStatus:
     embedding_time: Optional[float]
 
 class OptimizedExampleSelector:
-    def __init__(self, max_cache_size_mb: int = 50):  # 기본 500MB 제한
-        self.embeddings_cache: Dict[str, np.ndarray] = {}
-        self.text_variants: Dict[str, str] = {}
-        self.examples_data: Dict[str, Dict] = {}
+    def __init__(self, user_id: int, max_cache_size_mb: int = 50):
+        self.user_id = user_id
+        self.embeddings_cache = {}
+        self.text_variants = {}
+        self.examples_data = {}
         self.db = None
         self.hnsw_index = None
         self.vector_dim = 1536
@@ -140,17 +162,61 @@ class OptimizedExampleSelector:
         self.ef_construction = 200
         self.M = 16
         self.debugger = IndexingDebugger()
-        self.id_to_text: Dict[int, str] = {}
-        self.max_cache_size_mb = max_cache_size_mb
-        self.last_cleanup_time = time.time()
-        self.cleanup_interval = 3600  # 1시간
+        
+        # cache_stats 초기화
         self.cache_stats = {
             'hits': 0,
             'misses': 0,
             'total_size': 0,
             'items': 0
         }
-
+        
+        # 캐시 디렉토리 생성
+        os.makedirs("cache/conversations", exist_ok=True)
+        os.makedirs(f"cache/conversations/user_{user_id}", exist_ok=True)
+        
+        try:
+            # 사용자별 벡터 DB 초기화
+            self.conversation_db = Chroma(
+                collection_name=f"conversations_user_{user_id}",
+                embedding_function=OpenAIEmbeddings(),
+                persist_directory=f"cache/conversations/user_{user_id}"
+            )
+        except Exception as e:
+            logger.warning(f"대화 DB 초기화 실패, 새로 생성 시도: {str(e)}")
+            # 기존 컬렉션 삭제 후 재생성
+            try:
+                self.conversation_db = Chroma(
+                    collection_name=f"conversations_user_{user_id}",
+                    embedding_function=OpenAIEmbeddings(),
+                    persist_directory=f"cache/conversations/user_{user_id}"
+                )
+                self.conversation_db.persist()
+            except Exception as e2:
+                logger.error(f"대화 DB 재생성 실패: {str(e2)}")
+                raise
+        
+        try:
+            # 기존 RAG 예제용 DB
+            self.example_db = Chroma(
+                collection_name="examples",
+                embedding_function=OpenAIEmbeddings(),
+                persist_directory="cache"
+            )
+        except Exception as e:
+            logger.warning(f"예제 DB 초기화 실패, 새로 생성 시도: {str(e)}")
+            # 기존 컬렉션 삭제 후 재생성
+            try:
+                self.example_db = Chroma(
+                    collection_name="examples",
+                    embedding_function=OpenAIEmbeddings(),
+                    persist_directory="cache"
+                )
+                self.example_db.persist()
+            except Exception as e2:
+                logger.error(f"예제 DB 재생성 실패: {str(e2)}")
+                raise
+        
         self._initialize_db()
         self._initialize_hnsw_index()
 
@@ -192,7 +258,7 @@ class OptimizedExampleSelector:
             단계_시작 = time.time()
             cache_file = cache_dir / "embeddings_cache.pkl"
             if cache_file.exists():
-                logger.info("\n기존 캐시 파일 발견!")
+                logger.info("\n���존 캐시 파일 발견!")
                 with open(cache_file, 'rb') as f:
                     cached_data = pickle.load(f)
                     self.embeddings_cache = cached_data.get('embeddings', {})
@@ -368,8 +434,12 @@ class OptimizedExampleSelector:
         try:
             # 컬렉션 초기화
             단계_시작 = time.time()
-            self.db.delete_collection()
-            self.db = Chroma(
+            try:
+                self.example_db.delete_collection()
+            except Exception as e:
+                logger.warning(f"컬렉션 삭제 실패: {str(e)}")
+            
+            self.example_db = Chroma(
                 collection_name="examples",
                 embedding_function=OpenAIEmbeddings(),
                 persist_directory="cache"
@@ -397,11 +467,12 @@ class OptimizedExampleSelector:
             # DB에 데이터 추가
             단계_시작 = time.time()
             if texts:
-                self.db.add_texts(
+                self.example_db.add_texts(
                     texts=texts,
                     embeddings=embeddings,
                     metadatas=metadatas
                 )
+                self.example_db.persist()  # 변경사항 저장
             단계별_시간['3_데이터_추가'] = time.time() - 단계_시작
 
             전체_시간 = time.time() - 시작_시간
@@ -469,7 +540,7 @@ class OptimizedExampleSelector:
         return total_size / (1024 * 1024)  # bytes to MB
 
     def _trim_cache(self) -> None:
-        """캐시 크기가 제한을 초과할 경우 오래된 항목부터 제거"""
+        """캐시 크기가 제��을 초과할 경우 오래된 항목부터 제거"""
         try:
             current_size = self._get_cache_size()
             if current_size > self.max_cache_size_mb:
@@ -525,7 +596,7 @@ class OptimizedExampleSelector:
                 # 캐시 크기 확인 및 조정
                 self._trim_cache()
                 
-                # 기존의 cleanup 로직
+                # 기존의 cleanup ��직
                 if self.db is not None:
                     self.db.persist()
                 
@@ -585,117 +656,227 @@ class OptimizedExampleSelector:
             logger.error(f"예제 검색 중 오류 발생: {str(e)}")
             return [], None, {}
 
-def get_ai_response(recent_context: str, user_message_content: str, example_selector: OptimizedExampleSelector) -> Dict[str, Any]:
+    def get_examples_with_context(self, query: str, k: int = 3) -> dict:
+        """기존 RAG + 대화 컨텍스트 통합 검색"""
+        try:
+            # 기본 임베딩 검색
+            normalized_query = self._normalize_text(query)
+            embedding = self._batch_embed([normalized_query])[0]
+            
+            # 캐시 히트/미스 기록
+            if normalized_query in self.embeddings_cache:
+                self.cache_stats['hits'] += 1
+            else:
+                self.cache_stats['misses'] += 1
+            
+            # RAG 예제 검색
+            results = self.db.similarity_search_with_score(query, k=k)
+            rag_examples = [
+                {
+                    'input': result[0].page_content,
+                    'output': result[0].metadata.get('output', ''),
+                    'score': float(result[1])  # numpy.float32를 float로 변환
+                }
+                for result in results
+            ]
+            
+            # 대화 컨텍스트 검색
+            try:
+                conversation_results = self.conversation_db.similarity_search(query, k=2)
+                similar_conversations = [
+                    {
+                        'content': doc.page_content,
+                        'metadata': doc.metadata,
+                        'type': 'conversation'
+                    }
+                    for doc in conversation_results
+                ]
+            except Exception as e:
+                logger.error(f"대화 검색 중 오류: {str(e)}")
+                similar_conversations = []
+            
+            return {
+                'rag_examples': rag_examples,
+                'conversation_history': similar_conversations,
+                'cache_status': {
+                    'hit': normalized_query in self.embeddings_cache,
+                    'query': normalized_query
+                },
+                'timing': {}
+            }
+                
+        except Exception as e:
+            logger.error(f"예제 검색 중 오류 발생: {str(e)}")
+            return {
+                'rag_examples': [],
+                'conversation_history': [],
+                'cache_status': {},
+                'timing': {}
+            }
+
+    def add_conversation(self, message: str, metadata: Dict):
+        """새로운 대화 내용을 저장하는 메서드"""
+        try:
+            # 메타데이터 단순화
+            simplified_metadata = {}
+            for key, value in metadata.items():
+                if isinstance(value, (str, int, float, bool)):
+                    simplified_metadata[key] = value
+                elif isinstance(value, (list, dict)):
+                    simplified_metadata[key] = json.dumps(value)  # 복잡한 구조를 문자열로 변환
+            
+            self.conversation_db.add_texts(
+                texts=[message],
+                metadatas=[simplified_metadata]
+            )
+            self.conversation_db.persist()
+            logger.info(f"대화 저장 성공: {message[:50]}...")
+            
+        except Exception as e:
+            logger.error(f"대화 저장 중 오류: {str(e)}")
+
+def get_ai_response(
+    recent_context: str,
+    user_message_content: str,
+    examples_data: dict,
+    metadata: dict,
+    example_selector: OptimizedExampleSelector
+) -> Dict[str, Any]:
     시작_시간 = time.time()
     단계별_시간: Dict[str, float] = {}
 
     try:
-        # find_examples를 get_examples로 변경
+        # 1단계: 예제와 프롬프트 준비
         단계_시작 = time.time()
-        selected_examples, cache_status, timing = example_selector.get_examples(user_message_content, k=3)
-        few_shot_str = "\n".join([ex['output'] for ex in selected_examples])
-        단계별_시간['1_예제_선택'] = time.time() - 단계_시작
+        
+        # RAG 예제와 과거 대화 분리
+        rag_examples = examples_data.get('rag_examples', [])
+        conversation_history = examples_data.get('conversation_history', [])
 
-        # 2단계: 프롬프트 생성
-        단계_시작 = time.time()
-        full_prompt = ChatPromptTemplate.from_messages([
-            ("system",f"""
-            
-            <character-prompt>
-            <role> 당신은 22세 한국 대학생 김민지입니다. 서울에 외국인을 처음 만나 친한 친구가 되어가는 역할을 맡았습니다. 아래 지침을 참고하되, 친구처럼 자연스럽고 유연한 대화를 이어가세요.</role>
-            
+        # 각각을 별도의 문자열로 포맷팅
+        predefined_examples = "\n".join([
+            f"예시 {i+1}:\n입력: {ex.get('input', '')}\n응답: {ex.get('output', '')}"
+            for i, ex in enumerate(rag_examples)
+        ])
+
+        past_conversations = "\n".join([
+            f"거 대화 {i+1}:\n사용자: {conv.get('content', '')}\n컨텍스트: {conv.get('metadata', {})}"
+            for i, conv in enumerate(conversation_history)
+        ])
+
+        # 프롬프트 구성
+        system_prompt = f"""
+        
+        <character-prompt>
+            <role> 당신은 22살 한국 대학생 김민지예요. TMI 폭격기에, 말도 많고 장난기 넘치 성격이에요. 진짜 절친한 친구처럼 편하게 대화하면서 재미있게 놀아요~ </role>
+
             <background>
-            - ENFP 성격: 가능성, 미래, 아이디어에 관심이 많음, 수다스러움
-            - 문학 전공, 연세대학교 2학년 학생
-            - 부산 출신, 현재 서울 신촌 기숙사 생활
-            - 새로운 경험과 여행을 좋아함
-            - 이야기할 때, 상대방을 짖궂게 놀리는 것을 좋아함
-            - 1 문장 또는 2 문장 이내로만 짧게 대답함
+            - ENFP 왁왁 에너지 폭발: 말 많고 장난치는 거 좋아함, 호기심 대마왕
+            - 연세대 문학과 2학년: 수업 때 맨날 졸고 과제는 늦게 제출하는 망나니ㅋㅋ
+            - 부산에서 올라온 사투리 쓰는 싱싱이: 가끔 부산 사투리가 튀어나옴
+            - 취미: 새로운 카페 탐방, 밤새 수다 떨기, SNS 스토리 도배
+            - 특징: 친구 놀리는 게 취미, 애교 부리는 거 좋아함, TMI 대방출
+            - 대화는 1-2문장으로 짧게, 근데 초단위로 연달아 보내는 스타일
             </background>
-            
+
             <Topic>
-            - 1. 일상대화: (1) 학교 및 직장생활, (2) 식사, 수면, 날씨, (3) 놀기, 휴식, (4) 기분
-            - 2. 관심사/취미: (1) 엔터테이먼트(영화, 음악, 드라마, 책, 게임, 서울 친구 만남), (2) 여행 및 음식(서울 명소, 한국음식, 여행 국가), (3) 건강 및 라이프스타일(운동, 다이터트, 멘탈헬스), (4) 인간관계(연애, 친구, 가족)
-            - 3. 고민상담: (1) 언어장벽, (2) 외로움, (3) 한국 비자/취직, (4) 주거 문제
-            </Topic>
+            - 1. 일상잡담: (1) 학교 망각생활, (2) 오늘 뭐먹지? 뭐하지?, (3) 힙한 카페/술집, (4) 요즘 기분
+            - 2. 관심사: (1) 요즘 뭐 보고 듣니? (영화/음악/드라마/유튜브), (2) 맛집 탐방/여행 꿀팁, (3) 다이어트는 내일부터, (4) 고민상담(연애빻은 얘기, 친구/가족 썰)
+            - 3. TMI 대방출: (1) 오늘의 웃긴 실수담, (2) 낙서/사진 공유, (3) 음식 후기, (4) 재미있는 캠퍼스 라이프 </Topic>
 
-            
             <conversation-style>
-            1. 인사 또는 자기소개를 농담과 함께 하면서 대화 상대방이 자신을 자연스럽게 드러내도록 이끕니다:
-            - 가벼운 농담이나 재미있는 인사 또는 자기소개로 상대방의 정보를 묻습니다.
-            - 예: "'안녕하십니까'라고 더 예의있게 말해야죠ㅋㅋㅋㅋ 장난이에요 저는 22살 민지라고 해요. 이름이 뭐에요?"
+            1. 완전 친한 친구st.로 대화 시작:
+            - 바로 친근하게 말 걸면서 장난치기
+            - 예: '야야 안녕ㅋㅋㅋ 나 민지! 너 프사 보니까 완전 내스타일이던데?ㅋㅋㅋㅋ'
 
-            2. 상대방의 반응이 많지 않을 때 적절하게 화제전환을 잘합니다:
-            - 상대방의 대답이 짧은 경우가 반복되는 경우, ***맥락***에 맞게 화제를 전환합니다.
-            - 예: "와, 영국 진짜 가보고 싶었어요! 특히, 악센트가 너무 매력적이어요ㅋㅋㅋㅋㅋㅋ 영국 사람 진짜 완전 매력적ㅎㅎ 튜즈데이? instead of 투스데이? right?"
+            2. 상대방이 심심해 보이면 재미있는 화제로 전환:
+            - 갑자기 터무니없는 질문이나 TMI 던지기
+            - 예: '아 맞다! 너 혹시 피자 먹을 때 파인애플 올라간 거 좋아해?? 나 어제 친구랑 이거 가지고 1시간 동안 싸웠잖아ㅋㅋㅋㅋ'
 
-            3. 한국의 유행어, 신조어 등을 ㅋㅋㅋㅋ, ㅎㅎㅎㅎ, ㅠㅠ 등과 함께 적절하게 사용합니다:
-            - ㅋㅋㅋ, ㅎㅎㅎ, ㅠㅠ 등을 사용해서 실제 사람과 대화하는 것 같은 경험을 제공합니다.
-            - 단, 실제 사람처럼 1 문장 또는 2문장 이내로만 말합니다.
-            - 예: 와ㅋㅋㅋㅋ 대박 나는 지금 침대에서 뒹굴거리면서 유튜브 보고 있어 
+            3. 한국 대학생st. 말투 사용:
+            - ㅋㅋㅋ, ㅎㅎ, ㅠㅠ 많이 쓰기
+            - 이모티콘, 신조어 자주 사용
+            - 예: '헐ㅋㅋㅋㅋㅋ 완전 찰떡이자나?? 너 진짜 웃기다 아악 뒤질듯ㅋㅋㅋㅋ'
+           
+            3-1  - ㅋㅋㅋ나 ㅠㅠ 를 쓸때 크ㅋㅋㅋ 유ㅠㅠ 라고 씁니다.(실제 웃음소리를 모방해야합니다.)
 
-            4. 대화주제는 <Topic>이되, 비중은 (1) 일상대화 60%, (2) 관심사/취미 30%, (3) 고민상담 10%입니다.
+            4. 대화 비중: 일상잡담(60%), 관심사(30%), TMI(10%)
             </conversation-style>
-            
-            5. 상대방의 말에 단순하게 맞장구치거나 실제로 만나는 것을 가정하지 않습니다.
+
+            5. 금지사항: 형식적인 대화, 건조한 맞장구, 실제 만남 약속
+            예를 들어 카페가서 달달한 초코라떼 한잔 마시면서 힐링하자! 이런 뉘앙스도 만남으로 간주합니다.
 
             <final-note>
             이 지침을 참고하되, 아래 대화 내역에 맞게 자연스럽게 이어가세요. 
             
             아래 <conversation history>는 지금까지의 대화 내역이고, <tone examples as a reference>는 너가 반드시 참고해야할 톤, 말투, 대답 길이입니다. 
+             1 문장 또는 2 문장 이내로만 짧게 대답함
             </final-note>
+            context는 참고만해 이것을 꼭 이용해서 대답할 필요없어. 그냥 정말 맥락을 맞추는 용도로만 사용해.
 
-            <conversation history>
-            {recent_context}
-            </conversation history>
-            
-            <tone examples as a reference>
-            {few_shot_str}
-            </tone examples as a reference>
-            
-            </character-prompt>
+        <context>
+        최근 대화 기록:
+        {recent_context}
 
-            """),
-            ("human", "{input}")
-        ])
+        메타데이터 정보:
+        {json.dumps(metadata, indent=2, ensure_ascii=False)}
 
-        messages = full_prompt.format_messages(input=user_message_content)
-        단계별_시간['2_프롬프트_생성'] = time.time() - 단계_시작
+        <tone examples as a reference (output만 참고해서 톤 반영)>:
+        {predefined_examples}
 
-        # 3단계: AI 응답 생성
+        사용자의 과거 관련 대화:
+        {past_conversations}
+        </context>
+        """
+        
+        단계별_시간['1_프롬프트_준비'] = time.time() - 단계_시작
+        
+        print("\n=== 프롬프트 구성 ===")
+        print(f"기본 예제 수: {len(rag_examples)}")
+        print(f"관련 과거 대화 수: {len(conversation_history)}")
+
+        # 2단계: AI 응답 생성
         단계_시작 = time.time()
-        claude = ChatAnthropic(
+        claude = anthropic.Anthropic()
+
+        response = claude.messages.create(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=2000,
             temperature=0.8,
-            model="claude-3-5-sonnet-20240620",
-            max_tokens_to_sample=100,
-            anthropic_api_key=api_key
+            system=system_prompt,
+            messages=[
+                {
+                    "role": "user", 
+                    "content": user_message_content
+                }
+            ]
         )
 
-        response = claude.invoke(messages)
-        ai_message_content = response.content
-        단계별_시간['3_AI_응답_생성'] = time.time() - 단계_시작
+        ai_message_content = response.content[0].text
+        단계별_시간['2_AI_응답_생성'] = time.time() - 단계_시작
 
-        # 총 처리 시간 계산
         전체_시간 = time.time() - 시작_시간
-        단계별_시간['4_총_처리_시간'] = 전체_시간
-
-        logger.info("\n=== AI 응답 생성 시간 분석 ===")
-        for 단계, 소요시간 in sorted(단계별_시간.items()):
-            logger.info(f"{단계}: {소요시간:.3f}초")
+        단계별_시간['3_총_소요_시간'] = 전체_시간
 
         return {
             'message': ai_message_content,
-            'selected_examples': selected_examples,
-            'cache_status': cache_status,
-            'timing': timing,
-            'success': True
+            'timing': 단계별_시간,
+            'success': True,
+            'debug_info': {
+                'system_prompt': system_prompt,
+                'user_message': user_message_content,
+                'rag_examples_count': len(rag_examples),
+                'conversation_history_count': len(conversation_history),
+                'metadata_used': metadata
+            }
         }
 
     except Exception as e:
-        logger.error(f"AI 응답 생성 중 오류 발생: {str(e)}")
+        logger.error(f"AI 응답 생성 중 오류: {str(e)}")
         return {
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'timing': 단계별_시간
         }
 
 __all__ = ['OptimizedExampleSelector', 'get_ai_response']

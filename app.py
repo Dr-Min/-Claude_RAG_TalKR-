@@ -20,6 +20,11 @@ import base64
 import secrets
 from ai_gen import OptimizedExampleSelector, get_ai_response
 import time  # 시간 측정용
+from functools import lru_cache
+import json
+from metadata_manager import MetadataManager
+import logging
+import sys
 
 # 환경 변수 로드
 load_dotenv()
@@ -41,7 +46,11 @@ login_manager.login_view = 'login'
 # OpenAI 클라이언트 초기화
 client = OpenAI()
 migrate = Migrate(app, db)
-example_selector = OptimizedExampleSelector()
+
+# 사용자별 ExampleSelector를 관리하는 함수 추가
+@lru_cache(maxsize=100)
+def get_user_example_selector(user_id: int) -> OptimizedExampleSelector:
+    return OptimizedExampleSelector(user_id=user_id)
 
 # Flask-Mail 설정
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -90,6 +99,29 @@ class Message(db.Model):
     is_user = db.Column(db.Boolean, nullable=False)
     timestamp = db.Column(db.DateTime, default=lambda: datetime.now(KST))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    message_metadata = db.Column(db.JSON, nullable=True)
+
+    def set_metadata(self, metadata):
+        """메타데이터 저장"""
+        if isinstance(metadata, dict):
+            # JSON으로 직렬화된 문자열이 아닌 딕셔너리 그대로 저장
+            self.message_metadata = metadata
+
+    def get_metadata(self):
+        """메타데이터 조회"""
+        if self.message_metadata:
+            return self.message_metadata
+        return {
+            'topics': [],
+            'entities': [],
+            'sentiment': None,
+            'preferences': {},
+            'conversation_context': {
+                'recent_topics': [],
+                'mentioned_items': []
+            }
+        }
+
 
 # 관리자 뷰 설정
 class SecureModelView(ModelView):
@@ -127,17 +159,101 @@ def load_user(user_id):
 def home():
     return render_template('index.html')
 
+def format_timing_info(timing_stats):
+    """타이밍 정보를 한글로 포맷팅"""
+    formatted_info = {
+        "총_처리_시간": f"{timing_stats['total']['duration']:.3f}초",
+        "단계별_처리_시간": {}
+    }
+    
+    step_names = {
+        "1_message_reception": "메시지_수신",
+        "2_example_selector_init": "예제_선택기_초기화",
+        "3_metadata_processing": "메타데이터_처리",
+        "4_session_management": "세션_관리",
+        "5_context_collection": "컨텍스트_수집",
+        "6_rag_search": "RAG_검색",
+        "7_ai_response": "AI_응답_생성",
+        "8_vector_db_update": "벡터DB_업데이트"
+    }
+    
+    substep_names = {
+        "metadata_update": "메타데이터_업데이트",
+        "session_query": "세션_조회",
+        "session_creation": "세션_생성",
+        "message_storage": "메시지_저장",
+        "example_search": "예제_검색",
+        "api_call": "API_호출",
+        "response_storage": "응답_저장"
+    }
+    
+    for step, timing in timing_stats['steps'].items():
+        kr_step_name = step_names.get(step, step)
+        step_info = {
+            "소요_시간": f"{timing['duration']:.3f}초"
+        }
+        
+        if timing.get('sub_steps'):
+            step_info["세부_단계"] = {}
+            for sub_step, duration in timing['sub_steps'].items():
+                kr_substep_name = substep_names.get(sub_step, sub_step)
+                step_info["세부_단계"][kr_substep_name] = f"{duration:.3f}초"
+        
+        formatted_info["단계별_처리_시간"][kr_step_name] = step_info
+    
+    return formatted_info
+
 @app.route('/chat', methods=['POST'])
 @login_required
 def chat():
-    단계별_시간 = {}
-    전체_시작_시간 = time.time()
-    메시지_처리_시작_시간 = time.time()
-    user_message_content = request.json['message']
+    timing_stats = {
+        'total': {'start': time.time(), 'duration': None},
+        'steps': {}
+    }
     
+    # timing 기록 함수들
+    def record_timing(step_name):
+        current_time = time.time()
+        if step_name not in timing_stats['steps']:
+            timing_stats['steps'][step_name] = {
+                'start': current_time,
+                'duration': None,
+                'sub_steps': {}
+            }
+        return current_time
+    
+    def end_timing(step_name, start_time):
+        duration = time.time() - start_time
+        timing_stats['steps'][step_name]['duration'] = duration
+        return duration
+
+    def record_sub_timing(main_step, sub_step, duration):
+        timing_stats['steps'][main_step]['sub_steps'][sub_step] = duration
+
     try:
-        # 1단계: 대화 세션 확인/생성
-        시작_시간 = time.time()
+        # 메시지 수신
+        start_time = record_timing('1_message_reception')
+        user_message_content = request.json['message']
+        end_timing('1_message_reception', start_time)
+        
+        # ExampleSelector 초기화
+        start_time = record_timing('2_example_selector_init')
+        user_example_selector = get_user_example_selector(current_user.id)
+        end_timing('2_example_selector_init', start_time)
+        
+        # 메타데이터 매니저 초���화 및 처리
+        start_time = record_timing('3_metadata_processing')
+        metadata_manager = MetadataManager(
+            user_id=current_user.id,
+            message_model=Message  # Message 모델 클래스를 직접 전달
+        )
+        updated_metadata = metadata_manager.update_metadata(user_message_content)
+        end_timing('3_metadata_processing', start_time)
+        
+        print(f"\n업데이트된 메타데이터: {json.dumps(updated_metadata, indent=2, ensure_ascii=False)}")
+        
+        # 대화 세션 확인/생성
+        start_time = record_timing('4_session_management')
         active_conversation = Conversation.query.filter_by(
             user_id=current_user.id, 
             end_time=None
@@ -147,63 +263,132 @@ def chat():
             active_conversation = Conversation(user_id=current_user.id)
             db.session.add(active_conversation)
             db.session.commit()
-        단계별_시간['1_세션_확인'] = time.time() - 시작_시간
-            
-        # 2단계: 사용자 메시지 저장
-        시작_시간 = time.time()
+        end_timing('4_session_management', start_time)
+        
+        # 사용자 메시지 저장
+        start_time = record_timing('5_message_storage')
         user_message = Message(
             conversation_id=active_conversation.id,
             content=user_message_content,
             is_user=True,
             user_id=current_user.id
         )
+        user_message.set_metadata(updated_metadata)  # set_metadata 메서드 사용
         db.session.add(user_message)
         db.session.commit()
-        단계별_시간['2_메시지_저장'] = time.time() - 시작_시간
-
-        # 3단계: 최근 컨텍스트 가져오기
-        시작_시간 = time.time()
+        end_timing('5_message_storage', start_time)
+        
+        # 최근 컨텍스트 가져오기
+        start_time = record_timing('6_context_collection')
         recent_context = get_recent_context(active_conversation.id)
-        단계별_시간['3_컨텍스트_조회'] = time.time() - 시작_시간
-
-        # 4단계: AI 응답 생성
-        시작_시간 = time.time()
-        ai_response = get_ai_response(recent_context, user_message_content, example_selector)
-        ai_message_content = ai_response['message']
-        selected_examples = ai_response['selected_examples']
-        cache_status = ai_response['cache_status']
-        단계별_시간['4_AI_응답_생성'] = time.time() - 시작_시간
-
-        # 5단계: AI 응답 저장
-        시작_시간 = time.time()
+        end_timing('6_context_collection', start_time)
+        print(f"\n최근 대화 컨텍스트:\n{recent_context}")
+        
+        # RAG 검색
+        start_time = record_timing('7_rag_search')
+        examples_data = user_example_selector.get_examples_with_context(user_message_content)
+        end_timing('7_rag_search', start_time)
+        print("\nRAG 검색 결과:")
+        print(json.dumps(examples_data, indent=2, ensure_ascii=False))
+        
+        # AI 응답 생성
+        start_time = record_timing('8_ai_response')
+        ai_response = get_ai_response(
+            recent_context=recent_context,
+            user_message_content=user_message_content,
+            examples_data=examples_data,
+            metadata=updated_metadata,
+            example_selector=user_example_selector
+        )
+        end_timing('8_ai_response', start_time)
+        print(f"\nAI 응답: {ai_response['message']}")
+        
+        # AI 응답 저장
+        start_time = record_timing('9_response_storage')
         ai_message = Message(
             conversation_id=active_conversation.id,
-            content=ai_message_content,
+            content=ai_response['message'],
             is_user=False,
-            user_id=current_user.id
+            user_id=current_user.id,
+            message_metadata=None
         )
         db.session.add(ai_message)
         db.session.commit()
-        단계별_시간['5_응답_저장'] = time.time() - 시작_시간
+        end_timing('9_response_storage', start_time)
+        
+        # 벡터 DB에 대화 추가
+        user_example_selector.add_conversation(
+            message=user_message_content,
+            metadata=updated_metadata
+        )
+        
+        # 총 소요 시간 계산
+        timing_stats['total']['duration'] = time.time() - timing_stats['total']['start']
 
-        메시지_처리_총시간 = time.time() - 메시지_처리_시작_시간
-        단계별_시간['6_메시지_처리_총시간'] = 메시지_처리_총시간
+        # 한글 단계명 정의
+        step_names = {
+            '1_message_reception': '메시지 수신',
+            '2_example_selector_init': '예제 선택기 초기화',
+            '3_metadata_processing': '메타데이터 처리',
+            '4_session_management': '세션 관리',
+            '5_context_collection': '컨텍스트 수집',
+            '6_rag_search': 'RAG 검색',
+            '7_ai_response': 'AI 응답 생성',
+            '8_vector_db_update': '벡터 DB 업데이트'
+        }
 
-        전체_처리_시간 = time.time() - 전체_시작_시간
-        단계별_시간['7_전체_처리_시간'] = 전체_처리_시간
+        substep_names = {
+            'metadata_update': '메타데이터 업데이트',
+            'session_query': '세션 조회',
+            'session_creation': '세션 생성',
+            'message_storage': '메시지 저장',
+            'example_search': '예제 검색',
+            'api_call': 'API 호출',
+            'response_storage': '응답 저장'
+        }
 
+        # 타이밍 정보 로깅
         print("\n=== 처리 시간 분석 ===")
-        for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])): 
-            print(f"{단계}: {소요시간:.3f}초")
+        for step, timing in timing_stats['steps'].items():
+            kr_step_name = step_names.get(step, step)
+            print(f"\n◆ {kr_step_name}: {timing['duration']:.3f}초")
+            if timing.get('sub_steps'):
+                for sub_step, duration in timing['sub_steps'].items():
+                    kr_substep_name = substep_names.get(sub_step, sub_step)
+                    print(f"  └─ {kr_substep_name}: {duration:.3f}초")
+        print(f"\n총 소요 시간: {timing_stats['total']['duration']:.3f}초")
         print("===================\n")
 
+        # 응답용 한글 타이밍 데이터 생성
+        kr_timing_stats = {
+            '총_처리_시간': f"{timing_stats['total']['duration']:.3f}초",
+            '단계별_처리_시간': {}
+        }
+
+        for step, timing in timing_stats['steps'].items():
+            kr_step_name = step_names.get(step, step)
+            step_info = {
+                '소요_시간': f"{timing['duration']:.3f}초"
+            }
+            
+            if timing.get('sub_steps'):
+                step_info['세부_단계'] = {}
+                for sub_step, duration in timing['sub_steps'].items():
+                    kr_substep_name = substep_names.get(sub_step, sub_step)
+                    step_info['세부_단계'][kr_substep_name] = f"{duration:.3f}초"
+            
+            kr_timing_stats['단계별_처리_시간'][kr_step_name] = step_info
+
         return jsonify({
-            'message': ai_message_content,
+            'message': ai_response['message'],
             'message_id': ai_message.id,
             'success': True,
-            'timing': 단계별_시간,
-            'selected_examples': selected_examples,
-            'cache_status': cache_status  # 캐시 상태 추가
+            'timing': kr_timing_stats,  # 한글화된 타이밍 정보
+            'debug_info': {
+                'metadata': updated_metadata,
+                'examples': examples_data.get('rag_examples', []),
+                'context': recent_context
+            }
         })
 
     except Exception as e:
@@ -397,9 +582,9 @@ def get_history():
         전체_처리_시간 = time.time() - 시작_시간
         단계별_시간['4_총_처리_시간'] = 전체_처리_시간
 
-        print("\n=== 히스토리 조회 시간 분석 ===")
+        logger.info("\n=== 히스토리 조회 시간 분석 ===")
         for 단계, 소요시간 in sorted(단계별_시간.items(), key=lambda x: int(x[0].split('_')[0])):
-            print(f"{단계}: {소요시간:.3f}초")
+            logger.info(f"{단계}: {소요시간:.3f}초")
         print("===========================\n")
         
         return jsonify({
@@ -418,7 +603,7 @@ def get_history():
 @app.route('/update_usage_time', methods=['POST'])
 @login_required
 def update_usage_time():
-    """사용자의 총 사용 시간을 업데이트하는 라우트"""
+    """사용자의 총 사용 간을 업데이트하는 라우트"""
     data = request.json
     current_user.total_usage_time += data['time']
     db.session.commit()
@@ -426,7 +611,7 @@ def update_usage_time():
 
 @app.route('/request_reset', methods=['POST'])
 def request_reset():
-    """비밀번호 재설정 요청을 처리하는 라우트"""
+    """비밀번호 설정 요청을 처리하는 라우트"""
     try:
         email = request.json.get('email')
         user = User.query.filter_by(email=email).first()
@@ -543,6 +728,15 @@ class UserConversationsView(BaseView):
                          grouped_conversations=grouped_messages)
 
 admin.add_view(UserConversationsView(name='User Conversations', endpoint='user_conversations'))
+
+@app.route('/initialize_examples', methods=['POST'])
+@login_required
+def initialize_examples():
+    try:
+        user_example_selector = get_user_example_selector(current_user.id)
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
     with app.app_context():

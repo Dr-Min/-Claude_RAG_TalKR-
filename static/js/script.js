@@ -13,6 +13,10 @@ const ChatApp = (function () {
   let isTranslating = false;
   let pendingMessage = null;
   let messageQueue = [];
+  let lastProcessedResult = "";
+  let silenceTimer = null;
+  let lastSpeechTime = null;
+  let accumulatedTranscript = "";
 
   // DOM 요소 캐싱
   const elements = {
@@ -178,6 +182,7 @@ const ChatApp = (function () {
 
   // 서버에 메시지 전송
   // 서버에 메시지 전송
+  // 기존의 sendMessageToServer 함수를 다음과 같이 수정
   function sendMessageToServer(message) {
     return fetch("/chat", {
       method: "POST",
@@ -191,19 +196,10 @@ const ChatApp = (function () {
       })
       .then((data) => {
         if (data.timing) {
-          console.log("\n=== 처리 시간 분석 ===");
-          // 단계별 시간 출력
-          Object.entries(data.timing)
-            .sort((a, b) => {
-              const aNum = parseInt(a[0].split("_")[0]) || Infinity;
-              const bNum = parseInt(b[0].split("_")[0]) || Infinity;
-              return aNum - bNum;
-            })
-            .forEach(([단계, 소요시간]) => {
-              console.log(`${단계}: ${소요시간.toFixed(3)}초`);
-            });
+          console.log("\n"); // 가독성을 위한 빈 줄
+          printTimingInfo(data.timing);
 
-          // 캐시 상태 출력 추가
+          // 캐시 상태 출력
           if (data.cache_status) {
             console.log("\n=== 캐시 상태 ===");
             console.log(`입력 텍스트: ${data.cache_status.input_text}`);
@@ -230,13 +226,14 @@ const ChatApp = (function () {
               console.log(`Output: ${example.output}\n`);
             });
           }
-          console.log("===================\n");
         }
         return data;
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error;
       });
   }
-
-  // 메시지 추가
   // 메시지 추가
   function addMessage(message, isUser, audioData) {
     const messageDiv = document.createElement("div");
@@ -337,6 +334,10 @@ const ChatApp = (function () {
     recognition.lang = "ko-KR";
     recognition.interimResults = true;
     recognition.continuous = true;
+    recognition.maxAlternatives = 1;
+
+    // 침묵 타이머 설정 (밀리초 단위)
+    recognition.silenceTimeout = 5000; // 2초
 
     recognition.onstart = () => {
       console.log("음성 인식이 시작되었습니다.");
@@ -370,20 +371,25 @@ const ChatApp = (function () {
   function handleSpeechResult(event) {
     let currentTranscript = "";
 
+    // 음성이 감지될 때마다 타임스탬프 업데이트
+    lastSpeechTime = Date.now();
+
+    // 이전 타이머가 있다면 제거
+    if (silenceTimer) {
+      clearTimeout(silenceTimer);
+    }
+
     for (let i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         currentTranscript += event.results[i][0].transcript + " ";
+        accumulatedTranscript += event.results[i][0].transcript + " "; // 누적
       }
     }
 
-    elements.userInput.value = currentTranscript.trim();
+    elements.userInput.value = accumulatedTranscript.trim();
 
-    if (currentTranscript.trim() !== lastProcessedResult.trim()) {
-      if (currentTranscript.trim() !== "") {
-        lastProcessedResult = currentTranscript.trim();
-        sendMessage(lastProcessedResult, true);
-      }
-    }
+    // 자동 전송 로직 제거
+    // 대신 사용자가 send 버튼을 클릭하거나 Enter를 누를 때까지 대기
   }
 
   // 음성 인식 오류 처리
@@ -433,12 +439,16 @@ const ChatApp = (function () {
     console.log("음성 인식이 시작되었습니다.");
   }
 
-  // 음성 인식 중지
   function stopListening() {
     if (recognition) {
+      if (silenceTimer) {
+        clearTimeout(silenceTimer);
+        silenceTimer = null;
+      }
       recognition.stop();
       setListening(false);
       elements.voiceBtn.classList.remove("active");
+      accumulatedTranscript = ""; // 초기화 추가
       console.log("음성 인식이 중지되었습니다.");
     }
   }
@@ -560,7 +570,35 @@ const ChatApp = (function () {
     }
   }
 
-  // ��그인 함수
+  function handleLoginSuccess(data) {
+    setLoggedIn(true);
+    elements.authModal.style.display = "none";
+    updateUserId(data.username);
+    sessionStartTime = new Date();
+    startUsageTracking();
+
+    // 예제 초기화 요청
+    initializeExamples()
+      .then(() => console.log("예제 초기화 완료"))
+      .catch((error) => console.error("예제 초기화 중 오류:", error));
+  }
+
+  // 예제 초기화 함수 추가
+  function initializeExamples() {
+    return fetch("/initialize_examples", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("예제 초기화 실패");
+      }
+      return response.json();
+    });
+  }
+
+  // login 함수 수정
   function login() {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
@@ -573,11 +611,7 @@ const ChatApp = (function () {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setLoggedIn(true);
-          elements.authModal.style.display = "none";
-          updateUserId(username);
-          sessionStartTime = new Date();
-          startUsageTracking();
+          handleLoginSuccess(data);
         } else {
           setMessage("Failed to log in. Please try again.", "error");
         }
@@ -590,7 +624,6 @@ const ChatApp = (function () {
         );
       });
   }
-
   // 회원가입 함수
   function signup() {
     const username = document.getElementById("signup-username").value.trim();
@@ -982,3 +1015,25 @@ const ChatApp = (function () {
 
 // DOM이 로드된 후 앱 초기화
 document.addEventListener("DOMContentLoaded", ChatApp.init);
+
+// 타이밍 정보 출력 함수
+function printTimingInfo(timing) {
+  console.group("🕒 처리 시간 분석");
+  console.log(`총 소요 시간: ${timing.총_처리_시간}`);
+
+  console.group("단계별 처리 시간");
+  Object.entries(timing.단계별_처리_시간).forEach(([stepName, stepInfo]) => {
+    // 이미 문자열 형태로 받은 소요 시간을 그대로 출력
+    console.group(`◆ ${stepName}: ${stepInfo.소요_시간}`);
+
+    if (stepInfo.세부_단계) {
+      Object.entries(stepInfo.세부_단계).forEach(([subName, subTime]) => {
+        console.log(`└─ ${subName}: ${subTime}`);
+      });
+    }
+
+    console.groupEnd();
+  });
+  console.groupEnd();
+  console.groupEnd();
+}
