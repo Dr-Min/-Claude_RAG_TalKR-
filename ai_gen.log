@@ -1108,3 +1108,185 @@
 2024-10-28 20:48:35,083 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:35] "POST /chat HTTP/1.1" 200 -
 2024-10-28 20:48:39,273 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
 2024-10-28 20:48:40,109 - werkzeug - INFO - 127.0.0.1 - - [28/Oct/2024 20:48:40] "POST /generate_voice HTTP/1.1" 200 -
+2024-11-01 17:42:06,032 - ai_gen - INFO - 
+기존 캐시 파일 발견!
+2024-11-01 17:42:06,036 - ai_gen - INFO - 로드된 캐시 엔트리 수: 99
+2024-11-01 17:42:08,460 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-11-01 17:42:08,576 - ai_gen - INFO - 
+모든 텍스트가 이미 캐시되어 있음
+2024-11-01 17:42:09,613 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-11-01 17:42:10,408 - ai_gen - INFO - 
+=== DB 업데이트 완료 ===
+2024-11-01 17:42:10,408 - ai_gen - INFO - 처리된 텍스트 수: 99
+2024-11-01 17:42:10,408 - ai_gen - INFO - 총 소요 시간: 1.832초
+2024-11-01 17:42:10,411 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:42:10,411 - ai_gen - INFO - 
+=== 초기화 시간 분석 ===
+2024-11-01 17:42:10,411 - ai_gen - INFO - 1_캐시_디렉토리_설정: 0.000초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 2_캐시_로드: 0.004초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 3_DB_초기화: 2.538초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 4_데이터_로드_및_처리: 0.002초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 5_DB_업데이트: 1.832초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 6_캐시_저장: 0.002초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 7_총_초기화_시간: 4.379초
+2024-11-01 17:42:10,411 - ai_gen - INFO - 
+=== 캐시 상태 ===
+2024-11-01 17:42:10,411 - ai_gen - INFO - 캐시된 텍스트 수: 99
+2024-11-01 17:42:10,411 - ai_gen - INFO - 원본 텍스트 변형 수: 99
+2024-11-01 17:42:10,411 - ai_gen - INFO - 새로 추가된 텍스트 수: 0
+2024-11-01 17:42:10,415 - ai_gen - INFO - 기존 HNSW 인덱스를 로드했습니다.
+2024-11-01 17:42:10,415 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:42:10,415 - ai_gen - INFO - 
+=== HNSW 인덱스 상태 ===
+2024-11-01 17:42:10,415 - ai_gen - INFO - 현재 인덱스 크기: 99 벡터
+2024-11-01 17:42:10,415 - ai_gen - INFO - 최대 벡터 수: 10000
+2024-11-01 17:42:10,415 - ai_gen - INFO - 초기화 시간: 0.004초
+2024-11-01 17:42:10,512 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5009
+ * Running on http://172.16.11.125:5009
+2024-11-01 17:42:10,512 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-01 17:42:10,513 - werkzeug - INFO -  * Restarting with stat
+2024-11-01 17:42:11,838 - ai_gen - INFO - 
+기존 캐시 파일 발견!
+2024-11-01 17:42:11,841 - ai_gen - INFO - 로드된 캐시 엔트리 수: 99
+2024-11-01 17:42:12,171 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-11-01 17:42:12,229 - ai_gen - INFO - 
+모든 텍스트가 이미 캐시되어 있음
+2024-11-01 17:42:13,198 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-11-01 17:42:13,974 - ai_gen - INFO - 
+=== DB 업데이트 완료 ===
+2024-11-01 17:42:13,974 - ai_gen - INFO - 처리된 텍스트 수: 99
+2024-11-01 17:42:13,974 - ai_gen - INFO - 총 소요 시간: 1.745초
+2024-11-01 17:42:13,978 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:42:13,978 - ai_gen - INFO - 
+=== 초기화 시간 분석 ===
+2024-11-01 17:42:13,978 - ai_gen - INFO - 1_캐시_디렉토리_설정: 0.000초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 2_캐시_로드: 0.003초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 3_DB_초기화: 0.388초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 4_데이터_로드_및_처리: 0.001초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 5_DB_업데이트: 1.745초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 6_캐시_저장: 0.003초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 7_총_초기화_시간: 2.140초
+2024-11-01 17:42:13,978 - ai_gen - INFO - 
+=== 캐시 상태 ===
+2024-11-01 17:42:13,978 - ai_gen - INFO - 캐시된 텍스트 수: 99
+2024-11-01 17:42:13,978 - ai_gen - INFO - 원본 텍스트 변형 수: 99
+2024-11-01 17:42:13,978 - ai_gen - INFO - 새로 추가된 텍스트 수: 0
+2024-11-01 17:42:13,980 - ai_gen - INFO - 기존 HNSW 인덱스를 로드했습니다.
+2024-11-01 17:42:13,980 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:42:13,980 - ai_gen - INFO - 
+=== HNSW 인덱스 상태 ===
+2024-11-01 17:42:13,980 - ai_gen - INFO - 현재 인덱스 크기: 99 벡터
+2024-11-01 17:42:13,980 - ai_gen - INFO - 최대 벡터 수: 10000
+2024-11-01 17:42:13,980 - ai_gen - INFO - 초기화 시간: 0.002초
+2024-11-01 17:42:14,009 - werkzeug - WARNING -  * Debugger is active!
+2024-11-01 17:42:14,018 - werkzeug - INFO -  * Debugger PIN: 331-052-354
+2024-11-01 17:47:26,021 - ai_gen - INFO - 
+기존 캐시 파일 발견!
+2024-11-01 17:47:26,025 - ai_gen - INFO - 로드된 캐시 엔트리 수: 99
+2024-11-01 17:47:26,095 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-11-01 17:47:26,201 - chromadb.db.impl.sqlite - WARNING - ⚠️ It looks like you upgraded from a version below 0.6 and could benefit from vacuuming your database. Run chromadb utils vacuum --help for more information.
+2024-11-01 17:47:26,204 - ai_gen - INFO - 
+모든 텍스트가 이미 캐시되어 있음
+2024-11-01 17:47:27,838 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-11-01 17:47:29,586 - ai_gen - INFO - 
+=== DB 업데이트 완료 ===
+2024-11-01 17:47:29,586 - ai_gen - INFO - 처리된 텍스트 수: 99
+2024-11-01 17:47:29,586 - ai_gen - INFO - 총 소요 시간: 3.381초
+2024-11-01 17:47:29,590 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:47:29,591 - ai_gen - INFO - 
+=== 초기화 시간 분석 ===
+2024-11-01 17:47:29,591 - ai_gen - INFO - 1_캐시_디렉토리_설정: 0.000초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 2_캐시_로드: 0.004초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 3_DB_초기화: 0.178초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 4_데이터_로드_및_처리: 0.001초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 5_DB_업데이트: 3.382초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 6_캐시_저장: 0.004초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 7_총_초기화_시간: 3.570초
+2024-11-01 17:47:29,591 - ai_gen - INFO - 
+=== 캐시 상태 ===
+2024-11-01 17:47:29,591 - ai_gen - INFO - 캐시된 텍스트 수: 99
+2024-11-01 17:47:29,591 - ai_gen - INFO - 원본 텍스트 변형 수: 99
+2024-11-01 17:47:29,591 - ai_gen - INFO - 새로 추가된 텍스트 수: 0
+2024-11-01 17:47:29,597 - ai_gen - INFO - 기존 HNSW 인덱스를 로드했습니다.
+2024-11-01 17:47:29,597 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:47:29,597 - ai_gen - INFO - 
+=== HNSW 인덱스 상태 ===
+2024-11-01 17:47:29,597 - ai_gen - INFO - 현재 인덱스 크기: 99 벡터
+2024-11-01 17:47:29,597 - ai_gen - INFO - 최대 벡터 수: 10000
+2024-11-01 17:47:29,597 - ai_gen - INFO - 초기화 시간: 0.006초
+2024-11-01 17:47:29,646 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5009
+ * Running on http://172.16.11.125:5009
+2024-11-01 17:47:29,646 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-01 17:47:29,647 - werkzeug - INFO -  * Restarting with stat
+2024-11-01 17:47:31,289 - ai_gen - INFO - 
+기존 캐시 파일 발견!
+2024-11-01 17:47:31,291 - ai_gen - INFO - 로드된 캐시 엔트리 수: 99
+2024-11-01 17:47:31,357 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2024-11-01 17:47:31,491 - chromadb.db.impl.sqlite - WARNING - ⚠️ It looks like you upgraded from a version below 0.6 and could benefit from vacuuming your database. Run chromadb utils vacuum --help for more information.
+2024-11-01 17:47:31,496 - ai_gen - INFO - 
+모든 텍스트가 이미 캐시되어 있음
+2024-11-01 17:47:32,342 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-11-01 17:47:33,960 - ai_gen - INFO - 
+=== DB 업데이트 완료 ===
+2024-11-01 17:47:33,960 - ai_gen - INFO - 처리된 텍스트 수: 99
+2024-11-01 17:47:33,960 - ai_gen - INFO - 총 소요 시간: 2.464초
+2024-11-01 17:47:33,963 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:47:33,964 - ai_gen - INFO - 
+=== 초기화 시간 분석 ===
+2024-11-01 17:47:33,964 - ai_gen - INFO - 1_캐시_디렉토리_설정: 0.000초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 2_캐시_로드: 0.002초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 3_DB_초기화: 0.204초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 4_데이터_로드_및_처리: 0.001초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 5_DB_업데이트: 2.464초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 6_캐시_저장: 0.002초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 7_총_초기화_시간: 2.674초
+2024-11-01 17:47:33,964 - ai_gen - INFO - 
+=== 캐시 상태 ===
+2024-11-01 17:47:33,964 - ai_gen - INFO - 캐시된 텍스트 수: 99
+2024-11-01 17:47:33,964 - ai_gen - INFO - 원본 텍스트 변형 수: 99
+2024-11-01 17:47:33,964 - ai_gen - INFO - 새로 추가된 텍스트 수: 0
+2024-11-01 17:47:33,966 - ai_gen - INFO - 기존 HNSW 인덱스를 로드했습니다.
+2024-11-01 17:47:33,967 - ai_gen - WARNING - 낮은 캐시 히트율: 0.0%
+2024-11-01 17:47:33,967 - ai_gen - INFO - 
+=== HNSW 인덱스 상태 ===
+2024-11-01 17:47:33,967 - ai_gen - INFO - 현재 인덱스 크기: 99 벡터
+2024-11-01 17:47:33,967 - ai_gen - INFO - 최대 벡터 수: 10000
+2024-11-01 17:47:33,967 - ai_gen - INFO - 초기화 시간: 0.003초
+2024-11-01 17:47:34,007 - werkzeug - WARNING -  * Debugger is active!
+2024-11-01 17:47:34,018 - werkzeug - INFO -  * Debugger PIN: 331-052-354
+2024-11-01 17:47:38,541 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:38] "GET / HTTP/1.1" 200 -
+2024-11-01 17:47:38,641 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:38] "GET /static/js/script.js HTTP/1.1" 200 -
+2024-11-01 17:47:38,642 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:38] "GET /static/css/styles.css HTTP/1.1" 200 -
+2024-11-01 17:47:38,901 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:38] "GET /check_login HTTP/1.1" 200 -
+2024-11-01 17:47:39,112 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:39] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+2024-11-01 17:47:39,125 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:39] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+2024-11-01 17:47:39,201 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-11-01 17:47:49,353 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:49] "GET / HTTP/1.1" 200 -
+2024-11-01 17:47:49,413 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:49] "GET /static/css/styles.css HTTP/1.1" 200 -
+2024-11-01 17:47:49,414 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:49] "GET /static/js/script.js HTTP/1.1" 200 -
+2024-11-01 17:47:49,724 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:49] "GET /check_login HTTP/1.1" 200 -
+2024-11-01 17:47:49,804 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-11-01 17:47:54,585 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:54] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:47:58,317 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:58] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:47:59,513 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:47:59] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:48:02,264 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:48:02] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:48:05,145 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:48:05] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:48:22,014 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:48:22] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:48:29,666 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:48:29] "POST /signup HTTP/1.1" 200 -
+2024-11-01 17:48:35,366 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:48:35] "POST /login HTTP/1.1" 200 -
+2024-11-01 17:49:01,241 - ai_gen - ERROR - 예제 검색 중 오류 발생: 'super' object has no attribute 'get_examples'
+2024-11-01 17:49:03,581 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2024-11-01 17:49:03,600 - ai_gen - INFO - 
+=== AI 응답 생성 시간 분석 ===
+2024-11-01 17:49:03,601 - ai_gen - INFO - 1_예제_선택: 0.002초
+2024-11-01 17:49:03,601 - ai_gen - INFO - 2_프롬프트_생성: 0.018초
+2024-11-01 17:49:03,601 - ai_gen - INFO - 3_AI_응답_생성: 2.341초
+2024-11-01 17:49:03,601 - ai_gen - INFO - 4_총_처리_시간: 2.361초
+2024-11-01 17:49:03,609 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:49:03] "POST /chat HTTP/1.1" 200 -
+2024-11-01 17:49:05,789 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2024-11-01 17:49:06,573 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:49:06] "POST /generate_voice HTTP/1.1" 200 -
+2024-11-01 17:49:06,652 - werkzeug - INFO - 127.0.0.1 - - [01/Nov/2024 17:49:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

@@ -2,7 +2,8 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.example_selectors import SemanticSimilarityExampleSelector
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import FewShotPromptTemplate
-from langchain_community.vectorstores import Chroma
+# from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_core.prompts.few_shot import FewShotChatMessagePromptTemplate
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_anthropic import ChatAnthropic
