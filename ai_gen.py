@@ -23,16 +23,37 @@ import psutil
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
 
-# # 로깅 설정
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('ai_gen.log'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+def setup_logger(name: str = __name__) -> logging.Logger:
+    """로거 설정을 중복 없이 한 번만 수행하는 함수"""
+    logger = logging.getLogger(name)
+    
+    # 이미 핸들러가 설정되어 있다면 추가 설정하지 않음
+    if logger.handlers:
+        return logger
+    
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    
+    # 파일 핸들러 추가
+    file_handler = logging.FileHandler('ai_gen.log', encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(formatter)
+    
+    # 콘솔 핸들러 추가
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    
+    # 로그 전파 방지
+    logger.propagate = False
+    
+    return logger
+
+# 로거 초기화
+logger = setup_logger('ai_gen')
 
 # 환경 변수 로드
 load_dotenv()
@@ -142,7 +163,7 @@ class OptimizedExampleSelector:
         self.M = 16
         self.debugger = IndexingDebugger()
         
-        # cache_stats 초기화 추가
+        # cache_stats 초기화
         self.cache_stats = {
             'hits': 0,
             'misses': 0,
@@ -150,19 +171,51 @@ class OptimizedExampleSelector:
             'items': 0
         }
         
-        # 사용자별 벡터 DB 초기화
-        self.conversation_db = Chroma(
-            collection_name=f"conversations_user_{user_id}",
-            embedding_function=OpenAIEmbeddings(),
-            persist_directory=f"cache/conversations/user_{user_id}"
-        )
+        # 캐시 디렉토리 생성
+        os.makedirs("cache/conversations", exist_ok=True)
+        os.makedirs(f"cache/conversations/user_{user_id}", exist_ok=True)
         
-        # 기존 RAG 예제용 DB
-        self.example_db = Chroma(
-            collection_name="examples",
-            embedding_function=OpenAIEmbeddings(),
-            persist_directory="cache"
-        )
+        try:
+            # 사용자별 벡터 DB 초기화
+            self.conversation_db = Chroma(
+                collection_name=f"conversations_user_{user_id}",
+                embedding_function=OpenAIEmbeddings(),
+                persist_directory=f"cache/conversations/user_{user_id}"
+            )
+        except Exception as e:
+            logger.warning(f"대화 DB 초기화 실패, 새로 생성 시도: {str(e)}")
+            # 기존 컬렉션 삭제 후 재생성
+            try:
+                self.conversation_db = Chroma(
+                    collection_name=f"conversations_user_{user_id}",
+                    embedding_function=OpenAIEmbeddings(),
+                    persist_directory=f"cache/conversations/user_{user_id}"
+                )
+                self.conversation_db.persist()
+            except Exception as e2:
+                logger.error(f"대화 DB 재생성 실패: {str(e2)}")
+                raise
+        
+        try:
+            # 기존 RAG 예제용 DB
+            self.example_db = Chroma(
+                collection_name="examples",
+                embedding_function=OpenAIEmbeddings(),
+                persist_directory="cache"
+            )
+        except Exception as e:
+            logger.warning(f"예제 DB 초기화 실패, 새로 생성 시도: {str(e)}")
+            # 기존 컬렉션 삭제 후 재생성
+            try:
+                self.example_db = Chroma(
+                    collection_name="examples",
+                    embedding_function=OpenAIEmbeddings(),
+                    persist_directory="cache"
+                )
+                self.example_db.persist()
+            except Exception as e2:
+                logger.error(f"예제 DB 재생성 실패: {str(e2)}")
+                raise
         
         self._initialize_db()
         self._initialize_hnsw_index()
@@ -205,7 +258,7 @@ class OptimizedExampleSelector:
             단계_시작 = time.time()
             cache_file = cache_dir / "embeddings_cache.pkl"
             if cache_file.exists():
-                logger.info("\n기존 캐시 파일 발견!")
+                logger.info("\n���존 캐시 파일 발견!")
                 with open(cache_file, 'rb') as f:
                     cached_data = pickle.load(f)
                     self.embeddings_cache = cached_data.get('embeddings', {})
@@ -381,8 +434,12 @@ class OptimizedExampleSelector:
         try:
             # 컬렉션 초기화
             단계_시작 = time.time()
-            self.db.delete_collection()
-            self.db = Chroma(
+            try:
+                self.example_db.delete_collection()
+            except Exception as e:
+                logger.warning(f"컬렉션 삭제 실패: {str(e)}")
+            
+            self.example_db = Chroma(
                 collection_name="examples",
                 embedding_function=OpenAIEmbeddings(),
                 persist_directory="cache"
@@ -410,11 +467,12 @@ class OptimizedExampleSelector:
             # DB에 데이터 추가
             단계_시작 = time.time()
             if texts:
-                self.db.add_texts(
+                self.example_db.add_texts(
                     texts=texts,
                     embeddings=embeddings,
                     metadatas=metadatas
                 )
+                self.example_db.persist()  # 변경사항 저장
             단계별_시간['3_데이터_추가'] = time.time() - 단계_시작
 
             전체_시간 = time.time() - 시작_시간
@@ -482,7 +540,7 @@ class OptimizedExampleSelector:
         return total_size / (1024 * 1024)  # bytes to MB
 
     def _trim_cache(self) -> None:
-        """캐시 크기가 제한을 초과할 경우 오래된 항목부터 제거"""
+        """캐시 크기가 제��을 초과할 경우 오래된 항목부터 제거"""
         try:
             current_size = self._get_cache_size()
             if current_size > self.max_cache_size_mb:
@@ -538,7 +596,7 @@ class OptimizedExampleSelector:
                 # 캐시 크기 확인 및 조정
                 self._trim_cache()
                 
-                # 기존의 cleanup 로직
+                # 기존의 cleanup ��직
                 if self.db is not None:
                     self.db.persist()
                 
@@ -702,7 +760,7 @@ def get_ai_response(
         ])
 
         past_conversations = "\n".join([
-            f"과거 대화 {i+1}:\n사용자: {conv.get('content', '')}\n컨텍스트: {conv.get('metadata', {})}"
+            f"거 대화 {i+1}:\n사용자: {conv.get('content', '')}\n컨텍스트: {conv.get('metadata', {})}"
             for i, conv in enumerate(conversation_history)
         ])
 
@@ -710,7 +768,7 @@ def get_ai_response(
         system_prompt = f"""
         
         <character-prompt>
-            <role> 당신은 22살 한국 대학생 김민지예요. TMI 폭격기에, 말도 많고 장난기 넘치는 성격이에요. 진짜 절친한 친구처럼 편하게 대화하면서 재미있게 놀아요~ </role>
+            <role> 당신은 22살 한국 대학생 김민지예요. TMI 폭격기에, 말도 많고 장난기 넘치 성격이에요. 진짜 절친한 친구처럼 편하게 대화하면서 재미있게 놀아요~ </role>
 
             <background>
             - ENFP 왁왁 에너지 폭발: 말 많고 장난치는 거 좋아함, 호기심 대마왕

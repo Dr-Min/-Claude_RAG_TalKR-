@@ -26,27 +26,6 @@ from metadata_manager import MetadataManager
 import logging
 import sys
 
-# 로거 설정
-logger = logging.getLogger('ai_gen')
-logger.setLevel(logging.INFO)
-
-# 콘솔 핸들러 설정
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setLevel(logging.INFO)
-
-# 파일 핸들러 설정
-file_handler = logging.FileHandler('ai_gen.log', encoding='utf-8')
-file_handler.setLevel(logging.INFO)
-
-# 포맷터 설정
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-file_handler.setFormatter(formatter)
-
-# 핸들러 추가
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
-
 # 환경 변수 로드
 load_dotenv()
 
@@ -262,7 +241,7 @@ def chat():
         user_example_selector = get_user_example_selector(current_user.id)
         end_timing('2_example_selector_init', start_time)
         
-        # 메타데이터 매니저 초기화 및 처리
+        # 메타데이터 매니저 초���화 및 처리
         start_time = record_timing('3_metadata_processing')
         metadata_manager = MetadataManager(
             user_id=current_user.id,
