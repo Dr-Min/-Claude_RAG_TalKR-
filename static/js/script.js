@@ -388,17 +388,8 @@ const ChatApp = (function () {
 
     elements.userInput.value = accumulatedTranscript.trim();
 
-    // 새로운 침묵 타이머 설정
-    silenceTimer = setTimeout(() => {
-      if (accumulatedTranscript.trim() !== lastProcessedResult.trim()) {
-        if (accumulatedTranscript.trim() !== "") {
-          lastProcessedResult = accumulatedTranscript.trim();
-          sendMessage(lastProcessedResult, true);
-          stopListening();
-          accumulatedTranscript = ""; // 초기화
-        }
-      }
-    }, 5000);
+    // 자동 전송 로직 제거
+    // 대신 사용자가 send 버튼을 클릭하거나 Enter를 누를 때까지 대기
   }
 
   // 음성 인식 오류 처리
